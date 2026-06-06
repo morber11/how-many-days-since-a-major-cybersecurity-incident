@@ -35,7 +35,13 @@ export function getOrPickMediaIndex(): number {
     let storedIndex = sessionStorage.getItem(STORAGE_KEY);
 
     if (isReload || storedIndex === null) {
-        storedIndex = String(Math.floor(Math.random() * items.length));
+        if (isReload && storedIndex !== null) {
+            const previous = Number(storedIndex);
+            const offset = 1 + Math.floor(Math.random() * (items.length - 1));
+            storedIndex = String((previous + offset) % items.length);
+        } else {
+            storedIndex = String(Math.floor(Math.random() * items.length));
+        }
         sessionStorage.setItem(STORAGE_KEY, storedIndex);
     }
 

@@ -1,5 +1,10 @@
-import { describe, it, expect } from 'vitest';
-import { getMediaItems, selectMediaItem, pickRandomMediaItem } from './media';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
+import {
+    getMediaItems,
+    selectMediaItem,
+    pickRandomMediaItem,
+    getOrPickMediaIndex
+} from './media';
 
 describe('getMediaItems', () => {
     it('returns a non-empty array', () => {
@@ -24,5 +29,34 @@ describe('pickRandomMediaItem', () => {
         const item = pickRandomMediaItem();
         const items = getMediaItems();
         expect(items).toContain(item);
+    });
+});
+
+describe('getOrPickMediaIndex', () => {
+    beforeEach(() => {
+        const store: Record<string, string> = {};
+        vi.stubGlobal('sessionStorage', {
+            getItem: (key: string) => store[key] ?? null,
+            setItem: (key: string, value: string) => { store[key] = value; },
+            clear: () => { Object.keys(store).forEach(k => delete store[k]); },
+        });
+        vi.stubGlobal('performance', {
+            getEntriesByType: () => [{ type: 'reload' }],
+        });
+    });
+
+    afterEach(() => {
+        vi.unstubAllGlobals();
+    });
+
+    it('always returns a different index on simulated reloads', () => {
+        const first = getOrPickMediaIndex();
+        let previous = first;
+
+        for (let i = 0; i < 100; i++) {
+            const next = getOrPickMediaIndex();
+            expect(next).not.toBe(previous);
+            previous = next;
+        }
     });
 });
