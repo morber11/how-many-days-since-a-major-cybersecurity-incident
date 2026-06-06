@@ -62,7 +62,7 @@ const isActive = (path: string) =>
     if (!img) throw new Error("corner-img not found");
 
     img.src = currentItem.image;
-    
+
     if (currentItem.width) img.width = currentItem.width;
     if (currentItem.height) img.height = currentItem.height;
 
@@ -72,8 +72,12 @@ const isActive = (path: string) =>
             audio.pause();
             audio.currentTime = 0;
         } else if (currentItem.audio) {
-            audio = new Audio(currentItem.audio);
-            audio.volume = currentItem.volume ?? 0.5;
+            const overrides = currentItem.optionalFunction?.();
+            const effective = { ...currentItem, ...overrides };
+
+            img.src = effective.image;
+            audio = new Audio(effective.audio);
+            audio.volume = effective.volume ?? 0.5;
             audio.play();
         }
     });

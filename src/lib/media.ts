@@ -4,6 +4,7 @@ export interface MediaItem {
     width?: number;
     height?: number;
     volume?: number;
+    optionalFunction?: () => Partial<MediaItem> | undefined;
 }
 
 // add in specific width/height because the sprite sizes can vary
@@ -16,7 +17,7 @@ const items: MediaItem[] = [
     { image: "/images/npm-left-pad-incident.png", audio: "/audio/pcb-titlescreen.mp3", width: 128, height: 256, volume: 0.4 },
     { image: "/images/merchant.png", audio: "/audio/sa-titlescreen.mp3", width: 128, height: 256, volume: 0.4 },
     { image: "/images/myon.png", audio: "/audio/in-titlescreen.mp3", width: 128, height: 256, volume: 0.4 },
-    { image: "/images/pls-rember.png", audio: "/audio/pofv-titlescreen.mp3", width: 128, height: 256, volume: 0.5 },
+    { image: "/images/usc.png", audio: "/audio/pofv-titlescreen.mp3", width: 128, height: 256, volume: 0.5, optionalFunction: plsRemberClick },
 ];
 
 export function getMediaItems(): MediaItem[] {
@@ -51,4 +52,9 @@ export function getOrPickMediaIndex(): number {
     }
 
     return Number(storedIndex);
+}
+
+/* put custom functions for the optionalFunction param down here */
+function plsRemberClick() {
+    return Math.random() < 0.1 ? { audio: "/audio/pls-rember.mp3", image: "/images/pls-rember.png" } : { audio: "/audio/pofv-titlescreen.mp3" };
 }
