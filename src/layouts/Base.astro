@@ -46,5 +46,22 @@ const isActive = (path: string) =>
                 <a href="https://ko-fi.com/morber11">Ko-fi</a>
             </footer>
         </div>
+        <img src="/raymoo.png" alt="" class="corner-img" />
     </body>
 </html>
+
+<script>
+    const img = document.querySelector(".corner-img")!;
+    let audio: HTMLAudioElement | undefined;
+
+    img.addEventListener("click", () => {
+        if (audio && !audio.paused) {
+            audio.pause();
+            audio.currentTime = 0;
+        } else {
+            audio = new Audio("/eosd-titlescreen.mp3");
+            audio.volume = 0.5;
+            audio.play();
+        }
+    });
+</script>

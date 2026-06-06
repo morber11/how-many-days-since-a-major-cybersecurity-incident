@@ -348,6 +348,14 @@ footer a:hover {
     color: var(--color-text);
 }
 
+.corner-img {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    width: 256px;
+    height: 256px;
+}
+
 @media (max-width: 600px) {
     nav {
         flex-direction: column;
@@ -376,5 +384,10 @@ footer a:hover {
     footer a {
         display: inline-block;
         margin: 0.25rem 0.5rem;
+    }
+
+    .corner-img {
+        width: 48px;
+        height: 48px;
     }
 }
