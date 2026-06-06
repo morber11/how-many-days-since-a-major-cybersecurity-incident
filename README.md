@@ -2,7 +2,9 @@
 
 Tracks how many days have passed since the last major cybersecurity incident.
 
-Built with [Astro](https://astro.build). Static site
+Built with [Astro](https://astro.build). Simple static site
+
+View it [here](https://howmanydayssinceamajorcybersecurityincident.morber11.workers.dev)
 
 ## Commands
 
