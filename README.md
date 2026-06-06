@@ -25,4 +25,4 @@ View it here: [hmdsamci](https://howmanydayssinceamajorcybersecurityincident.mor
 
 Edit `src/data/incidents.ts`, push to GitHub. Cloudflare Pages rebuilds on push
 
-For every 10th incident tracked, I will consider adding another 2hu character to the site
+For every 10th incident tracked, I will consider adding another 2hu character to the site. Most sprites are taken from [Spriters Resource](https://www.spriters-resource.com/)

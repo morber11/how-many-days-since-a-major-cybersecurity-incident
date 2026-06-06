@@ -12,6 +12,7 @@ const items: MediaItem[] = [
     { image: "/raymoo.png", audio: "/eosd-titlescreen.mp3", width: 256, height: 256 },
     { image: "/npm-left-pad-incident.png", audio: "/pcb-titlescreen.mp3", width: 128, height: 256 },
     { image: "/merchant.png", audio: "/sa-titlescreen.mp3", width: 128, height: 256 },
+    { image: "/myon.png", audio: "/in-titlescreen.mp3", width: 128, height: 256 },
 ];
 
 export function getMediaItems(): MediaItem[] {
