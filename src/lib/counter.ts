@@ -51,27 +51,32 @@ type Gap = {
 };
 
 export function getMaxDaysBetweenIncidents(): Gap | null {
-    if (incidents.length < 2) return null;
+    const relevant = incidents.filter((inc) => !inc.excludeFromDateGap);
 
-    return incidents
-        .slice(0, -1)
-        .reduce<Gap | null>((best, incident, i) => {
-            const a = new Date(incidents[i + 1].date);
-            const b = new Date(incident.date);
-            a.setHours(0, 0, 0, 0);
-            b.setHours(0, 0, 0, 0);
+    if (relevant.length < 2) return null;
 
-            const days = Math.floor((b.getTime() - a.getTime()) / (1000 * 60 * 60 * 24));
+    let max = 0;
+    let result: Gap | null = null;
 
-            if (best === null || days > best.days) {
-                return {
-                    days,
-                    dateA: incidents[i + 1].date,
-                    incidentA: incidents[i + 1].title,
-                    dateB: incident.date,
-                    incidentB: incident.title,
-                };
-            }
-            return best;
-        }, null);
+    for (let i = 0; i < relevant.length - 1; i++) {
+        const a = new Date(relevant[i + 1].date);
+        const b = new Date(relevant[i].date);
+        a.setHours(0, 0, 0, 0);
+        b.setHours(0, 0, 0, 0);
+
+        const days = Math.floor((b.getTime() - a.getTime()) / (1000 * 60 * 60 * 24));
+
+        if (days > max) {
+            max = days;
+            result = {
+                days,
+                dateA: relevant[i + 1].date,
+                incidentA: relevant[i + 1].title,
+                dateB: relevant[i].date,
+                incidentB: relevant[i].title,
+            };
+        }
+    }
+
+    return result;
 }

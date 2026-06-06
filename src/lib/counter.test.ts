@@ -1,4 +1,15 @@
 import { describe, it, expect, vi } from 'vitest';
+
+vi.mock('../data/incidents', () => ({
+    incidents: [
+        { date: '2026-06-06', title: 'Recent A', description: '', sourceUrl: '' },
+        { date: '2026-06-01', title: 'Recent B', description: '', sourceUrl: '' },
+        { date: '2026-05-25', title: 'Recent C', description: '', sourceUrl: '' },
+        { date: '2000-01-01', title: 'Historical', description: '', sourceUrl: '', excludeFromDateGap: true },
+        { date: '1999-01-01', title: 'Old', description: '', sourceUrl: '' },
+    ],
+}));
+
 import { getDaysSince, getStatusText, getMostRecentIncident, getRecentIncidents, getMaxDaysBetweenIncidents } from './counter';
 
 describe('getDaysSince', () => {
@@ -71,5 +82,12 @@ describe('getMaxDaysBetweenIncidents', () => {
         const result = getMaxDaysBetweenIncidents();
 
         expect(result!.days).toBeGreaterThan(0);
+    });
+
+    it('does not include excluded incidents in the gap', () => {
+        const result = getMaxDaysBetweenIncidents();
+
+        expect(result!.incidentA).not.toBe('Historical');
+        expect(result!.incidentB).not.toBe('Historical');
     });
 });

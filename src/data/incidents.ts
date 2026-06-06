@@ -5,6 +5,7 @@ export interface Incident {
     description: string;
     sourceUrl: string;
     additionalNotes?: string;
+    excludeFromDateGap?: boolean;
 }
 
 // for well known companies we want to have a consistent name across incidents
@@ -15,6 +16,7 @@ const COMPANY = {
 
 // keep this array sorted newest-first the first element 
 // is always treated as the most recent incident
+// consider having this automatically sorted by date
 export const incidents: Incident[] = [
     {
         date: "2026-06-06",
@@ -52,5 +54,13 @@ export const incidents: Incident[] = [
         company: 'U.S. Cybersecurity and Infrastructure Security Agency (CISA)',
         description: "CISA leave digital keys to cloud storage accounts in plain text .csv file in public Github repo",
         sourceUrl: "https://archive.is/niNcb"
+    },
+    {
+        date: "1903-06-04",
+        title: "The First Hack: Cracking Morse Code Signals",
+        company: "The Wireless Telegraph & Signal Company",
+        description: "Magician Nevil Maskelyne disrupted a wireless demonstration by tampering with the morse code signals",
+        sourceUrl: "https://archive.is/BMtLT",
+        excludeFromDateGap: true,
     }
 ];
