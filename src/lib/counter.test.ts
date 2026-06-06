@@ -10,7 +10,14 @@ vi.mock('../data/incidents', () => ({
     ],
 }));
 
-import { getDaysSince, getStatusText, getMostRecentIncident, getRecentIncidents, getMaxDaysBetweenIncidents } from './counter';
+import {
+    getDaysSince,
+    getStatusText,
+    getMostRecentIncident,
+    getRecentIncidents,
+    getMaxDaysBetweenIncidents,
+    getIncidentCount,
+} from './counter';
 
 describe('getDaysSince', () => {
     it('returns 0 for today', () => {
@@ -89,5 +96,11 @@ describe('getMaxDaysBetweenIncidents', () => {
 
         expect(result!.incidentA).not.toBe('Historical');
         expect(result!.incidentB).not.toBe('Historical');
+    });
+});
+
+describe('getIncidentCount', () => {
+    it('returns the total number of incidents', () => {
+        expect(getIncidentCount()).toBe(5);
     });
 });

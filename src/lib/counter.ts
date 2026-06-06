@@ -8,6 +8,10 @@ export function getRecentIncidents() {
     return incidents.slice(1, 3);
 }
 
+export function getIncidentCount() {
+    return incidents.length;
+}
+
 export function getDaysSince(dateString: string): number {
     const incident = new Date(dateString);
     const today = new Date();

@@ -22,3 +22,5 @@ View it here: [hmdsamci](https://howmanydayssinceamajorcybersecurityincident.mor
 ## Updating incidents
 
 Edit `src/data/incidents.ts`, push to GitHub. Cloudflare Pages rebuilds on push
+
+For every 10th incident tracked, I will consider adding another 2hu character to the site

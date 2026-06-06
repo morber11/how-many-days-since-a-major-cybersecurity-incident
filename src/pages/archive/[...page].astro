@@ -1,7 +1,7 @@
 ---
 import Base from "../../layouts/Base.astro";
 import { incidents } from "../../data/incidents";
-import { formatDate } from "../../lib/counter";
+import { formatDate, getIncidentCount } from "../../lib/counter";
 
 export async function getStaticPaths() {
     const pageSize = 8; // because this is a function we need to declare pageSize again in here as otherwise undefined
@@ -31,7 +31,7 @@ const pageIncidents = incidents.slice(
 <Base title="hmdsamci - Incident Archive">
     <div class="archive-page">
         <h1>Incident Archive</h1>
-        <p class="subheading">It really does happen this often</p>
+        <p class="subheading">Tracking {getIncidentCount()} incidents</p>
 
         <table class="archive-table">
             <thead>
