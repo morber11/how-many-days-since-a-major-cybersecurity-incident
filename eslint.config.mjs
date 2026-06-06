@@ -4,6 +4,7 @@ import tsParser from '@typescript-eslint/parser';
 import astroPlugin from 'eslint-plugin-astro';
 import astroParser from 'astro-eslint-parser';
 import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
+import globals from 'globals';
 
 export default [
     js.configs.recommended,
@@ -11,6 +12,9 @@ export default [
         files: ['**/*.{ts,mts}'],
         languageOptions: {
             parser: tsParser,
+            globals: {
+                ...globals.browser,
+            },
         },
         plugins: {
             '@typescript-eslint': tseslint,

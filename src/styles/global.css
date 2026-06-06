@@ -352,8 +352,10 @@ footer a:hover {
     position: fixed;
     bottom: 1rem;
     right: 1rem;
-    width: 256px;
-    height: 256px;
+    max-width: 256px;
+    max-height: 256px;
+    width: auto;
+    height: auto;
 }
 
 @media (max-width: 600px) {
@@ -387,7 +389,7 @@ footer a:hover {
     }
 
     .corner-img {
-        width: 48px;
-        height: 48px;
+        max-width: 48px;
+        max-height: 48px;
     }
 }

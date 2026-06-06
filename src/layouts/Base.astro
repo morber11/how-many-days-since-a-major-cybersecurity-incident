@@ -50,15 +50,29 @@ const isActive = (path: string) =>
 </html>
 
 <script>
-    const img = document.querySelector(".corner-img")!;
-    let audio: HTMLAudioElement | undefined;
+    import { getMediaItems, getOrPickMediaIndex } from "../lib/media";
 
+    const items = getMediaItems();
+    const index = getOrPickMediaIndex();
+    const currentItem = items[index];
+
+    const img = document.querySelector<HTMLImageElement>(".corner-img");
+
+    // just to get rid of linting errors, this should never actually happen
+    if (!img) throw new Error("corner-img not found");
+
+    img.src = currentItem.image;
+    
+    if (currentItem.width) img.width = currentItem.width;
+    if (currentItem.height) img.height = currentItem.height;
+
+    let audio: HTMLAudioElement | undefined;
     img.addEventListener("click", () => {
         if (audio && !audio.paused) {
             audio.pause();
             audio.currentTime = 0;
-        } else {
-            audio = new Audio("/eosd-titlescreen.mp3");
+        } else if (currentItem.audio) {
+            audio = new Audio(currentItem.audio);
             audio.volume = 0.5;
             audio.play();
         }
