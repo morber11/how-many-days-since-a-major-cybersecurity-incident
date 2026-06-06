@@ -5,6 +5,9 @@ export interface MediaItem {
     height?: number;
 }
 
+// add in specific width/height because the sprite sizes can vary
+// and giving an exact width/height is the easiest fix
+// MediaItems are preparing - please wait warmly
 const items: MediaItem[] = [
     { image: "/raymoo.png", audio: "/eosd-titlescreen.mp3", width: 256, height: 256 },
     { image: "/npm-left-pad-incident.png", audio: "/pcb-titlescreen.mp3", width: 128, height: 256 },
