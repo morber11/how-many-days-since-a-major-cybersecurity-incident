@@ -1,0 +1,100 @@
+---
+import Base from "../../layouts/Base.astro";
+import { incidents } from "../../data/incidents";
+import { formatDate } from "../../lib/counter";
+
+export async function getStaticPaths() {
+    const pageSize = 8; // because this is a function we need to declare pageSize again in here as otherwise undefined
+    const totalPages = Math.ceil(incidents.length / pageSize);
+    const paths = [];
+
+    for (let i = 1; i <= totalPages; i++) {
+        paths.push({
+            params: { page: i === 1 ? undefined : String(i) },
+        });
+    }
+
+    return paths;
+}
+
+const pageSize = 8;
+const { page } = Astro.params;
+const currentPage = Number(page) || 1;
+const totalPages = Math.ceil(incidents.length / pageSize);
+
+const pageIncidents = incidents.slice(
+    (currentPage - 1) * pageSize,
+    currentPage * pageSize,
+);
+---
+
+<Base title="hmdsamci - Incident Archive">
+    <div class="archive-page">
+        <h1>Incident Archive</h1>
+        <p class="subheading">It really does happen this often</p>
+
+        <table class="archive-table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Title</th>
+                    <th>Company</th>
+                    <th>Source</th>
+                </tr>
+            </thead>
+            <tbody>
+                {
+                    pageIncidents.map((inc) => (
+                        <tr>
+                            <td>{formatDate(inc.date)}</td>
+                            <td>
+                                <span class="incident-title">{inc.title}</span>
+                                {inc.additionalNotes && (
+                                    <span class="incident-notes">
+                                        {inc.additionalNotes}
+                                    </span>
+                                )}
+                            </td>
+                            <td class="incident-company-cell">
+                                {inc.company ?? "N/A"}
+                            </td>
+                            <td>
+                                <a href={inc.sourceUrl}>Source</a>
+                            </td>
+                        </tr>
+                    ))
+                }
+            </tbody>
+        </table>
+
+        <div class="pagination">
+            {
+                currentPage > 1 && (
+                    <a
+                        href={
+                            currentPage === 2
+                                ? "/archive"
+                                : `/archive/${currentPage - 1}`
+                        }
+                        class="pagination-prev"
+                    >
+                        &larr; Previous
+                    </a>
+                )
+            }
+            <span class="pagination-info">
+                Page {currentPage} of {totalPages}
+            </span>
+            {
+                currentPage < totalPages && (
+                    <a
+                        href={`/archive/${currentPage + 1}`}
+                        class="pagination-next"
+                    >
+                        Next
+                    </a>
+                )
+            }
+        </div>
+    </div>
+</Base>

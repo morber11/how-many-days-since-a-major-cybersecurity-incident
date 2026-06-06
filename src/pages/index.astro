@@ -1,11 +1,90 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Base from "../layouts/Base.astro";
+import {
+    getMostRecentIncident,
+    getRecentIncidents,
+    getDaysSince,
+    getStatusText,
+    formatDate,
+} from "../lib/counter";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const incident = getMostRecentIncident();
+const days = getDaysSince(incident.date);
+const status = getStatusText(days);
+const previousIncidents = getRecentIncidents();
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<Base title="hmdsamci - Home">
+    <div class="counter-page">
+        <span
+            class="counter-number"
+            id="counter"
+            data-incident-date={incident.date}>{days}</span
+        >
+        <p class="counter-label">
+            days since the last major cybersecurity incident
+        </p>
+        <p class="status-line">{status}</p>
+
+        <div class="incident-card">
+            <h2>{incident.title}</h2>
+            <p class="incident-date">
+                {formatDate(incident.date)}
+            </p>
+            {
+                incident.company && (
+                    <p class="incident-company">{incident.company}</p>
+                )
+            }
+            <p class="incident-description">{incident.description}</p>
+            {
+                incident.additionalNotes && (
+                    <p class="incident-notes">{incident.additionalNotes}</p>
+                )
+            }
+            <p class="incident-source">
+                <a href={incident.sourceUrl}> Source</a>
+            </p>
+        </div>
+
+        <div class="previous-incidents">
+            <h3 class="previous-heading">Recent incidents</h3>
+            {
+                previousIncidents.map((inc) => (
+                    <div class="incident-card incident-card--compact">
+                        <h2>{inc.title}</h2>
+                        <p class="incident-date">{formatDate(inc.date)}</p>
+                        {inc.company && (
+                            <p class="incident-company">{inc.company}</p>
+                        )}
+                        <p class="incident-description">{inc.description}</p>
+                        {inc.additionalNotes && (
+                            <p class="incident-notes">{inc.additionalNotes}</p>
+                        )}
+                        <p class="incident-source">
+                            <a href={inc.sourceUrl}>Source</a>
+                        </p>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</Base>
+
+<script>
+    const el = document.getElementById("counter");
+
+    if (el) {
+        const incidentDate = new Date(el.dataset.incidentDate ?? "");
+        const today = new Date();
+
+        today.setHours(0, 0, 0, 0);
+        incidentDate.setHours(0, 0, 0, 0);
+
+        const days = Math.floor(
+            (today.getTime() - incidentDate.getTime()) / 86400000,
+        );
+
+        el.textContent = String(days);
+    }
+</script>

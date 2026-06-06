@@ -1,0 +1,50 @@
+---
+import "../styles/global.css";
+
+const { title = "hmdsamci" } = Astro.props;
+const pathname = Astro.url.pathname;
+
+// highlight active nav link based on current path
+const isActive = (path: string) =>
+    pathname === path || pathname.startsWith(path + "/");
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{title}</title>
+    </head>
+    <body>
+        <div class="container">
+            <nav>
+                <a href="/" class="site-title">{title}</a>
+                <div class="nav-links">
+                    <a href="/" class={isActive("/") ? "active" : ""}>Home</a>
+                    <a
+                        href="/archive"
+                        class={isActive("/archive") ? "active" : ""}>Archive</a
+                    >
+                    <a href="/about" class={isActive("/about") ? "active" : ""}
+                        >About</a
+                    >
+                </div>
+            </nav>
+
+            <main>
+                <slot />
+            </main>
+
+            <footer>
+                <a href="/">Home</a>
+                <a href="/archive">Archive</a>
+                <a href="/about">About</a>
+                <a href="https://ko-fi.com/morber11">Ko-fi</a>
+            </footer>
+        </div>
+    </body>
+</html>

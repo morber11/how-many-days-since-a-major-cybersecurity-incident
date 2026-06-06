@@ -1,7 +1,7 @@
 {
-    "name": "how-many-days-without-a-major-cybersecurity-incident",
+    "name": "how-many-days-since-a-major-cybersecurity-incident",
     "type": "module",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "engines": {
         "node": ">=22.12.0"
     },
@@ -10,6 +10,7 @@
         "build": "astro build",
         "preview": "astro preview",
         "astro": "astro",
+        "test": "vitest run",
         "lint": "eslint .",
         "lint:fix": "eslint . --fix"
     },
@@ -17,11 +18,14 @@
         "astro": "^6.4.4"
     },
     "devDependencies": {
+        "@astrojs/check": "^0.9.9",
         "@types/eslint-plugin-jsx-a11y": "^6.10.1",
         "@typescript-eslint/eslint-plugin": "^8.60.1",
         "@typescript-eslint/parser": "^8.60.1",
         "eslint": "^9.39.4",
         "eslint-plugin-astro": "^1.7.0",
-        "eslint-plugin-jsx-a11y": "^6.10.2"
+        "eslint-plugin-jsx-a11y": "^6.10.2",
+        "typescript": "^6.0.3",
+        "vitest": "^4.1.8"
     }
 }
