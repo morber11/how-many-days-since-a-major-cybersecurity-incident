@@ -17,6 +17,13 @@ const COMPANY = {
 // is always treated as the most recent incident
 export const incidents: Incident[] = [
     {
+        date: "2026-06-06",
+        title: "Group Hid Inside Microsoft 365 Networks for 2 years",
+        company: "Microsoft",
+        description: "Chinese Threat Group Hid Inside Microsoft 365 Networks for 18 Months Using Secret Malware Arsenal",
+        sourceUrl: "https://archive.is/1Yqtt",
+    },
+    {
         date: "2026-06-02",
         title: "Instagram AI Chatbot Hijacked",
         company: COMPANY.META,
