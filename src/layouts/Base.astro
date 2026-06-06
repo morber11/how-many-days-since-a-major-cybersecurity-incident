@@ -73,7 +73,7 @@ const isActive = (path: string) =>
             audio.currentTime = 0;
         } else if (currentItem.audio) {
             audio = new Audio(currentItem.audio);
-            audio.volume = 0.5;
+            audio.volume = currentItem.volume ?? 0.5;
             audio.play();
         }
     });
