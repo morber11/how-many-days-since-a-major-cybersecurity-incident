@@ -12,10 +12,11 @@ export interface MediaItem {
 // so adding it as a property means we can modify it in code
 // MediaItems are preparing - please wait warmly
 const items: MediaItem[] = [
-    { image: "/raymoo.png", audio: "/eosd-titlescreen.mp3", width: 256, height: 256, volume: 0.5 },
-    { image: "/npm-left-pad-incident.png", audio: "/pcb-titlescreen.mp3", width: 128, height: 256, volume: 0.4 },
-    { image: "/merchant.png", audio: "/sa-titlescreen.mp3", width: 128, height: 256, volume: 0.4 },
-    { image: "/myon.png", audio: "/in-titlescreen.mp3", width: 128, height: 256, volume: 0.4 },
+    { image: "/images/raymoo.png", audio: "/audio/eosd-titlescreen.mp3", width: 256, height: 256, volume: 0.5 },
+    { image: "/images/npm-left-pad-incident.png", audio: "/audio/pcb-titlescreen.mp3", width: 128, height: 256, volume: 0.4 },
+    { image: "/images/merchant.png", audio: "/audio/sa-titlescreen.mp3", width: 128, height: 256, volume: 0.4 },
+    { image: "/images/myon.png", audio: "/audio/in-titlescreen.mp3", width: 128, height: 256, volume: 0.4 },
+    { image: "/images/pls-rember.png", audio: "/audio/pofv-titlescreen.mp3", width: 128, height: 256, volume: 0.5 },
 ];
 
 export function getMediaItems(): MediaItem[] {
