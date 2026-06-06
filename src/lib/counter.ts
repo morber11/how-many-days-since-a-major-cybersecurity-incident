@@ -29,10 +29,12 @@ export function formatDate(dateString: string): string {
 }
 
 export function getStatusText(days: number): string {
-    if (days === 0) return "Did not last even a week";
-    if (days <= 6) return "So close to an entire week";
+    if (days === 0) return "Seriously ? Not even a full day ?";
+    if (days <= 4) return "Can we get through an entire week without an incident ?";
+    if (days <= 6) return "Did not last even a week";
     if (days <= 13) return "Not even a fortnite";
     if (days <= 29) return "Two whole weeks! That's one entire sprint";
+    if (days === 69) return "Funny number";
     if (days <= 89) return "One month. Impressive";
     if (days <= 179) return "Three months ? Maybe I just stopped updating this site ?";
     if (days <= 364) return "Half a year. I find that very questionable";
