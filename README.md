@@ -1,4 +1,4 @@
-# how-many-days-since-a-major-cybersecurity-incident
+# How Many Days Since A Major Cybersecurity Incident (hmdsamci)
 
 Tracks how many days have passed since the last major cybersecurity incident.
 
