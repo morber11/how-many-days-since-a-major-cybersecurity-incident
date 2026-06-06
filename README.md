@@ -1,5 +1,7 @@
 # How Many Days Since A Major Cybersecurity Incident (hmdsamci)
 
+Pronounced *hum-duh-sam-see*
+
 Tracks how many days have passed since the last major cybersecurity incident. Manually updated via `src/data/incidents.ts`. Dates of incidents are based on when they were first reported, not the specific date they occurred
 
 Experimenting with Cloudflare pages + astro
