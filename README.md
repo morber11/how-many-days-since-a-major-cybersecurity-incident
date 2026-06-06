@@ -1,10 +1,12 @@
 # How Many Days Since A Major Cybersecurity Incident (hmdsamci)
 
-Tracks how many days have passed since the last major cybersecurity incident.
+Tracks how many days have passed since the last major cybersecurity incident. Manually updated via `src/data/incidents.ts`. Dates of incidents are based on when they were first reported, not the specific date they occurred
 
-Built with [Astro](https://astro.build). Simple static site
+Experimenting with Cloudflare pages + astro
 
-View it [here](https://howmanydayssinceamajorcybersecurityincident.morber11.workers.dev)
+Static site built with [Astro](https://astro.build)
+
+View it here: [hmdsamci](https://howmanydayssinceamajorcybersecurityincident.morber11.workers.dev)
 
 ## Commands
 
