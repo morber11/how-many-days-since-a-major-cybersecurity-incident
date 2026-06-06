@@ -41,3 +41,37 @@ export function getStatusText(days: number): string {
 
     return "One year. This site is probably unmaintained at this point";
 }
+
+type Gap = {
+    days: number;
+    dateA: string;
+    incidentA: string;
+    dateB: string;
+    incidentB: string;
+};
+
+export function getMaxDaysBetweenIncidents(): Gap | null {
+    if (incidents.length < 2) return null;
+
+    return incidents
+        .slice(0, -1)
+        .reduce<Gap | null>((best, incident, i) => {
+            const a = new Date(incidents[i + 1].date);
+            const b = new Date(incident.date);
+            a.setHours(0, 0, 0, 0);
+            b.setHours(0, 0, 0, 0);
+
+            const days = Math.floor((b.getTime() - a.getTime()) / (1000 * 60 * 60 * 24));
+
+            if (best === null || days > best.days) {
+                return {
+                    days,
+                    dateA: incidents[i + 1].date,
+                    incidentA: incidents[i + 1].title,
+                    dateB: incident.date,
+                    incidentB: incident.title,
+                };
+            }
+            return best;
+        }, null);
+}

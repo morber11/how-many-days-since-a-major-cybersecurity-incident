@@ -100,7 +100,7 @@ nav .nav-links a.active {
 
 .counter-page {
     text-align: center;
-    padding: 2rem 0 4rem;
+    padding: 2rem 0 0;
 }
 
 .counter-number {
@@ -209,6 +209,26 @@ nav .nav-links a.active {
 
 .previous-incidents {
     margin-top: 2rem;
+}
+
+.gap-stat {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    text-align: center;
+    margin: 2rem 0 0;
+}
+
+.gap-stat p {
+    margin: 0.25rem 0;
+}
+
+.gap-detail {
+    font-size: 0.75rem;
+}
+
+.gap-record {
+    color: var(--color-accent);
 }
 
 .archive-page,

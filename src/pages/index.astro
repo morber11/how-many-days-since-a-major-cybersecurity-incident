@@ -6,12 +6,15 @@ import {
     getDaysSince,
     getStatusText,
     formatDate,
+    getMaxDaysBetweenIncidents,
 } from "../lib/counter";
 
 const incident = getMostRecentIncident();
 const days = getDaysSince(incident.date);
 const status = getStatusText(days);
 const previousIncidents = getRecentIncidents();
+const maxGap = getMaxDaysBetweenIncidents();
+const isRecord = maxGap && days > maxGap.days;
 ---
 
 <Base title="hmdsamci - Home">
@@ -68,6 +71,16 @@ const previousIncidents = getRecentIncidents();
                 ))
             }
         </div>
+
+        {
+            maxGap && (
+                <div class="gap-stat">
+                    <p>Longest gap between incidents: {maxGap.days} days</p>
+                    <p class="gap-detail">[{formatDate(maxGap.dateA)}] {maxGap.incidentA} =&gt; [{formatDate(maxGap.dateB)}] {maxGap.incidentB}</p>
+                    {isRecord && <p class="gap-record">This is currently the highest gap on record!</p>}
+                </div>
+            )
+        }
     </div>
 </Base>
 

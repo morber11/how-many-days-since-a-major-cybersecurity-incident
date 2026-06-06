@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import { getDaysSince, getStatusText, getMostRecentIncident, getRecentIncidents } from './counter';
+import { getDaysSince, getStatusText, getMostRecentIncident, getRecentIncidents, getMaxDaysBetweenIncidents } from './counter';
 
 describe('getDaysSince', () => {
     it('returns 0 for today', () => {
@@ -52,5 +52,24 @@ describe('getRecentIncidents', () => {
         const recent = getRecentIncidents();
 
         expect(recent).toHaveLength(2);
+    });
+});
+
+describe('getMaxDaysBetweenIncidents', () => {
+    it('returns an object with days, dates, and incident titles', () => {
+        const result = getMaxDaysBetweenIncidents();
+
+        expect(result).not.toBeNull();
+        expect(typeof result!.days).toBe('number');
+        expect(typeof result!.dateA).toBe('string');
+        expect(typeof result!.incidentA).toBe('string');
+        expect(typeof result!.dateB).toBe('string');
+        expect(typeof result!.incidentB).toBe('string');
+    });
+
+    it('has a positive day count', () => {
+        const result = getMaxDaysBetweenIncidents();
+
+        expect(result!.days).toBeGreaterThan(0);
     });
 });
