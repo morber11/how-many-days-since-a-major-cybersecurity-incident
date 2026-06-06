@@ -29,7 +29,7 @@ export const incidents: Incident[] = [
         date: "2026-06-02",
         title: "Instagram AI Chatbot Hijacked",
         company: COMPANY.META,
-        description: "Instagram AI chatbot get access to high profile accounts simply by asking",
+        description: "Instagram AI chatbot gives access to high profile accounts simply by asking",
         sourceUrl: "https://archive.is/UNXGl",
         additionalNotes: "First known major example of AI chatbot hijacking"
     },
