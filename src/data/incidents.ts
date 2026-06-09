@@ -12,6 +12,7 @@ export interface Incident {
 const COMPANY = {
     META: "Meta (Facebook)",
     GITHUB: "Github (Microsoft)",
+    MICROSOFT: "Microsoft",
 } as const;
 
 // keep this array sorted newest-first the first element 
@@ -19,9 +20,23 @@ const COMPANY = {
 // consider having this automatically sorted by date
 export const incidents: Incident[] = [
     {
+        date: "2026-06-08",
+        title: "New Shai-Hulud attack trojanizes 19 science-focused PyPI packages",
+        company: "FOSS",
+        description: "Hackers compromised 19 packages on the PyPI and extended to 37 malicious releases",
+        sourceUrl: "https://archive.is/kJj94",
+    },
+    {
+        date: "2026-06-08",
+        title: "Microsoft packages laced with credential stealer",
+        company: COMPANY.MICROSOFT,
+        description: "The same account was compromised earlier in a similar incident",
+        sourceUrl: "https://archive.is/GjfvX",
+    },
+    {
         date: "2026-06-06",
         title: "Group Hid Inside Microsoft 365 Networks for 2 years",
-        company: "Microsoft",
+        company: COMPANY.MICROSOFT,
         description: "Chinese Threat Group Hid Inside Microsoft 365 Networks for 18 Months Using Secret Malware Arsenal",
         sourceUrl: "https://archive.is/1Yqtt",
     },
@@ -36,6 +51,7 @@ export const incidents: Incident[] = [
     {
         date: "2026-05-29",
         title: "Code-deleting malware in popular open source testing library",
+        company: "FOSS/jqwik",
         description: "A developer embedded a prompt injection attack in jqwik 1.10.0, a widely used Java testing library which directed AI coding agents to silently delete all jqwik tests and source files from any project running it",
         sourceUrl: "https://archive.is/YBdzp",
         additionalNotes: "First major example of AI prompt-injection in a supply chain attack"
