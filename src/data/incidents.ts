@@ -23,7 +23,7 @@ export const incidents: Incident[] = [
         date: "2026-06-10",
         title: "Angry bug hunter with Microsoft beef drops new Windows 0-day exploit",
         company: COMPANY.MICROSOFT,
-        description: "Nightmare Eclipse, a former ex-employee of Microsoft continues the crusade against Microsoft",
+        description: "Nightmare Eclipse, a former ex-employee of Microsoft continues their crusade against Microsoft",
         sourceUrl: "https://archive.is/Nwiva",
         additionalNotes: "The beef started as a result of Microsoft ignoring Nightmare Eclipse's bug reports"
     },
