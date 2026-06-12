@@ -20,6 +20,14 @@ const COMPANY = {
 // consider having this automatically sorted by date
 export const incidents: Incident[] = [
     {
+        date: "2026-06-11",
+        title: "ShinyHunters hacked 100+ orgs by exploiting an Oracle PeopleSoft 0-day",
+        company: "Multiple",
+        description: "Data theft and extortion group ShinyHunters has exploited a critical Oracle PeopleSoft bug as a zero-day to compromise more than 100 organizations, including the University of Nottingham, across 300 vulnerable instances",
+        sourceUrl: "https://archive.is/LQFw4",
+        additionalNotes: "ShinyHunters actually have a spokesperson despite being a data theft group"
+    },
+    {
         date: "2026-06-10",
         title: "Angry bug hunter with Microsoft beef drops new Windows 0-day exploit",
         company: COMPANY.MICROSOFT,
