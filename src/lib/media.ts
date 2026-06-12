@@ -18,6 +18,7 @@ const items: MediaItem[] = [
     { image: "/images/merchant.png", audio: "/audio/sa-titlescreen.mp3", width: 128, height: 256, volume: 0.4 },
     { image: "/images/myon.png", audio: "/audio/in-titlescreen.mp3", width: 128, height: 256, volume: 0.4 },
     { image: "/images/usc.png", audio: "/audio/pofv-titlescreen.mp3", width: 128, height: 256, volume: 0.5, optionalFunction: plsRemberClick },
+    { image: "/images/ayayayaayayayaayayaya.png", audio: "/audio/mof-titlescreen.mp3", width: 128, height: 256, volume: 0.4 },
 ];
 
 export function getMediaItems(): MediaItem[] {
