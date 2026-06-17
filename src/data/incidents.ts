@@ -20,6 +20,21 @@ const COMPANY = {
 // consider having this automatically sorted by date
 export const incidents: Incident[] = [
     {
+        date: "2026-06-17",
+        title: "Mastra npm Org Compromised",
+        company: "Mastra",
+        description: "Multiple Packages Trojanized to Drop a Remote Payload via easy-day-js. Combined reach is over 28 million downloads a month",
+        sourceUrl: "https://archive.is/wIoS0"
+    },
+    {
+        date: "2026-06-16",
+        title: "Critical Copilot vulnerability allowed hackers to steal 2FA code from users",
+        company: COMPANY.MICROSOFT,
+        description: "LLM Hackers bypassed guardrails via a Parameter-to-Prompt Injection using markdown",
+        sourceUrl: "hhttps://archive.is/Dg51w",
+        additionalNotes: "Varonis has named the attack SearchLeak"
+    },
+    {
         date: "2026-06-11",
         title: "ShinyHunters hacked 100+ orgs by exploiting an Oracle PeopleSoft 0-day",
         company: "Multiple",
