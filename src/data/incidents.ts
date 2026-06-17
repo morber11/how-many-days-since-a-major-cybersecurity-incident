@@ -31,7 +31,7 @@ export const incidents: Incident[] = [
         title: "Critical Copilot vulnerability allowed hackers to steal 2FA code from users",
         company: COMPANY.MICROSOFT,
         description: "LLM Hackers bypassed guardrails via a Parameter-to-Prompt Injection using markdown",
-        sourceUrl: "hhttps://archive.is/Dg51w",
+        sourceUrl: "https://archive.is/Dg51w",
         additionalNotes: "Varonis has named the attack SearchLeak"
     },
     {
