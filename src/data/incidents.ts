@@ -20,6 +20,13 @@ const COMPANY = {
 // consider having this automatically sorted by date
 export const incidents: Incident[] = [
     {
+        date: "2026-06-19",
+        title: "Malicious JetBrains Plugins Stole AI API Keys from 70,000 Developers",
+        company: "FOSS",
+        description: "15 malicious JetBrains Marketplace plugins stole AI provider API keys from developers, then a remote kill-switch and marketplace purge removed the listings and banned the publisher accounts",
+        sourceUrl: "https://archive.is/7C0PJ"
+    },
+    {
         date: "2026-06-18",
         title: "Texas government data breach allowed hackers to steal 3 million driver's licenses and passports",
         company: "Texas State Government",
