@@ -20,6 +20,13 @@ const COMPANY = {
 // consider having this automatically sorted by date
 export const incidents: Incident[] = [
     {
+        date: "2026-06-27",
+        title: "Clean GitHub repo tricks AI coding agents into running malware",
+        company: "FOSS",
+        description: "An innocuous python call to a shell script retrieved config values stored in a DNS TXT record",
+        sourceUrl: "https://archive.is/6h3TR"
+    },
+    {
         date: "2026-06-19",
         title: "Malicious JetBrains Plugins Stole AI API Keys from 70,000 Developers",
         company: "FOSS",
