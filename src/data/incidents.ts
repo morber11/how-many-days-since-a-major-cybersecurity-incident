@@ -20,7 +20,7 @@ const COMPANY = {
 // consider having this automatically sorted by date
 export const incidents: Incident[] = [
     {
-        date: "2026-07-14",
+        date: "2026-07-13",
         title: "Japan's largest taxi operator shuts systems after cyberattack",
         company: "Nihon Kotsu",
         description: "The incident occurred over the weekend, early Saturday morning, and impacted operations, including the company's taxi dispatch system, which remains offline as of today",
