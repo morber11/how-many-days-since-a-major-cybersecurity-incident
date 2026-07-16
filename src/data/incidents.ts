@@ -20,6 +20,13 @@ const COMPANY = {
 // consider having this automatically sorted by date
 export const incidents: Incident[] = [
     {
+        date: "2026-07-15",
+        title: "Zoom warns of critical account takeover vulnerability",
+        company: "Zoom",
+        description: "Improper Input Validation in Zoom Desktop Client for Windows, Zoom VDI Client for Windows, and Zoom Meeting SDK for Windows may allow an unauthenticated user to conduct an account takeover via network access",
+        sourceUrl: "https://archive.is/KXn8P"
+    },
+    {
         date: "2026-07-13",
         title: "Japan's largest taxi operator shuts systems after cyberattack",
         company: "Nihon Kotsu",
