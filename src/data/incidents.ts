@@ -20,6 +20,13 @@ const COMPANY = {
 // consider having this automatically sorted by date
 export const incidents: Incident[] = [
     {
+        date: "2026-07-24",
+        title: "Data Breach Confirmed After Australian Energy Giant Origin Is Hacked",
+        company: "Origin Energy",
+        description: "The alleged hacker said the information of 2 million individuals will be leaked unless Origin pays a ransom. Origin Energy has roughly 4.8 million customers",
+        sourceUrl: "https://archive.is/khmSh"
+    },
+    {
         date: "2026-07-23",
         title: "Chick-fil-A Accounts Get Fried in Credential Stuffing Attack",
         company: "Chick-fil-A",
