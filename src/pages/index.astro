@@ -27,7 +27,7 @@ const isRecord = maxGap && days > maxGap.days;
         <p class="counter-label">
             days since the last major cybersecurity incident
         </p>
-        <p class="status-line">{status}</p>
+        <p class="status-line" id="status-line">{status}</p>
 
         <div class="incident-card">
             <h2>{incident.title}</h2>
@@ -85,9 +85,13 @@ const isRecord = maxGap && days > maxGap.days;
 </Base>
 
 <script>
-    const el = document.getElementById("counter");
+    // dodgy work around - recompile it here so the statusText is accurate
+    import { getStatusText } from "../lib/counter";
 
-    if (el) {
+    const el = document.getElementById("counter");
+    const statusEl = document.getElementById("status-line");
+
+    if (el && statusEl) {
         const incidentDate = new Date(el.dataset.incidentDate ?? "");
         const today = new Date();
 
@@ -99,5 +103,6 @@ const isRecord = maxGap && days > maxGap.days;
         );
 
         el.textContent = String(days);
+        statusEl.textContent = getStatusText(days);
     }
 </script>
