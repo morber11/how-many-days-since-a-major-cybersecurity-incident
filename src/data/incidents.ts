@@ -20,6 +20,13 @@ const COMPANY = {
 // consider having this automatically sorted by date
 export const incidents: Incident[] = [
     {
+        date: "2026-07-23",
+        title: "Chick-fil-A Accounts Get Fried in Credential Stuffing Attack",
+        company: "Chick-fil-A",
+        description: "Threat actors used credentials obtained from other companies to hack into Chick-fil-A One royalty and rewards program",
+        sourceUrl: "https://archive.is/g0T2z"
+    },
+    {
         date: "2026-07-20",
         title: "Hugging Face warns an autonomous AI agent hacked its network",
         company: "Hugging Face",
