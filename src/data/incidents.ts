@@ -21,6 +21,13 @@ const COMPANY = {
 export const incidents: Incident[] = [
     {
         date: "2026-07-24",
+        title: "Vatican's \"Click to Pray\" app leaks personal data",
+        company: "The Vatican",
+        description: "The app, which provides daily prayers and papal content, is used globally. Over 700,000 user accounts are exposed, with email addresses and names leaked in plaintext",
+        sourceUrl: "https://archive.is/qQOz9"
+    },
+    {
+        date: "2026-07-24",
         title: "Data Breach Confirmed After Australian Energy Giant Origin Is Hacked",
         company: "Origin Energy",
         description: "The alleged hacker said the information of 2 million individuals will be leaked unless Origin pays a ransom. Origin Energy has roughly 4.8 million customers",
