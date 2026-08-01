@@ -21,6 +21,13 @@ const COMPANY = {
 export const incidents: Incident[] = [
     {
         date: "2026-07-31",
+        title: "Amgen says cloud data breach exposed patient health, proprietary info",
+        company: "Amgen",
+        description: "Pharmaceutical company Amgen says it suffered a data breach after threat actors stole corporate data and patient information stored in multiple cloud systems operated by third-party service providers",
+        sourceUrl: "https://archive.is/ySa0q"
+    },
+    {
+        date: "2026-07-31",
         title: "Anthropic's Claude breached 3 orgs, uploaded PyPI malware during tests",
         company: "FOSS",
         description: "Anthropic said one of its Claude models built a malicious Python package and uploaded it to PyPI, where it ran on 15 real systems before the registry's automated defenses pulled it",
