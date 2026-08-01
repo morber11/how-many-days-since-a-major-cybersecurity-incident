@@ -17,6 +17,10 @@ const previousIncidents = getRecentIncidents();
 const maxGap = getMaxDaysBetweenIncidents();
 const busiestDay = getMostIncidentsInOneDay();
 const isRecord = maxGap && days > maxGap.days;
+const gapDetail = maxGap
+    ? `[${formatDate(maxGap.dateA)}] ${maxGap.incidentA} => [${formatDate(maxGap.dateB)}] ${maxGap.incidentB}`
+    : null;
+    
 ---
 
 <Base title="hmdsamci - Home">
@@ -80,10 +84,7 @@ const isRecord = maxGap && days > maxGap.days;
             maxGap && (
                 <div class="gap-stat">
                     <p>Longest gap between incidents: {maxGap.days} days</p>
-                    <p class="gap-detail">
-                        [{formatDate(maxGap.dateA)}] {maxGap.incidentA} =&gt; [
-                        {formatDate(maxGap.dateB)}] {maxGap.incidentB}
-                    </p>
+                    <p class="gap-detail">{gapDetail}</p>
                     {isRecord && (
                         <p class="gap-record">
                             This is currently the highest gap on record!
