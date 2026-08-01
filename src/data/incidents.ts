@@ -34,6 +34,13 @@ export const incidents: Incident[] = [
         sourceUrl: "https://archive.is/Ig6cK"
     },
     {
+        date: "2026-07-29",
+        title: "Hackers hit 30-plus Minnesota water systems in 48 hours",
+        company: "Minnesota Water Systems",
+        description: "A 48-hour cyberattack struck more than 30 Minnesota water systems. One plant shut down, and officials are still assessing water quality risks across the state",
+        sourceUrl: "https://archive.is/Cyv0l"
+    },
+    {
         date: "2026-07-24",
         title: "Vatican's \"Click to Pray\" app leaks personal data",
         company: "The Vatican",
