@@ -20,6 +20,14 @@ const COMPANY = {
 // consider having this automatically sorted by date
 export const incidents: Incident[] = [
     {
+        date: "2026-08-01",
+        title: "Coldcard Seed-Flaw Hack Drains 1,082 Bitcoin From 1,196 Cold Wallets",
+        company: "Coldcard",
+        description: "Galaxy Research said the attack did not compromise wallets in the way exchange hacks or phishing scams typically do. Instead, the attacker exploited a vulnerable seed-generation process to derive private keys",
+        sourceUrl: "https://archive.is/Zs0Ii",
+        additionalNotes: "Reliability in Bitcoin as a reliable asset falls as a result of this incident"
+    },
+    {
         date: "2026-07-31",
         title: "Amgen says cloud data breach exposed patient health, proprietary info",
         company: "Amgen",
