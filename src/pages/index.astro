@@ -7,6 +7,7 @@ import {
     getStatusText,
     formatDate,
     getMaxDaysBetweenIncidents,
+    getMostIncidentsInOneDay,
 } from "../lib/counter";
 
 const incident = getMostRecentIncident();
@@ -14,6 +15,7 @@ const days = getDaysSince(incident.date);
 const status = getStatusText(days);
 const previousIncidents = getRecentIncidents();
 const maxGap = getMaxDaysBetweenIncidents();
+const busiestDay = getMostIncidentsInOneDay();
 const isRecord = maxGap && days > maxGap.days;
 ---
 
@@ -65,7 +67,9 @@ const isRecord = maxGap && days > maxGap.days;
                             <p class="incident-notes">{inc.additionalNotes}</p>
                         )}
                         <p class="incident-source">
-                            <a href={inc.sourceUrl} target="_blank">Source</a>
+                            <a href={inc.sourceUrl} target="_blank">
+                                Source
+                            </a>
                         </p>
                     </div>
                 ))
@@ -76,11 +80,25 @@ const isRecord = maxGap && days > maxGap.days;
             maxGap && (
                 <div class="gap-stat">
                     <p>Longest gap between incidents: {maxGap.days} days</p>
-                    <p class="gap-detail">[{formatDate(maxGap.dateA)}] {maxGap.incidentA} =&gt; [{formatDate(maxGap.dateB)}] {maxGap.incidentB}</p>
-                    {isRecord && <p class="gap-record">This is currently the highest gap on record!</p>}
+                    <p class="gap-detail">
+                        [{formatDate(maxGap.dateA)}] {maxGap.incidentA} =&gt; [
+                        {formatDate(maxGap.dateB)}] {maxGap.incidentB}
+                    </p>
+                    {isRecord && (
+                        <p class="gap-record">
+                            This is currently the highest gap on record!
+                        </p>
+                    )}
                 </div>
             )
         }
+
+        <div class="gap-stat">
+            <p>
+                Most incidents in one day was {busiestDay.count} which occurred on
+                {formatDate(busiestDay.date)}
+            </p>
+        </div>
     </div>
 </Base>
 

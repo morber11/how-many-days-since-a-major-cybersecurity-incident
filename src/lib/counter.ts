@@ -54,6 +54,11 @@ type Gap = {
     incidentB: string;
 };
 
+type BusiestDay = {
+    count: number;
+    date: string;
+};
+
 export function getMaxDaysBetweenIncidents(): Gap | null {
     const relevant = incidents.filter((inc) => !inc.excludeFromDateGap);
 
@@ -83,4 +88,22 @@ export function getMaxDaysBetweenIncidents(): Gap | null {
     }
 
     return result;
+}
+
+export function getMostIncidentsInOneDay(): BusiestDay {
+    const counts = new Map<string, number>();
+    let result: BusiestDay | null = null;
+
+    for (const inc of incidents) {
+        const count = (counts.get(inc.date) ?? 0) + 1;
+        counts.set(inc.date, count);
+
+        // incidents are sorted newest first
+        // use latest in the case of a tie
+        if (!result || count > result.count) {
+            result = { count, date: inc.date };
+        }
+    }
+    
+    return result!;
 }

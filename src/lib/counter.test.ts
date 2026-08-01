@@ -16,6 +16,7 @@ import {
     getMostRecentIncident,
     getRecentIncidents,
     getMaxDaysBetweenIncidents,
+    getMostIncidentsInOneDay,
     getIncidentCount,
 } from './counter';
 
@@ -96,6 +97,21 @@ describe('getMaxDaysBetweenIncidents', () => {
 
         expect(result!.incidentA).not.toBe('Historical');
         expect(result!.incidentB).not.toBe('Historical');
+    });
+});
+
+describe('getMostIncidentsInOneDay', () => {
+    it('returns an object with a date and incident count', () => {
+        const result = getMostIncidentsInOneDay();
+
+        expect(typeof result.date).toBe('string');
+        expect(typeof result.count).toBe('number');
+    });
+
+    it('prefers the most recent date when counts are tied', () => {
+        const result = getMostIncidentsInOneDay();
+
+        expect(result.date).toBe('2026-06-06');
     });
 });
 
