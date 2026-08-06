@@ -20,6 +20,14 @@ const COMPANY = {
 // consider having this automatically sorted by date
 export const incidents: Incident[] = [
     {
+        date: "2026-08-06",
+        title: "Meta AI Hacked External Systems During Cybersecurity Testing",
+        company: COMPANY.META,
+        description: "The tested AI models were inadvertently allowed to access the internet due to a misconfiguration, which led them to exploit a vulnerability in an unnamed third-party service. It’s unclear if it was a known flaw or a zero-day",
+        sourceUrl: "https://archive.is/WOAfr",
+        additionalNotes: "The incident involved a testing environment set up by Irregular, similar to what Anthropic reported last week"
+    },
+    {
         date: "2026-08-01",
         title: "Coldcard Seed-Flaw Hack Drains 1,082 Bitcoin From 1,196 Cold Wallets",
         company: "Coldcard",
