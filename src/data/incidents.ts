@@ -20,10 +20,18 @@ const COMPANY = {
 // consider having this automatically sorted by date
 export const incidents: Incident[] = [
     {
+        date: "2026-08-07",
+        title: "Computer maker Framework notifies \"all customers\" of a data breach",
+        company: "Framework",
+        description: "The company was hacked by someone using an unknown zero-day security flaw. The hackers exploited the bug to give them the ability to access customers' databases stored on Metabase's cloud servers",
+        sourceUrl: "https://archive.is/hvIXx",
+        additionalNotes: "The company blamed the data breach on an upstream cyberattack at Metabase"
+    },
+    {
         date: "2026-08-06",
         title: "Meta AI Hacked External Systems During Cybersecurity Testing",
         company: COMPANY.META,
-        description: "The tested AI models were inadvertently allowed to access the internet due to a misconfiguration, which led them to exploit a vulnerability in an unnamed third-party service. It’s unclear if it was a known flaw or a zero-day",
+        description: "The tested AI models were inadvertently allowed to access the internet due to a misconfiguration, which led them to exploit a vulnerability in an unnamed third-party service. It's unclear if it was a known flaw or a zero-day",
         sourceUrl: "https://archive.is/WOAfr",
         additionalNotes: "The incident involved a testing environment set up by Irregular, similar to what Anthropic reported last week"
     },
