@@ -20,6 +20,14 @@ const COMPANY = {
 // consider having this automatically sorted by date
 export const incidents: Incident[] = [
     {
+        date: "2026-08-11",
+        title: "Hackers Breach Polish Power Plant Controls via Private Cellular Network and Shut Turbine",
+        company: "CERT Polska",
+        description: "Attackers shut down a steam turbine and the process-water treatment system at a Polish combined heat and power plant by coming in over the private cellular network the local grid operator uses to reach remote equipment",
+        sourceUrl: "https://archive.is/an8ei",
+        additionalNotes: "Investigators could not determine whether a vulnerability in the Teltonika router had been exploited, so there is no single software patch to apply"
+    },
+    {
         date: "2026-08-07",
         title: "Computer maker Framework notifies \"all customers\" of a data breach",
         company: "Framework",
