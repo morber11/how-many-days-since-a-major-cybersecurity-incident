@@ -29,6 +29,14 @@ export const incidents: Incident[] = [
     },
     {
         date: "2026-08-06",
+        title: "Cyberattack on Ceva Logistics warehouses in Europe impacts retailers",
+        company: "Ceva Logistics",
+        description: "Operations at eight Ceva Logistics warehouses in Europe were disrupted over the weekend by a cyberattack, causing shipping delays for many of the freight giant's retail customers with inventory stored in those locations, according to a source close to the situation",
+        sourceUrl: "https://archive.is/7IYQb",
+        additionalNotes: "Valve Software were using Ceva Logistics to ship their products in Europe, and many customers were affected"
+    },
+    {
+        date: "2026-08-06",
         title: "Meta AI Hacked External Systems During Cybersecurity Testing",
         company: COMPANY.META,
         description: "The tested AI models were inadvertently allowed to access the internet due to a misconfiguration, which led them to exploit a vulnerability in an unnamed third-party service. It's unclear if it was a known flaw or a zero-day",
