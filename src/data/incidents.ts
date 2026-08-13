@@ -20,6 +20,14 @@ const COMPANY = {
 // consider having this automatically sorted by date
 export const incidents: Incident[] = [
     {
+        date: "2026-08-13",
+        title: "Poland hit by theft of 19 million patients’ data from medical platform",
+        company: "MyDr",
+        description: "The personal data of almost 19 million people, including medical information, has been compromised in a major cyberattack on a company that provides services to thousands of medical facilities in Poland",
+        sourceUrl: "https://archive.is/mvLcC",
+        additionalNotes: "\"We are dealing with one of the largest incidents in Poland's history\" said digital affairs minister Krzysztof Gawkowski"
+    },
+    {
         date: "2026-08-11",
         title: "Hackers Breach Polish Power Plant Controls via Private Cellular Network and Shut Turbine",
         company: "CERT Polska",
