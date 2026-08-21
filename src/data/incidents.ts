@@ -20,8 +20,16 @@ const COMPANY = {
 // consider having this automatically sorted by date
 export const incidents: Incident[] = [
     {
+        date: "2026-08-20",
+        title: "Rust Supply Chain Attack Puts Build-Time Malware in Crates with 245 Million Downloads",
+        company: "Rust",
+        description: "The Rust Project has deleted malicious versions of three widely used Rust crates from crates.io after a compromised maintainer account published releases that added a typosquatted dependency whose build script downloaded and executed a remote payload during compilation",
+        sourceUrl: "https://archive.is/CnhgC",
+        additionalNotes: "Because the malicious code sat in the build script of the injected dependency, building a project that resolved it was sufficient to run the payload, and nothing from the crates themselves had to be called"
+    },
+    {
         date: "2026-08-13",
-        title: "Poland hit by theft of 19 million patients’ data from medical platform",
+        title: "Poland hit by theft of 19 million patients' data from medical platform",
         company: "MyDr",
         description: "The personal data of almost 19 million people, including medical information, has been compromised in a major cyberattack on a company that provides services to thousands of medical facilities in Poland",
         sourceUrl: "https://archive.is/mvLcC",
