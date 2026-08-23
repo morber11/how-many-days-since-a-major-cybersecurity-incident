@@ -20,6 +20,13 @@ const COMPANY = {
 // consider having this automatically sorted by date
 export const incidents: Incident[] = [
     {
+        date: "2026-08-23",
+        title: "Iranian hackers shut down UK power plant",
+        company: "UK Government",
+        description: "It is thought to be the first time that hackers affiliated to the Iranian regime have succeeded in closing down such a facility in the UK, and is believed to be the most successful cyber attack of its kind",
+        sourceUrl: "https://archive.is/S8Ldm",
+    },
+    {
         date: "2026-08-20",
         title: "Rust Supply Chain Attack Puts Build-Time Malware in Crates with 245 Million Downloads",
         company: "Rust",
