@@ -28,6 +28,13 @@ export const incidents: Incident[] = [
         additionalNotes: "Because the malicious code sat in the build script of the injected dependency, building a project that resolved it was sufficient to run the payload, and nothing from the crates themselves had to be called"
     },
     {
+        date: "2026-08-19",
+        title: "Hackers Compromised 14,500+ Dahua Devices Using Credential Attacks, Auth Bypasses, and P2P",
+        company: "Dahua",
+        description: "The activity, codenamed Operation CameraSwarm, was reconstructed from a 407 MB exposed working directory containing 2,616 files across 234 subdirectories, with the researchers saying confirmed compromises were concentrated in Ukraine and Russia",
+        sourceUrl: "https://archive.is/ka37B",
+    },
+    {
         date: "2026-08-13",
         title: "Poland hit by theft of 19 million patients' data from medical platform",
         company: "MyDr",
