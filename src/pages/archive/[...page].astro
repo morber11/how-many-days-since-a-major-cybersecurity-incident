@@ -100,3 +100,101 @@ const pageIncidents = incidents.slice(
         </div>
     </div>
 </Base>
+
+<style>
+    .archive-page {
+        padding-top: 2rem;
+    }
+
+    .archive-page h1 {
+        font-family: var(--font-mono);
+        font-size: 1.5rem;
+        margin: 0 0 0.5rem;
+    }
+
+    .archive-page .subheading {
+        color: var(--color-text-muted);
+        font-style: italic;
+        margin: 0 0 2rem;
+    }
+
+    .archive-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.9rem;
+    }
+
+    .archive-table th {
+        font-family: var(--font-mono);
+        text-align: left;
+        padding: 0.75rem 0.5rem;
+        border-bottom: 1px solid var(--color-border);
+        color: var(--color-text-muted);
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .archive-table td {
+        padding: 0.75rem 0.5rem;
+        border-bottom: 1px solid var(--color-border);
+        vertical-align: top;
+    }
+
+    .archive-table tr:nth-child(even) td {
+        background: #161616;
+    }
+
+    .archive-table td:first-child {
+        font-family: var(--font-mono);
+        white-space: nowrap;
+        color: var(--color-text-muted);
+        font-size: 0.85rem;
+    }
+
+    .archive-table .incident-title {
+        font-weight: 600;
+    }
+
+    .archive-table .incident-company-cell {
+        color: var(--color-text-muted);
+        font-size: 0.85rem;
+    }
+
+    .archive-table .incident-notes {
+        display: block;
+        font-size: 0.8rem;
+        font-style: italic;
+        color: var(--color-text-muted);
+        margin-top: 0.25rem;
+    }
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1.5rem;
+        margin-top: 2rem;
+        font-family: var(--font-mono);
+        font-size: 0.85rem;
+    }
+
+    .pagination a {
+        color: var(--color-accent);
+    }
+
+    .pagination-info {
+        color: var(--color-text-muted);
+    }
+
+    @media (max-width: 600px) {
+        .archive-table th:nth-child(3),
+        .archive-table td:nth-child(3) {
+            display: none;
+        }
+
+        .archive-table {
+            font-size: 0.8rem;
+        }
+    }
+</style>
