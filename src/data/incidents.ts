@@ -41,6 +41,7 @@ export interface Incident {
     sourceUrl: string;
     additionalNotes?: string;
     excludeFromDateGap?: boolean;
+    excludeFromCompanyStats?: boolean;
 }
 
 // keep this array sorted newest-first the first element 
@@ -135,6 +136,7 @@ export const incidents: Incident[] = [
         date: "2026-07-31",
         title: "Anthropic's Claude breached 3 orgs, uploaded PyPI malware during tests",
         company: COMPANY.FOSS,
+        excludeFromCompanyStats: true,
         description: "Anthropic said one of its Claude models built a malicious Python package and uploaded it to PyPI, where it ran on 15 real systems before the registry's automated defenses pulled it",
         sourceUrl: "https://archive.is/Ig6cK"
     },
@@ -213,6 +215,7 @@ export const incidents: Incident[] = [
         date: "2026-06-27",
         title: "Clean GitHub repo tricks AI coding agents into running malware",
         company: COMPANY.FOSS,
+        excludeFromCompanyStats: true,
         description: "An innocuous python call to a shell script retrieved config values stored in a DNS TXT record",
         sourceUrl: "https://archive.is/6h3TR"
     },
@@ -220,6 +223,7 @@ export const incidents: Incident[] = [
         date: "2026-06-19",
         title: "Malicious JetBrains Plugins Stole AI API Keys from 70,000 Developers",
         company: COMPANY.FOSS,
+        excludeFromCompanyStats: true,
         description: "15 malicious JetBrains Marketplace plugins stole AI provider API keys from developers, then a remote kill-switch and marketplace purge removed the listings and banned the publisher accounts",
         sourceUrl: "https://archive.is/7C0PJ"
     },
@@ -265,6 +269,7 @@ export const incidents: Incident[] = [
         date: "2026-06-08",
         title: "New Shai-Hulud attack trojanizes 19 science-focused PyPI packages",
         company: COMPANY.FOSS,
+        excludeFromCompanyStats: true,
         description: "Hackers compromised 19 packages on the PyPI and extended to 37 malicious releases",
         sourceUrl: "https://archive.is/kJj94",
     },

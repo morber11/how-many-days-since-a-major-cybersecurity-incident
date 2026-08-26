@@ -2,11 +2,12 @@ import { describe, it, expect, vi } from 'vitest';
 
 vi.mock('../data/incidents', () => ({
     incidents: [
-        { date: '2026-06-06', title: 'Recent A', description: '', sourceUrl: '' },
-        { date: '2026-06-01', title: 'Recent B', description: '', sourceUrl: '' },
-        { date: '2026-05-25', title: 'Recent C', description: '', sourceUrl: '' },
-        { date: '2000-01-01', title: 'Historical', description: '', sourceUrl: '', excludeFromDateGap: true },
-        { date: '1999-01-01', title: 'Old', description: '', sourceUrl: '' },
+        { date: '2026-06-06', title: 'Recent A', company: 'Alpha', description: '', sourceUrl: '' },
+        { date: '2026-06-01', title: 'Recent B', company: 'Beta', description: '', sourceUrl: '' },
+        { date: '2026-05-25', title: 'Recent C', company: 'Alpha', description: '', sourceUrl: '' },
+        { date: '2000-01-01', title: 'Historical', company: 'Beta', description: '', sourceUrl: '', excludeFromDateGap: true },
+        { date: '1999-01-01', title: 'Old', company: 'FOSS', excludeFromCompanyStats: true, description: '', sourceUrl: '' },
+        { date: '1998-01-01', title: 'Older', company: 'Gamma', description: '', sourceUrl: '' },
     ],
 }));
 
@@ -17,6 +18,7 @@ import {
     getRecentIncidents,
     getMaxDaysBetweenIncidents,
     getMostIncidentsInOneDay,
+    getMostCommonlyAffectedCompanies,
     getIncidentCount,
 } from './counter';
 
@@ -115,8 +117,18 @@ describe('getMostIncidentsInOneDay', () => {
     });
 });
 
+describe('getMostCommonlyAffectedCompanies', () => {
+    it('returns the top three companies and excludes marked companies', () => {
+        expect(getMostCommonlyAffectedCompanies()).toEqual([
+            { company: 'Alpha', count: 2 },
+            { company: 'Beta', count: 2 },
+            { company: 'Gamma', count: 1 },
+        ]);
+    });
+});
+
 describe('getIncidentCount', () => {
     it('returns the total number of incidents', () => {
-        expect(getIncidentCount()).toBe(5);
+        expect(getIncidentCount()).toBe(6);
     });
 });

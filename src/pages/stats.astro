@@ -1,0 +1,70 @@
+---
+import Base from "../layouts/Base.astro";
+import {
+    formatDate,
+    getIncidentCount,
+    getMaxDaysBetweenIncidents,
+    getMostCommonlyAffectedCompanies,
+    getMostIncidentsInOneDay,
+} from "../lib/counter";
+
+const busiestDay = getMostIncidentsInOneDay();
+const maxGap = getMaxDaysBetweenIncidents();
+const commonCompanies = getMostCommonlyAffectedCompanies();
+---
+
+<Base title="hmdsamci - Stats">
+    <div class="stats-page">
+        <h1>Incident Statistics</h1>
+
+        <div class="stats-grid">
+            <section class="stats-card">
+                <h2>Total incidents</h2>
+                <p class="stats-value">{getIncidentCount()}</p>
+            </section>
+
+            <section class="stats-card">
+                <h2>Most incidents in one day</h2>
+                <p class="stats-value">{busiestDay.count}</p>
+                <p class="stats-detail">{formatDate(busiestDay.date)}</p>
+            </section>
+
+            <section class="stats-card">
+                <h2>Longest gap between incidents</h2>
+                {
+                    maxGap && (
+                        <>
+                            <p class="stats-value">{maxGap.days} days</p>
+                            <p class="stats-detail">
+                                From {formatDate(maxGap.dateA)} to{" "}
+                                {formatDate(maxGap.dateB)}
+                            </p>
+                            <p class="stats-detail">
+                                Between {maxGap.incidentA} and{" "}
+                                {maxGap.incidentB}
+                            </p>
+                        </>
+                    )
+                }
+            </section>
+
+            <section class="stats-card">
+                <h2>
+                    Most commonly affected {
+                        commonCompanies.length === 1 ? "company" : "companies"
+                    }
+                </h2>
+                <ul class="stats-company-list">
+                    {
+                        commonCompanies.map((entry) => (
+                            <li>
+                                <span>{entry.company}</span>
+                                <span>{entry.count} incidents</span>
+                            </li>
+                        ))
+                    }
+                </ul>
+            </section>
+        </div>
+    </div>
+</Base>

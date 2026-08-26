@@ -59,6 +59,11 @@ type BusiestDay = {
     date: string;
 };
 
+type CompanyCount = {
+    company: string;
+    count: number;
+};
+
 export function getMaxDaysBetweenIncidents(): Gap | null {
     const relevant = incidents.filter((inc) => !inc.excludeFromDateGap);
 
@@ -104,6 +109,28 @@ export function getMostIncidentsInOneDay(): BusiestDay {
             result = { count, date: inc.date };
         }
     }
-    
+
     return result!;
+}
+
+export function getMostCommonlyAffectedCompanies(): CompanyCount[] {
+    const companyCounts = new Map<string, number>();
+
+    for (const incident of incidents) {
+        if (!incident.company || incident.excludeFromCompanyStats) {
+            continue;
+        }
+
+        const currentCount = companyCounts.get(incident.company) ?? 0;
+        companyCounts.set(incident.company, currentCount + 1);
+    }
+
+    const companies = Array.from(companyCounts, ([company, count]) => ({
+        company,
+        count,
+    }));
+
+    return companies
+        .sort((a, b) => b.count - a.count)
+        .slice(0, 3);
 }

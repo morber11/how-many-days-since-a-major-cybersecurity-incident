@@ -28,6 +28,9 @@ const isActive = (path: string) =>
                         href="/archive"
                         class={isActive("/archive") ? "active" : ""}>Archive</a
                     >
+                    <a href="/stats" class={isActive("/stats") ? "active" : ""}
+                        >Stats</a
+                    >
                     <a href="/about" class={isActive("/about") ? "active" : ""}
                         >About</a
                     >
@@ -41,6 +44,7 @@ const isActive = (path: string) =>
             <footer>
                 <a href="/">Home</a>
                 <a href="/archive">Archive</a>
+                <a href="/stats">Stats</a>
                 <a href="/about">About</a>
                 <a href="https://ko-fi.com/morber11">Ko-fi</a>
             </footer>
