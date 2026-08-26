@@ -20,6 +20,13 @@ const COMPANY = {
 // consider having this automatically sorted by date
 export const incidents: Incident[] = [
     {
+        date: "2026-08-24",
+        title: "Personal Information Exposed in Apollo Global Data Breach",
+        company: "Apollo Global Management",
+        description: "The private equity firm, which has roughly $1.05 trillion of assets under management, appears to be one of the victims of a campaign conducted by a cybercrime group tracked as UNC6671 and BlackFile. It's unclear how many individuals are affected by the data breach",
+        sourceUrl: "https://archive.is/jG9N7",
+    },
+    {
         date: "2026-08-23",
         title: "Iranian hackers shut down UK power plant",
         company: "UK Government",
