@@ -2,6 +2,7 @@
 const COMPANY = {
     AMGEN: "Amgen",
     APOLLO_GLOBAL_MANAGEMENT: "Apollo Global Management",
+    BOSTON_SCIENTIFIC: "Boston Scientific",
     CEVA_LOGISTICS: "Ceva Logistics",
     CERT_POLSKA: "CERT Polska",
     CHICK_FIL_A: "Chick-fil-A",
@@ -48,6 +49,14 @@ export interface Incident {
 // is always treated as the most recent incident
 // consider having this automatically sorted by date
 export const incidents: Incident[] = [
+    {
+        date: "2026-08-26",
+        title: "Boston Scientific hit by cyberattack, global operations affected",
+        company: COMPANY.BOSTON_SCIENTIFIC,
+        description: "The medical device maker said it detected the incident on August 25 and had activated incident-response procedures, working with third-party cybersecurity specialists to investigate and contain the threat",
+        sourceUrl: "https://www.reuters.com/legal/government/boston-scientific-hit-by-cyberattack-global-operations-affected-2026-08-26/", // archive.is keeps having trouble with this article
+        additionalNotes: "Shares in the company fell 3.5% before markets opened"
+    },
     {
         date: "2026-08-24",
         title: "Personal Information Exposed in Apollo Global Data Breach",
