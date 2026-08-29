@@ -19,6 +19,7 @@ const COMPANY = {
     MINNESOTA_WATER_SYSTEMS: "Minnesota Water Systems",
     MICROSOFT: "Microsoft",
     MULTIPLE: "Multiple",
+    MCKESSON: "McKesson",
     MYDR: "MyDr",
     NIHON_KOTSU: "Nihon Kotsu",
     ORIGIN_ENERGY: "Origin Energy",
@@ -49,6 +50,13 @@ export interface Incident {
 // is always treated as the most recent incident
 // consider having this automatically sorted by date
 export const incidents: Incident[] = [
+    {
+        date: "2026-08-29",
+        title: "ShinyHunters claims McKesson data breach exposing 284 million patient records",
+        company: COMPANY.MCKESSON,
+        description: "A spokesperson for McKesson confirmed the incident to CyberInsider, saying that an investigation into its scope has been launched",
+        sourceUrl: "https://archive.is/6pEFl"
+    },
     {
         date: "2026-08-26",
         title: "Boston Scientific hit by cyberattack, global operations affected",
