@@ -15,6 +15,7 @@ const COMPANY = {
     META: "Meta (Facebook)",
     GITHUB: "Github (Microsoft)",
     HUGGING_FACE: "Hugging Face",
+    JFROG_ARTIFACTORY: "JFrog Artifactory",
     MASTRA: "Mastra",
     MINNESOTA_WATER_SYSTEMS: "Minnesota Water Systems",
     MICROSOFT: "Microsoft",
@@ -50,6 +51,13 @@ export interface Incident {
 // is always treated as the most recent incident
 // consider having this automatically sorted by date
 export const incidents: Incident[] = [
+    {
+        date: "2026-09-01",
+        title: "Attackers Exploit Critical JFrog Artifactory Flaw to Mint Admin Tokens Days After Disclosure",
+        company: COMPANY.JFROG_ARTIFACTORY,
+        description: "JFrog Artifactory contains an authentication weakness that, under default configuration, may allow an unauthenticated attacker with network access to obtain administrative privileges",
+        sourceUrl: "https://archive.is/DP1bA"
+    },
     {
         date: "2026-09-01",
         title: "Financially Motivated Threat Actor BREEZE COMET Targets Brazil",
