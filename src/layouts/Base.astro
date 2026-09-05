@@ -54,7 +54,7 @@ const isActive = (path: string) =>
 </html>
 
 <script>
-    import { getMediaItems, getOrPickMediaIndex } from "../lib/media";
+    import { getMediaItems, getOrPickMediaIndex, type MediaItem } from "../lib/media";
 
     const items = getMediaItems();
     const index = getOrPickMediaIndex();
@@ -71,10 +71,12 @@ const isActive = (path: string) =>
     if (currentItem.height) img.height = currentItem.height;
 
     let audio: HTMLAudioElement | undefined;
+    let onStop: MediaItem["onStop"];
     img.addEventListener("click", () => {
         if (audio && !audio.paused) {
             audio.pause();
             audio.currentTime = 0;
+            onStop?.(img);
         } else if (currentItem.audio) {
             const overrides = currentItem.optionalFunction?.();
             const effective = { ...currentItem, ...overrides };
@@ -86,8 +88,14 @@ const isActive = (path: string) =>
             }
 
             img.style.transform = effective.transform ?? "";
+            onStop = effective.onStop;
             audio = new Audio(effective.audio);
             audio.volume = effective.volume ?? 0.5;
+
+            audio.addEventListener("ended", () => {
+                onStop?.(img);
+            });
+
             audio.play();
         }
     });

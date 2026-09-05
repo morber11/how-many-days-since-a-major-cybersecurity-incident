@@ -6,6 +6,7 @@ export interface MediaItem {
     volume?: number;
     transform?: string;
     transition?: string;
+    onStop?: (image: HTMLImageElement) => void;
     optionalFunction?: () => Partial<MediaItem> | undefined;
 }
 
@@ -67,12 +68,15 @@ function plsRemberClick() {
 
 function seijaClick() {
     if (Math.random() < 0.1) {
-        return { audio: "/audio/ddc-titlescreen.mp3" };
+        return {
+            audio: "/audio/reverse-ideology.mp3",
+            transform: "rotateX(180deg)",
+            transition: "transform 0.5s ease-in-out",
+            onStop: (image: HTMLImageElement) => {
+                image.style.transform = "";
+            },
+        };
     }
 
-    return {
-        audio: "/audio/reverse-ideology.mp3",
-        transform: "rotateX(180deg)",
-        transition: "transform 0.5s ease-in-out",
-    };
+    return { audio: "/audio/ddc-titlescreen.mp3" };
 }
