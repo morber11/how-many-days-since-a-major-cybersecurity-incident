@@ -4,6 +4,7 @@ export interface MediaItem {
     width?: number;
     height?: number;
     volume?: number;
+    transform?: string;
     optionalFunction?: () => Partial<MediaItem> | undefined;
 }
 
@@ -21,6 +22,7 @@ const items: MediaItem[] = [
     { image: "/images/ayayayaayayayaayayaya.png", audio: "/audio/mof-titlescreen.mp3", width: 128, height: 256, volume: 0.4 },
     { image: "/images/snae.png", audio: "/audio/ufo-titlescreen.mp3", width: 128, height: 256, volume: 0.5 },
     { image: "/images/ohayou.png", audio: "/audio/td-titlescreen.mp3", width: 128, height: 256, volume: 0.5 },
+    { image: "/images/seija.png", audio: "/audio/ddc-titlescreen.mp3", width: 128, height: 256, volume: 0.5, optionalFunction: seijaClick },
 ];
 
 export function getMediaItems(): MediaItem[] {
@@ -60,4 +62,10 @@ export function getOrPickMediaIndex(): number {
 /* put custom functions for the optionalFunction param down here */
 function plsRemberClick() {
     return Math.random() < 0.1 ? { audio: "/audio/pls-rember.mp3", image: "/images/pls-rember.png" } : { audio: "/audio/pofv-titlescreen.mp3" };
+}
+
+function seijaClick() {
+    return Math.random() < 0.1
+        ? { audio: "/audio/ddc-titlescreen.mp3" }
+        : { audio: "/audio/reverse-ideology.mp3", transform: "rotateX(180deg)" };
 }
