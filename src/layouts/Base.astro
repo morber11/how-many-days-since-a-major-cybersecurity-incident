@@ -80,6 +80,11 @@ const isActive = (path: string) =>
             const effective = { ...currentItem, ...overrides };
 
             img.src = effective.image;
+
+            if (effective.transition) {
+                img.style.transition = effective.transition;
+            }
+
             img.style.transform = effective.transform ?? "";
             audio = new Audio(effective.audio);
             audio.volume = effective.volume ?? 0.5;

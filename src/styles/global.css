@@ -189,7 +189,6 @@ footer a:hover {
     position: fixed;
     bottom: 1rem;
     right: 1rem;
-    transition: transform 0.5s ease-in-out;
     max-width: 256px;
     max-height: 256px;
     width: auto;

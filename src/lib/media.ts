@@ -5,6 +5,7 @@ export interface MediaItem {
     height?: number;
     volume?: number;
     transform?: string;
+    transition?: string;
     optionalFunction?: () => Partial<MediaItem> | undefined;
 }
 
@@ -65,7 +66,13 @@ function plsRemberClick() {
 }
 
 function seijaClick() {
-    return Math.random() < 0.1
-        ? { audio: "/audio/ddc-titlescreen.mp3" }
-        : { audio: "/audio/reverse-ideology.mp3", transform: "rotateX(180deg)" };
+    if (Math.random() < 0.1) {
+        return { audio: "/audio/ddc-titlescreen.mp3" };
+    }
+
+    return {
+        audio: "/audio/reverse-ideology.mp3",
+        transform: "rotateX(180deg)",
+        transition: "transform 0.5s ease-in-out",
+    };
 }
