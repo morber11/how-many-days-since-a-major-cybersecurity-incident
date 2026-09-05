@@ -6,7 +6,7 @@ export interface MediaItem {
     volume?: number;
     transform?: string;
     transition?: string;
-    onStop?: (image: HTMLImageElement) => void;
+    onPlay?: (image: HTMLImageElement, page: HTMLElement, audio: HTMLAudioElement) => void;
     optionalFunction?: () => Partial<MediaItem> | undefined;
 }
 
@@ -72,8 +72,21 @@ function seijaClick() {
             audio: "/audio/reverse-ideology.mp3",
             transform: "rotateX(180deg)",
             transition: "transform 0.5s ease-in-out",
-            onStop: (image: HTMLImageElement) => {
-                image.style.transform = "";
+            onPlay: (image: HTMLImageElement, page: HTMLElement, audio: HTMLAudioElement) => {
+                page.style.transition = "transform 1s ease-in-out";
+
+                const flipTimer = window.setTimeout(() => {
+                    page.style.transform = "rotateX(180deg)";
+                }, 2000 + Math.random() * 1000);
+
+                const reset = () => {
+                    window.clearTimeout(flipTimer);
+                    image.style.transform = "";
+                    page.style.transform = "";
+                };
+
+                audio.addEventListener("pause", reset, { once: true });
+                audio.addEventListener("ended", reset, { once: true });
             },
         };
     }

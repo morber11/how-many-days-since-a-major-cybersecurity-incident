@@ -32,6 +32,33 @@ describe('pickRandomMediaItem', () => {
     });
 });
 
+describe('Seija media', () => {
+    const seija = getMediaItems().find((item) => item.image === '/images/seija.png');
+
+    afterEach(() => {
+        vi.restoreAllMocks();
+    });
+
+    it('uses the flipped reverse track for a random value below 0.1', () => {
+        vi.spyOn(Math, 'random').mockReturnValue(0.09);
+
+        const result = seija?.optionalFunction?.();
+
+        expect(result).toMatchObject({
+            audio: '/audio/reverse-ideology.mp3',
+            transform: 'rotateX(180deg)',
+        });
+    });
+
+    it('uses the normal track for a random value at or above 0.1', () => {
+        vi.spyOn(Math, 'random').mockReturnValue(0.1);
+
+        const result = seija?.optionalFunction?.();
+
+        expect(result).toEqual({ audio: '/audio/ddc-titlescreen.mp3' });
+    });
+});
+
 describe('getOrPickMediaIndex', () => {
     beforeEach(() => {
         const store: Record<string, string> = {};

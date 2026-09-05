@@ -54,16 +54,17 @@ const isActive = (path: string) =>
 </html>
 
 <script>
-    import { getMediaItems, getOrPickMediaIndex, type MediaItem } from "../lib/media";
+    import { getMediaItems, getOrPickMediaIndex } from "../lib/media";
 
     const items = getMediaItems();
     const index = getOrPickMediaIndex();
     const currentItem = items[index];
 
     const img = document.querySelector<HTMLImageElement>(".corner-img");
+    const page = document.querySelector<HTMLElement>(".container");
 
     // just to get rid of linting errors, this should never actually happen
-    if (!img) throw new Error("corner-img not found");
+    if (!img || !page) throw new Error("page elements not found");
 
     img.src = currentItem.image;
 
@@ -71,12 +72,10 @@ const isActive = (path: string) =>
     if (currentItem.height) img.height = currentItem.height;
 
     let audio: HTMLAudioElement | undefined;
-    let onStop: MediaItem["onStop"];
     img.addEventListener("click", () => {
         if (audio && !audio.paused) {
             audio.pause();
             audio.currentTime = 0;
-            onStop?.(img);
         } else if (currentItem.audio) {
             const overrides = currentItem.optionalFunction?.();
             const effective = { ...currentItem, ...overrides };
@@ -88,14 +87,9 @@ const isActive = (path: string) =>
             }
 
             img.style.transform = effective.transform ?? "";
-            onStop = effective.onStop;
             audio = new Audio(effective.audio);
             audio.volume = effective.volume ?? 0.5;
-
-            audio.addEventListener("ended", () => {
-                onStop?.(img);
-            });
-
+            effective.onPlay?.(img, page, audio);
             audio.play();
         }
     });
