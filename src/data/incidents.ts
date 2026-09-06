@@ -16,6 +16,7 @@ const COMPANY = {
     META: "Meta (Facebook)",
     GITHUB: "Github (Microsoft)",
     HUGGING_FACE: "Hugging Face",
+    JETBRAINS: "JetBrains",
     JFROG_ARTIFACTORY: "JFrog Artifactory",
     MASTRA: "Mastra",
     MINNESOTA_WATER_SYSTEMS: "Minnesota Water Systems",
@@ -27,7 +28,9 @@ const COMPANY = {
     ORIGIN_ENERGY: "Origin Energy",
     RUST: "Rust",
     SONICWALL: "Sonicwall",
+    SHIPMONK: "ShipMonk",
     TEXAS_STATE_GOVERNMENT: "Texas State Government",
+    TREZOR: "Trezor",
     THE_VATICAN: "The Vatican",
     UK_GOVERNMENT: "UK Government",
     US_CYBERSECURITY_AND_INFRASTRUCTURE_SECURITY_AGENCY: "U.S. Cybersecurity and Infrastructure Security Agency (CISA)",
@@ -53,6 +56,20 @@ export interface Incident {
 // is always treated as the most recent incident
 // consider having this automatically sorted by date
 export const incidents: Incident[] = [
+    {
+        date: "2026-09-05",
+        title: "Attackers Breached JetBrains Cadence via Unpatched TeamCity, Extracting AWS Credentials",
+        company: COMPANY.JETBRAINS,
+        description: "JetBrains is urging Cadence users to revoke and rotate all credentials following a security incident last month in which unidentified threat actors exploited a recently disclosed critical vulnerability in TeamCity to breach its own environment",
+        sourceUrl: "https://thehackernews.com/2026/09/attackers-breached-jetbrains-cadence.html" // archive later - captcha has hit free tier
+    },
+    {
+        date: "2026-09-05",
+        title: "Trezor Says ShipMonk Breach Exposed 67,000 U.S. Customers' Data It Said Was Deleted",
+        company: COMPANY.SHIPMONK,
+        description: "The exposed information includes customer names, email addresses, phone numbers, shipping addresses, and order numbers between November 2019 and August 2021. The breach does not affect the security of the company's hardware wallets",
+        sourceUrl: "https://thehackernews.com/2026/09/trezor-says-shipmonk-breach-exposed.html" // archive later - captcha has hit free tier
+    },
     {
         date: "2026-09-03",
         title: "Attackers Turn Trusted Node.js Runtime Into Malware Delivery Tool in Targeted Attacks",
