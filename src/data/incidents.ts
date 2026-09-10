@@ -1,5 +1,6 @@
 // for well known companies we want to have a consistent name across incidents
 const COMPANY = {
+    ANTHROPIC: "Anthropic",
     AMGEN: "Amgen",
     APOLLO_GLOBAL_MANAGEMENT: "Apollo Global Management",
     BOSTON_SCIENTIFIC: "Boston Scientific",
@@ -56,6 +57,20 @@ export interface Incident {
 // is always treated as the most recent incident
 // consider having this automatically sorted by date
 export const incidents: Incident[] = [
+    {
+        date: "2026-09-09",
+        title: "Anthropic discloses fourth AI hacking incident missed in earlier review",
+        company: COMPANY.ANTHROPIC,
+        description: "Anthropic on Wednesday disclosed another instance of an AI model hacking external systems during testing, the latest in a growing list of such incidents that have raised concerns about the risk posed by autonomous AI agents",
+        sourceUrl: "https://www.reuters.com/legal/litigation/anthropic-reports-fourth-cybersecurity-incident-with-early-version-claude-2026-09-09/" // archive still broken ???
+    },
+    {
+        date: "2026-09-08",
+        title: "Slim Spider Steals Crypto Custody Secrets From Brazilian Financial Institution",
+        company: COMPANY.BRAZILIAN_GOVERNMENT,
+        description: "A previously undocumented financially motivated threat actor has been linked to attacks targeting Brazilian financial institutions since at least March 2026",
+        sourceUrl: "https://archive.is/gW0JX"
+    },
     {
         date: "2026-09-05",
         title: "Attackers Breached JetBrains Cadence via Unpatched TeamCity, Extracting AWS Credentials",
