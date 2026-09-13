@@ -27,6 +27,7 @@ const COMPANY = {
     MYDR: "MyDr",
     NIHON_KOTSU: "Nihon Kotsu",
     ORIGIN_ENERGY: "Origin Energy",
+    REVOLUT: "Revolut",
     RUST: "Rust",
     SONICWALL: "Sonicwall",
     SHIPMONK: "ShipMonk",
@@ -57,6 +58,14 @@ export interface Incident {
 // is always treated as the most recent incident
 // consider having this automatically sorted by date
 export const incidents: Incident[] = [
+    {
+        date: "2026-09-13",
+        title: "Revolut confirms customer data breach through fake government requests",
+        company: COMPANY.REVOLUT,
+        description: "British fintech Revolut confirmed that it disclosed sensitive customer information to an unauthorized third party after receiving fraudulent requests sent from a legitimate government agency email domain",
+        sourceUrl: "https://archive.is/WBeRF",
+        additionalNotes: " The exposed data included customers' identity and contact details, including their birth date, postal and email addresses, and phone numbers, as well as copies of their identity documents including passports and driver's licenses"
+    },
     {
         date: "2026-09-09",
         title: "Anthropic discloses fourth AI hacking incident missed in earlier review",
