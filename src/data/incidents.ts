@@ -37,6 +37,7 @@ const COMPANY = {
     UK_GOVERNMENT: "UK Government",
     US_CYBERSECURITY_AND_INFRASTRUCTURE_SECURITY_AGENCY: "U.S. Cybersecurity and Infrastructure Security Agency (CISA)",
     VARIOUS: "Various",
+    VALVE: "Valve",
     WIRELESS_TELEGRAPH_AND_SIGNAL_COMPANY: "The Wireless Telegraph & Signal Company",
     ZOOM: "Zoom",
 } as const;
@@ -58,6 +59,14 @@ export interface Incident {
 // is always treated as the most recent incident
 // consider having this automatically sorted by date
 export const incidents: Incident[] = [
+    {
+        date: "2026-09-16",
+        title: "BrokenPipe exploit grants SYSTEM privileges via Steam client service",
+        company: COMPANY.VALVE,
+        description: "The BrokenPipe exploit targets steamservice.exe, a Windows service installed with Valve's Steam client that runs with SYSTEM privileges. The vulnerability arises from how the Steam Client Service handles signed installation-script VDF files. While the VDF itself is legitimately signed by Valve, the service allegedly uses a caller-controlled installation root that is not covered by this signature",
+        sourceUrl: "https://archive.is/ell3G",
+        additionalNotes: "Although the exploit requires an attacker to already have local code execution, this flaw could be leveraged by malware to gain full SYSTEM-level control on a compromised machine"
+    },
     {
         date: "2026-09-13",
         title: "Revolut confirms customer data breach through fake government requests",
