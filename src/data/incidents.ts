@@ -11,6 +11,7 @@ const COMPANY = {
     COLDCARD: "Coldcard",
     DAHUA: "Dahua",
     DHS: "DHS",
+    FBI: "FBI",
     FOSS: "FOSS",
     FOSS_JQWIK: "FOSS/jqwik",
     FRAMEWORK: "Framework",
@@ -59,6 +60,13 @@ export interface Incident {
 // is always treated as the most recent incident
 // consider having this automatically sorted by date
 export const incidents: Incident[] = [
+    {
+        date: "2026-09-23",
+        title: "Hackers Say They Have Data on All FBI Employees",
+        company: COMPANY.FBI,
+        description: "A high profile hacking group claims it has breached multiple FBI-related services and stolen data “on all FBI employees and applicants.” A representative of the group, called ShinyHunters, told 404 Media the data includes FBI agents’ names, home addresses, phone number, and information on their spouse",
+        sourceUrl: "https://archive.is/iQMpZ",
+    },
     {
         date: "2026-09-16",
         title: "BrokenPipe exploit grants SYSTEM privileges via Steam client service",
