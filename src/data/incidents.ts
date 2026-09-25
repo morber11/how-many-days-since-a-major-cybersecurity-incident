@@ -1,5 +1,6 @@
 // for well known companies we want to have a consistent name across incidents
 const COMPANY = {
+    AUSTRALIA_NATIONAL_HEALTHCARE_AGENCY: "Australia National Healthcare Agency",
     ANTHROPIC: "Anthropic",
     AMGEN: "Amgen",
     APOLLO_GLOBAL_MANAGEMENT: "Apollo Global Management",
@@ -64,8 +65,15 @@ export const incidents: Incident[] = [
         date: "2026-09-23",
         title: "Hackers Say They Have Data on All FBI Employees",
         company: COMPANY.FBI,
-        description: "A high profile hacking group claims it has breached multiple FBI-related services and stolen data “on all FBI employees and applicants.” A representative of the group, called ShinyHunters, told 404 Media the data includes FBI agents’ names, home addresses, phone number, and information on their spouse",
+        description: "A high profile hacking group claims it has breached multiple FBI-related services and stolen data “on all FBI employees and applicants.” A representative of the group, called ShinyHunters, told 404 Media the data includes FBI agents' names, home addresses, phone number, and information on their spouse",
         sourceUrl: "https://archive.is/iQMpZ",
+    },
+    {
+        date: "2026-09-22",
+        title: "OpenAI agent carried out first known hack of government system ",
+        company: COMPANY.AUSTRALIA_NATIONAL_HEALTHCARE_AGENCY,
+        description: "The AI agent accessed both public and non-public files of the country's Medicare statistics database, and even wrote files into it. A forensic investigation aided by the Australian Signals Directorate is now underway to ascertain more information, including what other government systems were affected",
+        sourceUrl: "https://archive.is/Iprl8",
     },
     {
         date: "2026-09-16",
