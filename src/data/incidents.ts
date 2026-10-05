@@ -11,6 +11,7 @@ const COMPANY = {
     CHICK_FIL_A: "Chick-fil-A",
     COLDCARD: "Coldcard",
     DAHUA: "Dahua",
+    DEFENSE_MANPOWER_DATA_CENTER: "Defense Manpower Data Center",
     DHS: "DHS",
     FBI: "FBI",
     FOSS: "FOSS",
@@ -61,6 +62,13 @@ export interface Incident {
 // is always treated as the most recent incident
 // consider having this automatically sorted by date
 export const incidents: Incident[] = [
+    {
+        date: "2026-09-28",
+        title: "Defense Manpower Data Center's information system breached",
+        company: COMPANY.DEFENSE_MANPOWER_DATA_CENTER,
+        description: "The incident revealed the unencrypted names, contact information, dates of birth, Social Security numbers, military jobs and other records of nearly 2.8 million living individuals and 294,000 who are deceased",
+        sourceUrl: "https://archive.is/JG1Al",
+    },
     {
         date: "2026-09-23",
         title: "Hackers Say They Have Data on All FBI Employees",
