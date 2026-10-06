@@ -28,6 +28,7 @@ const COMPANY = {
     MULTIPLE: "Multiple",
     MCKESSON: "McKesson",
     MYDR: "MyDr",
+    NETSCALAR: "NetScalar",
     NIHON_KOTSU: "Nihon Kotsu",
     ORIGIN_ENERGY: "Origin Energy",
     REVOLUT: "Revolut",
@@ -35,6 +36,7 @@ const COMPANY = {
     SONICWALL: "Sonicwall",
     SHIPMONK: "ShipMonk",
     TEXAS_STATE_GOVERNMENT: "Texas State Government",
+    TIMES_CAR: "Times Car",
     TREZOR: "Trezor",
     THE_VATICAN: "The Vatican",
     UK_GOVERNMENT: "UK Government",
@@ -62,6 +64,20 @@ export interface Incident {
 // is always treated as the most recent incident
 // consider having this automatically sorted by date
 export const incidents: Incident[] = [
+    {
+        date: "2026-09-29",
+        title: "NetScaler zero-day exploitation escalates into mass attacks",
+        company: COMPANY.NETSCALAR,
+        description: "Threat-intelligence company GreyNoise, which runs a large-scale deception and observation network that collects and analyzes data on attacker behavior, says it detected a malicious cyber actor attempting zero-day exploitation against a Citrix NetScaler Gateway on September 24, more than three days before public disclosure",
+        sourceUrl: "https://archive.is/ogoQN",
+    },
+    {
+        date: "2026-09-28",
+        title: "Times Car confirms data breach affecting 6.6 million user accounts",
+        company: COMPANY.TIMES_CAR,
+        description: "The company says that the intrusion affects 6.6 million current and former Times Car members, and also current and former members of the Times Business Service corporate account program",
+        sourceUrl: "https://archive.is/dekA9",
+    },
     {
         date: "2026-09-28",
         title: "Defense Manpower Data Center's information system breached",
