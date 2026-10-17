@@ -1,5 +1,5 @@
 // for well known companies we want to have a consistent name across incidents
-const COMPANY = {
+export const COMPANY = {
     AUSTRALIA_NATIONAL_HEALTHCARE_AGENCY: "Australia National Healthcare Agency",
     ANTHROPIC: "Anthropic",
     AMGEN: "Amgen",
@@ -45,6 +45,9 @@ const COMPANY = {
     VALVE: "Valve",
     WIRELESS_TELEGRAPH_AND_SIGNAL_COMPANY: "The Wireless Telegraph & Signal Company",
     ZOOM: "Zoom",
+    BURGER_KING_JAPAN: "Burger King Japan",
+    BAE_SYSTEMS: "BAE Systems",
+    CENTERPOINT_ENERGY: "CenterPoint Energy",
 } as const;
 
 type Company = typeof COMPANY[keyof typeof COMPANY];
@@ -64,6 +67,34 @@ export interface Incident {
 // is always treated as the most recent incident
 // consider having this automatically sorted by date
 export const incidents: Incident[] = [
+    {
+        date: "2026-10-16",
+        title: "Burger King Japan data breach exposes 11 million customer records",
+        company: COMPANY.BURGER_KING_JAPAN,
+        description: "Burger King Japan disclosed that attackers accessed a server containing 11.18 million customer records. The Japanese subsidiary of the fast-food giant said the breach exposed customer data",
+        sourceUrl: "https://www.bleepingcomputer.com/news/security/burger-king-japan-data-breach-exposes-11-million-customer-records/", // TODO: archive manually
+    },
+    {
+        date: "2026-10-15",
+        title: "BAE Systems cyberattack halts US bankruptcy court notices",
+        company: COMPANY.BAE_SYSTEMS,
+        description: "A cyberattack on government contractor BAE Systems took down the Bankruptcy Noticing Center and halted all production of bankruptcy notices nationwide. The Administrative Office of the US Courts said the incident disrupted federal bankruptcy court operations",
+        sourceUrl: "https://archive.is/TFRlU"
+    },
+    {
+        date: "2026-10-15",
+        title: "CenterPoint Energy data breach impacts 1 million Texans",
+        company: COMPANY.CENTERPOINT_ENERGY,
+        description: "Compromised personal information included names, addresses, Social Security numbers and driver's license numbers",
+        sourceUrl: "https://www.securityweek.com/centerpoint-energy-data-breach-impacts-1-million-texans/", // TODO: archive manually
+    },
+    {
+        date: "2026-10-12",
+        title: "Fridges in French supermarkets hit by cyber attack",
+        company: COMPANY.MULTIPLE,
+        description: "Hundreds of French supermarkets have been hit by a cyber attack that caused their fridges and freezers to heat up, spoiling fresh and frozen food estimated to be worth millions of euros",
+        sourceUrl: "https://archive.is/LYglq"
+    },
     {
         date: "2026-09-29",
         title: "NetScaler zero-day exploitation escalates into mass attacks",
