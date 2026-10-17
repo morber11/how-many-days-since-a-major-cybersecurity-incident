@@ -72,7 +72,7 @@ export const incidents: Incident[] = [
         title: "Burger King Japan data breach exposes 11 million customer records",
         company: COMPANY.BURGER_KING_JAPAN,
         description: "Burger King Japan disclosed that attackers accessed a server containing 11.18 million customer records. The Japanese subsidiary of the fast-food giant said the breach exposed customer data",
-        sourceUrl: "https://www.bleepingcomputer.com/news/security/burger-king-japan-data-breach-exposes-11-million-customer-records/", // TODO: archive manually
+        sourceUrl: "https://archive.is/OEa4B"
     },
     {
         date: "2026-10-15",
