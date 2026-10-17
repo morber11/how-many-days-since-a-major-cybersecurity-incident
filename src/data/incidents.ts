@@ -187,7 +187,7 @@ export const incidents: Incident[] = [
         title: "Attackers Turn Trusted Node.js Runtime Into Malware Delivery Tool in Targeted Attacks",
         company: COMPANY.VARIOUS,
         description: "The technique exploits that node.exe is a signed developer tool. The malicious code lives in interpreted scripts rather than in a binary, making it less likely to trigger signature-based detection, while a registry Run key entry can relaunch the payload at every login",
-        sourceUrl: "https://thehackernews.com/2026/09/attackers-turn-trusted-nodejs-runtime.html", // archive later - captcha has hit free tier
+        sourceUrl: "https://archive.is/q9JmE",
         additionalNotes: "According to a new report published by the Symantec Threat Hunter Team today, the attack method has been put to use in attacks targeting government departments, technology companies, and hotels since February 2026"
     },
     {
@@ -195,7 +195,7 @@ export const incidents: Incident[] = [
         title: "Malicious Apache Modules Hijack Brazilian Government Site Traffic to Push Betting Pages",
         company: COMPANY.BRAZILIAN_GOVERNMENT,
         description: "A Chinese-speaking cybercrime cluster known as Gambling Goblin has been observed installing malicious Apache modules on compromised web servers run by Brazilian government and educational institutions, and using them to divert visitors to attacker-controlled pages promoting online gambling and sports betting",
-        sourceUrl: "https://thehackernews.com/2026/09/malicious-apache-modules-hijack.html", // archive later - captcha has hit free tier
+        sourceUrl: "https://archive.is/BL0Fy",
         additionalNotes: "ANY.RUN reported in July that at least 20 .gov.br portals belonging to Brazilian municipalities and police forces had been used to distribute malware in a campaign it tracks as PhantomEnigma"
     },
     {
@@ -203,7 +203,7 @@ export const incidents: Incident[] = [
         title: "Iranian Hackers Pose as Recruiters to Deliver Cross-Platform RATs Through Coding Tests",
         company: COMPANY.VARIOUS,
         description: "Iranian Nimbus Manticore hacking group has been attributed to two malware families that highlight the evolution of its toolset and likely expand its targeting footprint to infect Linux and macOS systems using cross-platform remote access trojans developed using Node.js and JavaScript",
-        sourceUrl: "https://thehackernews.com/2026/09/iranian-hackers-pose-as-recruiters-to.html" // archive later - captcha has hit free tier
+        sourceUrl: "https://archive.is/dblgT"
     },
     {
         date: "2026-09-01",
