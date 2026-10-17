@@ -13,6 +13,7 @@
         "test": "vitest run",
         "lint": "eslint . && astro check",
         "generate-types": "wrangler types",
+        "discover": "node --env-file-if-exists=.env --experimental-strip-types scripts/discover/discover.ts",
         "deploy": "npm run build && wrangler deploy"
     },
     "dependencies": {
@@ -20,16 +21,22 @@
         "astro": "^6.4.4"
     },
     "devDependencies": {
+        "@ai-sdk/anthropic": "^4.0.79",
+        "@ai-sdk/deepseek": "^3.0.64",
         "@astrojs/check": "^0.9.9",
         "@types/eslint-plugin-jsx-a11y": "^6.10.1",
+        "@types/node": "^22.20.5",
         "@typescript-eslint/eslint-plugin": "^8.60.1",
         "@typescript-eslint/parser": "^8.60.1",
+        "ai": "^7.0.140",
         "eslint": "^9.39.4",
         "eslint-plugin-astro": "^1.7.0",
         "eslint-plugin-jsx-a11y": "^6.10.2",
+        "rss-parser": "^3.13.0",
         "typescript": "^6.0.3",
         "vitest": "^4.1.8",
-        "wrangler": "^4.98.0"
+        "wrangler": "^4.98.0",
+        "zod": "^4.6.7"
     },
     "overrides": {
         "vite": "^7"

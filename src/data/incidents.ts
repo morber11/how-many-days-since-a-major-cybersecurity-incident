@@ -1,5 +1,5 @@
 // for well known companies we want to have a consistent name across incidents
-const COMPANY = {
+export const COMPANY = {
     AUSTRALIA_NATIONAL_HEALTHCARE_AGENCY: "Australia National Healthcare Agency",
     ANTHROPIC: "Anthropic",
     AMGEN: "Amgen",

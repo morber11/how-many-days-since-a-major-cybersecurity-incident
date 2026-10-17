@@ -27,6 +27,14 @@ export default [
             ],
         },
     },
+    {
+        files: ['scripts/**/*.ts'],
+        languageOptions: {
+            globals: {
+                ...globals.node,
+            },
+        },
+    },
     ...astroPlugin.configs.recommended,
     {
         files: ['**/*.astro'],
