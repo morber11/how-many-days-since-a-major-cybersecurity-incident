@@ -87,14 +87,14 @@ export const incidents: Incident[] = [
         title: "CenterPoint Energy data breach impacts 1 million Texans",
         company: COMPANY.CENTERPOINT_ENERGY,
         description: "Compromised personal information included names, addresses, Social Security numbers and driver's license numbers",
-        sourceUrl: "https://www.securityweek.com/centerpoint-energy-data-breach-impacts-1-million-texans/", // TODO: archive manually
+        sourceUrl: "https://archive.is/Yu6vV",
     },
     {
         date: "2026-10-13",
         title: "Ahold Delhaize takes systems offline following cyberattack",
         company: COMPANY.AHOLD_DELHAIZE,
         description: "The multinational grocery retailer took parts of its IT infrastructure offline to contain a security intrusion detected within its network. The containment measures caused operational disruptions across its retail store brands",
-        sourceUrl: "https://www.securityweek.com/cyberattack-prompts-ahold-delhaize-to-disconnect-systems/", // TODO: archive manually
+        sourceUrl: "https://archive.is/CHewb",
     },
     {
         date: "2026-10-12",
@@ -159,7 +159,7 @@ export const incidents: Incident[] = [
         title: "Anthropic discloses fourth AI hacking incident missed in earlier review",
         company: COMPANY.ANTHROPIC,
         description: "Anthropic on Wednesday disclosed another instance of an AI model hacking external systems during testing, the latest in a growing list of such incidents that have raised concerns about the risk posed by autonomous AI agents",
-        sourceUrl: "https://www.reuters.com/legal/litigation/anthropic-reports-fourth-cybersecurity-incident-with-early-version-claude-2026-09-09/" // archive still broken ???
+        sourceUrl: "https://archive.is/YhHAG"
     },
     {
         date: "2026-09-08",
@@ -173,14 +173,14 @@ export const incidents: Incident[] = [
         title: "Attackers Breached JetBrains Cadence via Unpatched TeamCity, Extracting AWS Credentials",
         company: COMPANY.JETBRAINS,
         description: "JetBrains is urging Cadence users to revoke and rotate all credentials following a security incident last month in which unidentified threat actors exploited a recently disclosed critical vulnerability in TeamCity to breach its own environment",
-        sourceUrl: "https://thehackernews.com/2026/09/attackers-breached-jetbrains-cadence.html" // archive later - captcha has hit free tier
+        sourceUrl: "https://archive.is/3IMQ4"
     },
     {
         date: "2026-09-05",
         title: "Trezor Says ShipMonk Breach Exposed 67,000 U.S. Customers' Data It Said Was Deleted",
         company: COMPANY.SHIPMONK,
         description: "The exposed information includes customer names, email addresses, phone numbers, shipping addresses, and order numbers between November 2019 and August 2021. The breach does not affect the security of the company's hardware wallets",
-        sourceUrl: "https://thehackernews.com/2026/09/trezor-says-shipmonk-breach-exposed.html" // archive later - captcha has hit free tier
+        sourceUrl: "https://archive.is/tpiEL"
     },
     {
         date: "2026-09-03",
@@ -231,7 +231,7 @@ export const incidents: Incident[] = [
         title: "Boston Scientific hit by cyberattack, global operations affected",
         company: COMPANY.BOSTON_SCIENTIFIC,
         description: "The medical device maker said it detected the incident on August 25 and had activated incident-response procedures, working with third-party cybersecurity specialists to investigate and contain the threat",
-        sourceUrl: "https://www.reuters.com/legal/government/boston-scientific-hit-by-cyberattack-global-operations-affected-2026-08-26/", // archive.is keeps having trouble with this article
+        sourceUrl: "https://archive.is/ek39Y",
         additionalNotes: "Shares in the company fell 3.5% before markets opened"
     },
     {
