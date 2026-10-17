@@ -4,6 +4,8 @@ const ARCHIVE_URL = "https://archive.is";
 const HEADERS = { "User-Agent": "hmdsamci-discover" };
 const POLL_INTERVAL_MS = 30_000;
 const POLL_TIMEOUT_MS = 10 * 60_000;
+const SUBMIT_ATTEMPTS = 4;
+const SUBMIT_RETRY_DELAY_MS = 60_000;
 const SHORT_LINK_PATTERN = /id="SHARE_SHORTLINK"[^>]*value="https?:\/\/archive\.\w+\/(\w+)"/;
 
 type SnapshotLookup = { archived: true; snapshotUrl: string } | { archived: false };
@@ -35,12 +37,7 @@ async function fetchShortUrl(snapshotUrl: string): Promise<string> {
     return `${ARCHIVE_URL}/${id}`;
 }
 
-export async function archive(url: string): Promise<string> {
-    const existing = await lookupSnapshot(url);
-    if (existing.archived) {
-        return existing.snapshotUrl;
-    }
-
+async function submit(url: string): Promise<void> {
     const submitUrl = `${ARCHIVE_URL}/submit/?${new URLSearchParams({ url })}`;
     const response = await fetch(submitUrl, { headers: HEADERS });
     const body = await response.text();
@@ -48,6 +45,31 @@ export async function archive(url: string): Promise<string> {
     if (response.status === 429 || /captcha/i.test(body)) {
         throw new Error("archive.is asked for a captcha");
     }
+}
+
+async function submitWithRetry(url: string): Promise<void> {
+    for (let attempt = 1; ; attempt++) {
+        try {
+            await submit(url);
+            return;
+        } catch (error) {
+            if (attempt === SUBMIT_ATTEMPTS) {
+                throw error;
+            }
+
+            console.warn(`submitting ${url} failed (attempt ${attempt}/${SUBMIT_ATTEMPTS}): ${error}`);
+            await sleep(attempt * SUBMIT_RETRY_DELAY_MS);
+        }
+    }
+}
+
+export async function archive(url: string): Promise<string> {
+    const existing = await lookupSnapshot(url);
+    if (existing.archived) {
+        return existing.snapshotUrl;
+    }
+
+    await submitWithRetry(url);
 
     const deadline = Date.now() + POLL_TIMEOUT_MS;
 

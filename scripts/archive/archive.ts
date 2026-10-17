@@ -3,27 +3,38 @@ import { archive } from "./archive-service.ts";
 import { applyArchivedUrls, findUnarchivedUrls } from "./archive-incidents-file.ts";
 
 const INCIDENTS_FILE = "src/data/incidents.ts";
+const BATCH_SIZE = 3;
 
-async function archiveUrls(urls: string[]): Promise<Map<string, string>> {
-    const archivedUrls = new Map<string, string>();
-    let finished = 0;
+function saveArchivedUrl(url: string, archivedUrl: string): void {
+    const source = readFileSync(INCIDENTS_FILE, "utf8");
 
-    for (const url of urls) {
-        try {
-            archivedUrls.set(url, await archive(url));
-        } catch (error) {
-            console.warn(`could not archive ${url}: ${error}`);
-        }
-
-        finished++;
-        console.log(`archiving ${finished}/${urls.length} done`);
-    }
-
-    return archivedUrls;
+    writeFileSync(INCIDENTS_FILE, applyArchivedUrls(source, new Map([[url, archivedUrl]])));
 }
 
-const source = readFileSync(INCIDENTS_FILE, "utf8");
-const urls = findUnarchivedUrls(source);
+async function archiveUrls(urls: string[]): Promise<number> {
+    const startedAt = Date.now();
+    let finished = 0;
+    let archived = 0;
+
+    for (let i = 0; i < urls.length; i += BATCH_SIZE) {
+        await Promise.all(urls.slice(i, i + BATCH_SIZE).map(async (url) => {
+            try {
+                saveArchivedUrl(url, await archive(url));
+                archived++;
+            } catch (error) {
+                console.warn(`could not archive ${url}: ${error}`);
+            }
+
+            finished++;
+            const seconds = Math.round((Date.now() - startedAt) / 1000);
+            console.log(`archiving ${finished}/${urls.length} done after ${seconds}s`);
+        }));
+    }
+
+    return archived;
+}
+
+const urls = findUnarchivedUrls(readFileSync(INCIDENTS_FILE, "utf8"));
 
 if (urls.length === 0) {
     console.log("nothing to archive");
@@ -31,7 +42,6 @@ if (urls.length === 0) {
 }
 
 console.log(`archiving ${urls.length} sources on archive.is, new snapshots can take a few minutes`);
-const archivedUrls = await archiveUrls(urls);
+const archived = await archiveUrls(urls);
 
-writeFileSync(INCIDENTS_FILE, applyArchivedUrls(source, archivedUrls));
-console.log(`archived ${archivedUrls.size}/${urls.length} sources in ${INCIDENTS_FILE}`);
+console.log(`archived ${archived}/${urls.length} sources in ${INCIDENTS_FILE}`);
