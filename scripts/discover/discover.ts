@@ -1,6 +1,7 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import { parseArgs } from "node:util";
 import { COMPANY, incidents, type Incident } from "../../src/data/incidents.ts";
+import { sortIncidentsFile } from "../sort/sort-incidents-file.ts";
 import { archive } from "./archive.ts";
 import { classify } from "./classify.ts";
 import { fetchArticles } from "./feeds.ts";
@@ -92,7 +93,9 @@ async function archiveCandidates(candidates: Candidate[]): Promise<NewEntry[]> {
 function saveEntries(entries: NewEntry[]): void {
     const source = readFileSync(INCIDENTS_FILE, "utf8");
 
-    writeFileSync(INCIDENTS_FILE, insertIncidents(source, entries, COMPANY));
+    const updated = insertIncidents(source, entries, COMPANY);
+
+    writeFileSync(INCIDENTS_FILE, sortIncidentsFile(updated));
 }
 
 function printSummary(entries: NewEntry[]): void {
