@@ -36,7 +36,7 @@ export function getStatusText(days: number): string {
     if (days === 0) return "Seriously ? Not even a full day ?";
     if (days <= 4) return "Can we get through an entire week without an incident ?";
     if (days <= 6) return "Did not last even a week";
-    if (days <= 13) return "Not even a fortnite";
+    if (days <= 13) return "Not even a fortnight";
     if (days <= 29) return "Two whole weeks! That's one entire sprint";
     if (days === 69) return "Funny number"; // hey wait a minute how is less than 89 days one month
     if (days <= 89) return "One month. Impressive";
