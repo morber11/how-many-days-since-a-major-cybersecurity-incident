@@ -124,7 +124,7 @@ async function main(): Promise<void> {
         return;
     }
 
-    console.log(`asking the llm to pick incidents from ${articles.length} articles, this can take a few minutes`);
+    console.log(`asking the LLM to pick incidents from ${articles.length} articles, this can take a few minutes`);
     const candidates = await classify(options.provider, articles, incidentsInMonthBefore(options.from), COMPANY);
 
     if (candidates.length === 0) {
