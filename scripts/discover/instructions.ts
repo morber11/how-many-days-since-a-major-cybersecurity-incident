@@ -30,7 +30,7 @@ Fields:
 - companyKey: reuse a key from "companies" when it fits. Otherwise invent an UPPER_SNAKE_CASE key and give a readable companyName. Use MULTIPLE or VARIOUS the way the existing data does.
 - companyName: the readable name for the key.
 - title: a short headline. It must not end with a full stop.
-- description: 1 to 3 factual sentences. Full stops between sentences are fine, but the description must not end with a full stop.
+- description: 1 to 3 factual sentences that add detail the title does not give, such as what data or systems were affected, how it happened, who is responsible, or how many people were affected. Never restate the title. Full stops between sentences are fine, but the description must not end with a full stop.
 - additionalNotes: only when there is genuinely notable context, for example "First known ...". Otherwise leave it out.
 - Do not use em dashes or en dashes.
 
