@@ -1,5 +1,6 @@
 // for well known companies we want to have a consistent name across incidents
 export const COMPANY = {
+    AHOLD_DELHAIZE: "Ahold Delhaize",
     AMGEN: "Amgen",
     ANTHROPIC: "Anthropic",
     APOLLO_GLOBAL_MANAGEMENT: "Apollo Global Management",
@@ -87,6 +88,13 @@ export const incidents: Incident[] = [
         company: COMPANY.CENTERPOINT_ENERGY,
         description: "Compromised personal information included names, addresses, Social Security numbers and driver's license numbers",
         sourceUrl: "https://www.securityweek.com/centerpoint-energy-data-breach-impacts-1-million-texans/", // TODO: archive manually
+    },
+    {
+        date: "2026-10-13",
+        title: "Ahold Delhaize takes systems offline following cyberattack",
+        company: COMPANY.AHOLD_DELHAIZE,
+        description: "The multinational grocery retailer took parts of its IT infrastructure offline to contain a security intrusion detected within its network. The containment measures caused operational disruptions across its retail store brands",
+        sourceUrl: "https://www.securityweek.com/cyberattack-prompts-ahold-delhaize-to-disconnect-systems/", // TODO: archive manually
     },
     {
         date: "2026-10-12",
