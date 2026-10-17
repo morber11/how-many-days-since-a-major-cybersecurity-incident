@@ -13,6 +13,7 @@
         "test": "vitest run",
         "lint": "eslint . && astro check",
         "generate-types": "wrangler types",
+        "sort": "node --experimental-strip-types scripts/sort/sort.ts",
         "discover": "node --env-file-if-exists=.env --experimental-strip-types scripts/discover/discover.ts",
         "deploy": "npm run build && wrangler deploy"
     },

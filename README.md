@@ -21,6 +21,7 @@ View it here: [hmdsamci](https://howmanydayssinceamajorcybersecurityincident.mor
 | `npm test`            | Run unit tests                 |
 | `npx astro check`     | Run type checking              |
 | `npm run discover`    | Find and add new incidents     |
+| `npm run sort`        | Sort incidents and companies   |
 
 ## Updating incidents
 
