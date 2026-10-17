@@ -49,6 +49,8 @@ function parseOptions(): Options {
 
     const provider = PROVIDERS[providerName];
 
+    console.log(`using provider ${providerName}, model ${provider.model.modelId}`);
+
     if (!process.env[provider.apiKeyVariable]) {
         console.error(`${provider.apiKeyVariable} is not set, set it in .env`);
         process.exit(1);

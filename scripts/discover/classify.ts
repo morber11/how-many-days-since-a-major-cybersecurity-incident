@@ -1,4 +1,4 @@
-import { generateText, Output } from "ai";
+import { APICallError, generateText, Output, RetryError } from "ai";
 import { z } from "zod";
 import type { Incident } from "../../src/data/incidents.ts";
 import { INSTRUCTIONS } from "./instructions.ts";
@@ -8,7 +8,16 @@ import type { Article, Candidate } from "./types.ts";
 const DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
 const UPPER_SNAKE_CASE_PATTERN = /^[A-Z][A-Z0-9_]*$/;
 
-const candidateSchema = z.object({
+const MAX_RETRIES = 6;
+const RATE_LIMIT_STATUS = 429;
+
+function isRateLimitError(error: unknown): boolean {
+    return RetryError.isInstance(error)
+        && APICallError.isInstance(error.lastError)
+        && error.lastError.statusCode === RATE_LIMIT_STATUS;
+}
+
+const candidateSchema =z.object({
     date: z.string(),
     title: z.string(),
     companyKey: z.string(),
@@ -46,13 +55,22 @@ function keepValidCandidates(candidates: Candidate[], articles: Article[]): Cand
 export async function classify(provider: Provider, articles: Article[], recent: Incident[], companies: Record<string, string>): Promise<Candidate[]> {
     const existingIncidents = recent.map(({ date, title, company }) => ({ date, title, company }));
 
-    const { output } = await generateText({
-        model: provider.model,
-        instructions: INSTRUCTIONS,
-        prompt: JSON.stringify({ existingIncidents, companies, articles }),
-        output: Output.object({ schema: outputSchema }),
-        providerOptions: provider.providerOptions,
-    });
+    try {
+        const { output } = await generateText({
+            model: provider.model,
+            instructions: INSTRUCTIONS,
+            prompt: JSON.stringify({ existingIncidents, companies, articles }),
+            output: Output.object({ schema: outputSchema }),
+            providerOptions: provider.providerOptions,
+            maxRetries: MAX_RETRIES,
+        });
 
-    return keepValidCandidates(output.incidents, articles);
+        return keepValidCandidates(output.incidents, articles);
+    } catch (error) {
+        if (isRateLimitError(error)) {
+            throw new Error(`rate limited by the provider after ${MAX_RETRIES} retries`, { cause: error });
+        }
+
+        throw error;
+    }
 }
