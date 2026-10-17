@@ -2,7 +2,7 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { parseArgs } from "node:util";
 import { COMPANY, incidents, type Incident } from "../../src/data/incidents.ts";
 import { sortIncidentsFile } from "../sort/sort-incidents-file.ts";
-import { archive } from "./archive.ts";
+import { archive } from "../archive/archive-service.ts";
 import { classify } from "./classify.ts";
 import { fetchArticles } from "./feeds.ts";
 import { insertIncidents } from "./incidents-file.ts";

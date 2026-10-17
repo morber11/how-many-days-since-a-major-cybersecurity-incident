@@ -1,13 +1,15 @@
 import { setTimeout as sleep } from "node:timers/promises";
 
+const ARCHIVE_URL = "https://archive.is";
 const HEADERS = { "User-Agent": "hmdsamci-discover" };
 const POLL_INTERVAL_MS = 30_000;
 const POLL_TIMEOUT_MS = 10 * 60_000;
+const SHORT_LINK_PATTERN = /id="SHARE_SHORTLINK"[^>]*value="https?:\/\/archive\.\w+\/(\w+)"/;
 
 type SnapshotLookup = { archived: true; snapshotUrl: string } | { archived: false };
 
 async function lookupSnapshot(url: string): Promise<SnapshotLookup> {
-    const response = await fetch(`https://archive.is/timegate/${url}`, { redirect: "manual", headers: HEADERS });
+    const response = await fetch(`${ARCHIVE_URL}/timegate/${url}`, { redirect: "manual", headers: HEADERS });
 
     if (response.status === 404) {
         return { archived: false };
@@ -18,7 +20,19 @@ async function lookupSnapshot(url: string): Promise<SnapshotLookup> {
         throw new Error(`archive.is lookup returned status ${response.status}`);
     }
 
-    return { archived: true, snapshotUrl: `https://archive.is${new URL(location).pathname}` };
+    return { archived: true, snapshotUrl: await fetchShortUrl(`${ARCHIVE_URL}${new URL(location).pathname}`) };
+}
+
+async function fetchShortUrl(snapshotUrl: string): Promise<string> {
+    const response = await fetch(snapshotUrl, { headers: HEADERS });
+    const body = await response.text();
+
+    const id = body.match(SHORT_LINK_PATTERN)?.[1];
+    if (!id) {
+        throw new Error(`could not find the short link on ${snapshotUrl}`);
+    }
+
+    return `${ARCHIVE_URL}/${id}`;
 }
 
 export async function archive(url: string): Promise<string> {
@@ -27,7 +41,7 @@ export async function archive(url: string): Promise<string> {
         return existing.snapshotUrl;
     }
 
-    const submitUrl = `https://archive.is/?${new URLSearchParams({ run: "1", url })}`;
+    const submitUrl = `${ARCHIVE_URL}/submit/?${new URLSearchParams({ url })}`;
     const response = await fetch(submitUrl, { headers: HEADERS });
     const body = await response.text();
 
