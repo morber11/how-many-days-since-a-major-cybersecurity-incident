@@ -19,6 +19,7 @@ export const COMPANY = {
     DEFENSE_MANPOWER_DATA_CENTER: "Defense Manpower Data Center",
     DHS: "DHS",
     EDUCATIONAL_TESTING_SERVICE: "Educational Testing Service",
+    EMUDHRA: "eMudhra",
     FBI: "FBI",
     FOSS: "FOSS",
     FOSS_JQWIK: "FOSS/jqwik",
@@ -38,6 +39,7 @@ export const COMPANY = {
     NIHON_KOTSU: "Nihon Kotsu",
     NIKKEI: "Nikkei",
     ORIGIN_ENERGY: "Origin Energy",
+    PHP: "PHP",
     REVOLUT: "Revolut",
     RUST: "Rust",
     SHIPMONK: "ShipMonk",
@@ -71,6 +73,23 @@ export interface Incident {
 // is always treated as the most recent incident
 // consider having this automatically sorted by date
 export const incidents: Incident[] = [
+    {
+        date: "2026-10-21",
+        title: "Indian certification authority eMudhra's private keys compromised",
+        company: COMPANY.EMUDHRA,
+        description: "Tragically simple private keys used by a certification authority based in India have been compromised, meaning the 60-million-plus certs it has issued can't be trusted and necessitating a massive clean-up job",
+        sourceUrl: "https://archive.is/pelzF",
+        additionalNotes: "One of the private keys compromised was literally the number '4'"
+    },
+    {
+        date: "2026-10-21",
+        title: "Critical security issue affecting PHP",
+        company: COMPANY.PHP,
+        description: "Organisations which rely on the PHP programming language are being told they should install a significant software update today - or consider taking their websites offline",
+        sourceUrl: "https://archive.is/mR3W1", 
+        additionalNotes: ""
+        // 2026-10-21 the day the internet burned down
+    },
     {
         date: "2026-10-19",
         title: "Nikkei discloses data breach exposing 1.8 million records",
