@@ -1,7 +1,8 @@
 {
     "compatibility_date": "2026-06-06",
     "compatibility_flags": [
-        "global_fetch_strictly_public"
+        "global_fetch_strictly_public",
+        "nodejs_compat"
     ],
     "name": "howmanydayssinceamajorcybersecurityincident",
     "main": "@astrojs/cloudflare/entrypoints/server",

@@ -21,7 +21,9 @@
     "dependencies": {
         "@ai-sdk/google": "^4.0.99",
         "@astrojs/cloudflare": "^13.6.1",
-        "astro": "^6.4.4"
+        "@astrojs/svelte": "^8.1.2",
+        "astro": "^6.4.4",
+        "svelte": "^5.57.2"
     },
     "devDependencies": {
         "@ai-sdk/anthropic": "^4.0.79",

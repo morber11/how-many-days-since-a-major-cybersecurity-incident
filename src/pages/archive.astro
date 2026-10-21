@@ -1,0 +1,32 @@
+---
+import Base from "../layouts/Base.astro";
+import IncidentArchive from "../components/IncidentArchive.svelte";
+import { getIncidentCount } from "../lib/counter";
+---
+
+<Base title="hmdsamci - Incident Archive">
+    <div class="archive-page">
+        <h1>Incident Archive</h1>
+        <p class="subheading">Tracking {getIncidentCount()} incidents</p>
+
+        <IncidentArchive client:load />
+    </div>
+</Base>
+
+<style>
+    .archive-page {
+        padding-top: 2rem;
+    }
+
+    .archive-page h1 {
+        font-family: var(--font-mono);
+        font-size: 1.5rem;
+        margin: 0 0 0.5rem;
+    }
+
+    .archive-page .subheading {
+        color: var(--color-text-muted);
+        font-style: italic;
+        margin: 0 0 2rem;
+    }
+</style>
