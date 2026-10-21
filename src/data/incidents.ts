@@ -14,9 +14,11 @@ export const COMPANY = {
     CEVA_LOGISTICS: "Ceva Logistics",
     CHICK_FIL_A: "Chick-fil-A",
     COLDCARD: "Coldcard",
+    CONNECTWISE: "ConnectWise",
     DAHUA: "Dahua",
     DEFENSE_MANPOWER_DATA_CENTER: "Defense Manpower Data Center",
     DHS: "DHS",
+    EDUCATIONAL_TESTING_SERVICE: "Educational Testing Service",
     FBI: "FBI",
     FOSS: "FOSS",
     FOSS_JQWIK: "FOSS/jqwik",
@@ -34,6 +36,7 @@ export const COMPANY = {
     MYDR: "MyDr",
     NETSCALAR: "NetScalar",
     NIHON_KOTSU: "Nihon Kotsu",
+    NIKKEI: "Nikkei",
     ORIGIN_ENERGY: "Origin Energy",
     REVOLUT: "Revolut",
     RUST: "Rust",
@@ -68,6 +71,27 @@ export interface Incident {
 // is always treated as the most recent incident
 // consider having this automatically sorted by date
 export const incidents: Incident[] = [
+    {
+        date: "2026-10-19",
+        title: "Nikkei discloses data breach exposing 1.8 million records",
+        company: COMPANY.NIKKEI,
+        description: "The Japanese media giant confirmed an unauthorized system intrusion that compromised 1.83 million personal information records. The exposed records include customer names, physical addresses, email addresses, phone numbers, and dates of birth",
+        sourceUrl: "https://archive.is/ibxbc",
+    },
+    {
+        date: "2026-10-17",
+        title: "California student data stolen in contractor Educational Testing Service breach",
+        company: COMPANY.EDUCATIONAL_TESTING_SERVICE,
+        description: "A months-long intrusion at testing contractor Educational Testing Service exposed records for approximately seven million California public school students. Attackers used compromised credentials to access an SFTP server, exposing student names, addresses, demographic details, and disability status",
+        sourceUrl: "https://databreaches.net/2026/10/17/hack-exposes-data-on-millions-of-california-students/", // TODO: archive manually
+    },
+    {
+        date: "2026-10-17",
+        title: "ConnectWise Cloud Backup credentials abused to compromise 173 Microsoft 365 tenants",
+        company: COMPANY.CONNECTWISE,
+        description: "Attackers abused compromised credentials belonging to ConnectWise Cloud Backup application identities to access customer Microsoft 365 environments. The company disabled seven application identities and temporarily suspended its cloud backup service to contain the intrusion",
+        sourceUrl: "https://archive.is/VRyfH",
+    },
     {
         date: "2026-10-16",
         title: "Burger King Japan data breach exposes 11 million customer records",
