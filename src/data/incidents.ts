@@ -9,6 +9,7 @@ export const COMPANY = {
     BOSTON_SCIENTIFIC: "Boston Scientific",
     BRAZILIAN_GOVERNMENT: "Brazilian Government",
     BURGER_KING_JAPAN: "Burger King Japan",
+    CAPCOM: "Capcom",
     CENTERPOINT_ENERGY: "CenterPoint Energy",
     CERT_POLSKA: "CERT Polska",
     CEVA_LOGISTICS: "Ceva Logistics",
@@ -73,6 +74,13 @@ export interface Incident {
 // is always treated as the most recent incident
 // consider having this automatically sorted by date
 export const incidents: Incident[] = [
+    {
+        date: "2026-10-22",
+        title: "Capcom confirms data breach affecting 11.7 million accounts",
+        company: COMPANY.CAPCOM,
+        description: "Hackers compromised the gaming publisher's CAPCOM ID membership service, exposing customer email addresses and associated account information. The intruders also modified login passwords for nearly two hundred user accounts",
+        sourceUrl: "https://archive.is/wzZZM",
+    },
     {
         date: "2026-10-21",
         title: "Indian certification authority eMudhra's private keys compromised",
