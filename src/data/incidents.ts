@@ -41,6 +41,7 @@ export const COMPANY = {
     NIKKEI: "Nikkei",
     ORIGIN_ENERGY: "Origin Energy",
     PHP: "PHP",
+    QUEST_DIAGNOSTICS: "Quest Diagnostics",
     REVOLUT: "Revolut",
     RUST: "Rust",
     SHIPMONK: "ShipMonk",
@@ -74,6 +75,13 @@ export interface Incident {
 // is always treated as the most recent incident
 // consider having this automatically sorted by date
 export const incidents: Incident[] = [
+    {
+        date: "2026-10-23",
+        title: "Quest Diagnostics confirms data breach exposing patient records",
+        company: COMPANY.QUEST_DIAGNOSTICS,
+        description: "The clinical laboratory giant disclosed that unauthorized third-party access to its Quanum Lab Services Manager platform compromised sensitive patient personal and medical information",
+        sourceUrl: "https://archive.is/kWKZE",
+    },
     {
         date: "2026-10-22",
         title: "Capcom confirms data breach affecting 11.7 million accounts",
