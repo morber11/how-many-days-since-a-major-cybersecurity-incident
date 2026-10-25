@@ -1,4 +1,5 @@
 // for well known companies we want to have a consistent name across incidents
+// run npm `run sort` to sort automatically
 export const COMPANY = {
     AHOLD_DELHAIZE: "Ahold Delhaize",
     AMGEN: "Amgen",
@@ -73,7 +74,7 @@ export interface Incident {
 
 // keep this array sorted newest-first the first element 
 // is always treated as the most recent incident
-// consider having this automatically sorted by date
+// run npm `run sort` to sort automatically
 export const incidents: Incident[] = [
     {
         date: "2026-10-23",
