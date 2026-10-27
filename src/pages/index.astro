@@ -167,21 +167,13 @@ const gapDetail = maxGap
 
 <script>
     // dodgy work around - recompile it here so the statusText is accurate
-    import { getStatusText } from "../lib/counter";
+    import { getDaysSince, getStatusText } from "../lib/counter";
 
     const el = document.getElementById("counter");
     const statusEl = document.getElementById("status-line");
 
     if (el && statusEl) {
-        const incidentDate = new Date(el.dataset.incidentDate ?? "");
-        const today = new Date();
-
-        today.setHours(0, 0, 0, 0);
-        incidentDate.setHours(0, 0, 0, 0);
-
-        const days = Math.floor(
-            (today.getTime() - incidentDate.getTime()) / 86400000,
-        );
+        const days = getDaysSince(el.dataset.incidentDate ?? "");
 
         el.textContent = String(days);
         statusEl.textContent = getStatusText(days);

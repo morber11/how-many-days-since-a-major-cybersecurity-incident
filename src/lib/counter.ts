@@ -13,15 +13,13 @@ export function getIncidentCount() {
 }
 
 export function getDaysSince(dateString: string): number {
-    const incident = new Date(dateString);
-    const today = new Date();
+    const [year, month, day] = dateString.split("-").map(Number);
+    const incident = Date.UTC(year, month - 1, day);
 
-    // zero out time component so we count whole days only
-    incident.setHours(0, 0, 0, 0);
-    today.setHours(0, 0, 0, 0);
+    const now = new Date();
+    const today = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate());
 
-    const ms = today.getTime() - incident.getTime();
-    return Math.max(0, Math.floor(ms / (1000 * 60 * 60 * 24)));
+    return Math.max(0, (today - incident) / (1000 * 60 * 60 * 24));
 }
 
 export function formatDate(dateString: string): string {

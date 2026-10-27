@@ -43,6 +43,16 @@ describe('getDaysSince', () => {
         expect(getDaysSince('2026-06-09')).toBe(1);
         vi.useRealTimers();
     });
+
+    it('does not shift the incident date in timezones behind UTC', () => {
+        vi.stubEnv('TZ', 'America/Los_Angeles');
+        vi.setSystemTime(new Date('2026-10-27T12:00:00Z'));
+
+        expect(getDaysSince('2026-10-23')).toBe(4);
+
+        vi.useRealTimers();
+        vi.unstubAllEnvs();
+    });
 });
 
 describe('getStatusText', () => {
