@@ -22,6 +22,7 @@ export const COMPANY = {
     DHS: "DHS",
     EDUCATIONAL_TESTING_SERVICE: "Educational Testing Service",
     EMUDHRA: "eMudhra",
+    ENGIE: "ENGIE",
     FBI: "FBI",
     FOSS: "FOSS",
     FOSS_JQWIK: "FOSS/jqwik",
@@ -52,6 +53,7 @@ export const COMPANY = {
     TIMES_CAR: "Times Car",
     TREZOR: "Trezor",
     UK_GOVERNMENT: "UK Government",
+    UNIVERSITY_OF_COPENHAGEN: "University of Copenhagen",
     US_CYBERSECURITY_AND_INFRASTRUCTURE_SECURITY_AGENCY: "U.S. Cybersecurity and Infrastructure Security Agency (CISA)",
     VALVE: "Valve",
     VARIOUS: "Various",
@@ -76,6 +78,20 @@ export interface Incident {
 // is always treated as the most recent incident
 // run npm `run sort` to sort automatically
 export const incidents: Incident[] = [
+    {
+        date: "2026-10-27",
+        title: "Energy giant ENGIE discloses data breach affecting customers",
+        company: COMPANY.ENGIE,
+        description: "Attackers compromised a marketing platform operated by business partners, allowing them to steal customer information from the French power and natural gas provider",
+        sourceUrl: "https://archive.is/OyTUB",
+    },
+    {
+        date: "2026-10-26",
+        title: "University of Copenhagen data breach exposes data of 525,000 people",
+        company: COMPANY.UNIVERSITY_OF_COPENHAGEN,
+        description: "The Danish institution confirmed that unauthorized actors gained access to an internal test environment storing personal information",
+        sourceUrl: "https://archive.is/CMTIC",
+    },
     {
         date: "2026-10-23",
         title: "Quest Diagnostics confirms data breach exposing patient records",
