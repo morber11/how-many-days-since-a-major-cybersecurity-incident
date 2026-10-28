@@ -1,4 +1,4 @@
-import { fireflies } from "./effects";
+import { fireflies, pageFlip } from "./effects";
 
 export interface MediaItem {
     id: string;
@@ -79,31 +79,8 @@ function seijaClick() {
     if (Math.random() < 0.1) {
         return {
             audio: "/audio/reverse-ideology.mp3",
-            transform: "rotateX(180deg)",
             transition: "transform 0.5s ease-in-out",
-            onPlay: (image: HTMLImageElement, page: HTMLElement, audio: HTMLAudioElement) => {
-                page.style.transition = "transform 1s ease-in-out";
-
-                const invertScroll = (event: WheelEvent) => {
-                    event.preventDefault();
-                    window.scrollBy(event.deltaX, -event.deltaY);
-                };
-
-                const flipTimer = window.setTimeout(() => {
-                    page.style.transform = "rotateX(180deg)";
-                    window.addEventListener("wheel", invertScroll, { passive: false });
-                }, 2000 + Math.random() * 1000);
-
-                const reset = () => {
-                    window.clearTimeout(flipTimer);
-                    window.removeEventListener("wheel", invertScroll);
-                    image.style.transform = "";
-                    page.style.transform = "";
-                };
-
-                audio.addEventListener("pause", reset, { once: true });
-                audio.addEventListener("ended", reset, { once: true });
-            },
+            onPlay: pageFlip,
         };
     }
 

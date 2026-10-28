@@ -60,7 +60,6 @@ describe('Seija media', () => {
 
         expect(result).toMatchObject({
             audio: '/audio/reverse-ideology.mp3',
-            transform: 'rotateX(180deg)',
         });
     });
 

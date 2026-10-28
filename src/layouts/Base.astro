@@ -50,7 +50,13 @@ const isActive = (path: string) =>
             </footer>
         </div>
         <img alt="" class="corner-img" />
-        <noscript><img src="/images/raymoo.png" alt="" class="corner-img" /></noscript>
+        <noscript
+            ><img
+                src="/images/raymoo.png"
+                alt=""
+                class="corner-img"
+            /></noscript
+        >
     </body>
 </html>
 
@@ -63,7 +69,7 @@ const isActive = (path: string) =>
 
     const items = getMediaItems();
     const debugMedia: string | undefined = import.meta.env.DEBUG_MEDIA;
-    
+
     const index = debugMedia
         ? findMediaIndex(debugMedia)
         : getOrPickMediaIndex();
@@ -104,10 +110,18 @@ const isActive = (path: string) =>
             }
 
             img.style.transform = effective.transform ?? "";
-            audio = new Audio(effective.audio);
-            audio.volume = effective.volume ?? 0.5;
-            effective.onPlay?.(img, page, audio);
-            audio.play();
+            const newAudio = new Audio(effective.audio);
+            newAudio.volume = effective.volume ?? 0.5;
+
+            // the audio can take a moment to buffer, so wait until it is actually playing
+            newAudio.addEventListener(
+                "playing",
+                () => effective.onPlay?.(img, page, newAudio),
+                { once: true },
+            );
+
+            newAudio.play();
+            audio = newAudio;
         }
     });
 </script>
