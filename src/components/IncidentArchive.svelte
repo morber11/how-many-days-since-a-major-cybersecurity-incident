@@ -7,11 +7,21 @@
 
     let search = $state("");
     let selectedCompany = $state("");
+    let dateFrom = $state("");
+    let dateTo = $state("");
     let currentPage = $state(1);
 
     let matchingIncidents = $derived(
         incidents.filter((inc) => {
             if (selectedCompany !== "" && inc.company !== selectedCompany) {
+                return false;
+            }
+
+            if (dateFrom !== "" && inc.date < dateFrom) {
+                return false;
+            }
+
+            if (dateTo !== "" && inc.date > dateTo) {
                 return false;
             }
 
@@ -58,6 +68,28 @@
             <option value={company}>{company}</option>
         {/each}
     </select>
+
+    <div class="date-range">
+        <input
+            type="date"
+            aria-label="From date"
+            title="From date"
+            max={dateTo}
+            bind:value={dateFrom}
+            oninput={goToFirstPage}
+        />
+
+        <span>to</span>
+
+        <input
+            type="date"
+            aria-label="To date"
+            title="To date"
+            min={dateFrom}
+            bind:value={dateTo}
+            oninput={goToFirstPage}
+        />
+    </div>
 </div>
 
 {#if pageIncidents.length === 0}
@@ -114,12 +146,30 @@
 <style>
     .archive-filters {
         display: flex;
+        flex-wrap: wrap;
         gap: 1rem;
         margin: 0 0 1.5rem;
     }
 
-    .archive-filters input {
+    .archive-filters input[type="search"] {
+        flex: 1 1 100%;
+    }
+
+    .archive-filters select {
         flex: 1;
+        min-width: 10rem;
+    }
+
+    .date-range {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .date-range span {
+        color: var(--color-text-muted);
+        font-family: var(--font-mono);
+        font-size: 0.85rem;
     }
 
     .archive-filters input,
@@ -130,6 +180,10 @@
         border-radius: var(--radius);
         padding: 0.4rem 0.6rem;
         font: inherit;
+    }
+
+    .archive-filters input[type="date"] {
+        color-scheme: dark;
     }
 
     .no-results {
@@ -223,6 +277,16 @@
 
         .archive-table {
             font-size: 0.8rem;
+        }
+
+        .date-range {
+            flex-basis: 100%;
+            min-width: 0;
+        }
+
+        .date-range input {
+            flex: 1;
+            min-width: 0;
         }
     }
 </style>
