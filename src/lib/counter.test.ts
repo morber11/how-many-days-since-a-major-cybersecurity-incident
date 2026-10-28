@@ -8,6 +8,12 @@ vi.mock('../data/incidents', () => ({
         { date: '2000-01-01', title: 'Historical', company: 'Beta', description: '', sourceUrl: '', excludeFromDateGap: true },
         { date: '1999-01-01', title: 'Old', company: 'FOSS', excludeFromCompanyStats: true, description: '', sourceUrl: '' },
         { date: '1998-01-01', title: 'Older', company: 'Gamma', description: '', sourceUrl: '' },
+        { date: '1997-01-01', title: 'Many A', company: 'Multiple', description: '', sourceUrl: '', excludeFromDateGap: true },
+        { date: '1996-01-01', title: 'Many B', company: 'Multiple', description: '', sourceUrl: '', excludeFromDateGap: true },
+        { date: '1995-01-01', title: 'Many C', company: 'Various', description: '', sourceUrl: '', excludeFromDateGap: true },
+        { date: '1994-01-01', title: 'Gov A', company: 'Brazilian Government', description: '', sourceUrl: '', excludeFromDateGap: true },
+        { date: '1993-01-01', title: 'Gov B', company: 'Brazilian Government', description: '', sourceUrl: '', excludeFromDateGap: true },
+        { date: '1992-01-01', title: 'Gov C', company: 'UK Government', description: '', sourceUrl: '', excludeFromDateGap: true },
     ],
 }));
 
@@ -129,18 +135,17 @@ describe('getMostIncidentsInOneDay', () => {
 });
 
 describe('getMostCommonlyAffectedCompanies', () => {
-    it('returns the top three companies and excludes marked companies', () => {
+    it('returns the top three companies with more than one incident and excludes marked, "Multiple", "Various" and government companies', () => {
         expect(getMostCommonlyAffectedCompanies()).toEqual([
             { company: 'Alpha', count: 2 },
             { company: 'Beta', count: 2 },
-            { company: 'Gamma', count: 1 },
         ]);
     });
 });
 
 describe('getIncidentCount', () => {
     it('returns the total number of incidents', () => {
-        expect(getIncidentCount()).toBe(6);
+        expect(getIncidentCount()).toBe(12);
     });
 });
 

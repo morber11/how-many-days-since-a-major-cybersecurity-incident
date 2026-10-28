@@ -117,11 +117,22 @@ export function getMostIncidentsInOneDay(): BusiestDay {
     return result!;
 }
 
+const NON_SPECIFIC_COMPANIES = new Set([
+    "Multiple",
+    "Various",
+    "Brazilian Government",
+    "UK Government",
+]);
+
 export function getMostCommonlyAffectedCompanies(): CompanyCount[] {
     const companyCounts = new Map<string, number>();
 
     for (const incident of incidents) {
-        if (!incident.company || incident.excludeFromCompanyStats) {
+        if (
+            !incident.company ||
+            incident.excludeFromCompanyStats ||
+            NON_SPECIFIC_COMPANIES.has(incident.company)
+        ) {
             continue;
         }
 
@@ -132,7 +143,7 @@ export function getMostCommonlyAffectedCompanies(): CompanyCount[] {
     const companies = Array.from(companyCounts, ([company, count]) => ({
         company,
         count,
-    }));
+    })).filter((entry) => entry.count > 1);
 
     return companies
         .sort((a, b) => b.count - a.count)
