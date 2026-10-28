@@ -20,6 +20,7 @@ import {
     getMostIncidentsInOneDay,
     getMostCommonlyAffectedCompanies,
     getIncidentCount,
+    getIncidentsPerMonth,
 } from './counter';
 
 describe('getDaysSince', () => {
@@ -140,5 +141,23 @@ describe('getMostCommonlyAffectedCompanies', () => {
 describe('getIncidentCount', () => {
     it('returns the total number of incidents', () => {
         expect(getIncidentCount()).toBe(6);
+    });
+});
+
+describe('getIncidentsPerMonth', () => {
+    it('counts incidents per month, filling empty months with zero', () => {
+        const result = getIncidentsPerMonth();
+
+        expect(result).toHaveLength(342);
+        expect(result[0]).toEqual({ month: '1998-01', count: 1 });
+        expect(result[1]).toEqual({ month: '1998-02', count: 0 });
+        expect(result.at(-2)).toEqual({ month: '2026-05', count: 1 });
+        expect(result.at(-1)).toEqual({ month: '2026-06', count: 2 });
+    });
+
+    it('skips incidents excluded from the date gap', () => {
+        const result = getIncidentsPerMonth();
+
+        expect(result.find((entry) => entry.month === '2000-01')).toEqual({ month: '2000-01', count: 0 });
     });
 });

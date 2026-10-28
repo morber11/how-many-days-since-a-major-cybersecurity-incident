@@ -63,6 +63,11 @@ type CompanyCount = {
     count: number;
 };
 
+type MonthCount = {
+    month: string;
+    count: number;
+};
+
 export function getMaxDaysBetweenIncidents(): Gap | null {
     const relevant = incidents.filter((inc) => !inc.excludeFromDateGap);
 
@@ -132,4 +137,24 @@ export function getMostCommonlyAffectedCompanies(): CompanyCount[] {
     return companies
         .sort((a, b) => b.count - a.count)
         .slice(0, 3);
+}
+
+export function getIncidentsPerMonth(): MonthCount[] {
+    const relevant = incidents.filter((inc) => !inc.excludeFromDateGap);
+
+    const newest = new Date(relevant[0].date);
+    const oldest = new Date(relevant[relevant.length - 1].date);
+
+    const current = new Date(Date.UTC(oldest.getUTCFullYear(), oldest.getUTCMonth(), 1));
+    const result: MonthCount[] = [];
+
+    while (current <= newest) {
+        const month = current.toISOString().slice(0, 7);
+        const count = relevant.filter((inc) => inc.date.startsWith(month)).length;
+
+        result.push({ month, count });
+        current.setUTCMonth(current.getUTCMonth() + 1);
+    }
+
+    return result;
 }

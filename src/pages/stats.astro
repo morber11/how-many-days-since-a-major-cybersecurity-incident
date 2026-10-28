@@ -3,6 +3,7 @@ import Base from "../layouts/Base.astro";
 import {
     formatDate,
     getIncidentCount,
+    getIncidentsPerMonth,
     getMaxDaysBetweenIncidents,
     getMostCommonlyAffectedCompanies,
     getMostIncidentsInOneDay,
@@ -11,6 +12,20 @@ import {
 const busiestDay = getMostIncidentsInOneDay();
 const maxGap = getMaxDaysBetweenIncidents();
 const commonCompanies = getMostCommonlyAffectedCompanies();
+const incidentsPerMonth = getIncidentsPerMonth();
+
+let maxMonthCount = 0;
+for (const entry of incidentsPerMonth) {
+    maxMonthCount = Math.max(maxMonthCount, entry.count);
+}
+
+const chartPoints = incidentsPerMonth.map((entry, index) => ({
+    count: entry.count,
+    x: ((index + 0.5) / incidentsPerMonth.length) * 100,
+    y: 100 - (entry.count / maxMonthCount) * 100,
+}));
+
+const yAxisTicks = [0, Math.round(maxMonthCount / 2), maxMonthCount];
 ---
 
 <Base title="hmdsamci - Stats">
@@ -63,6 +78,80 @@ const commonCompanies = getMostCommonlyAffectedCompanies();
                         ))
                     }
                 </ul>
+            </section>
+
+            <section class="stats-card stats-card--wide">
+                <h2>Incidents per month</h2>
+                <div class="stats-chart">
+                    <span class="stats-chart-y-title">Incidents</span>
+
+                    <div class="stats-chart-y-ticks">
+                        {
+                            yAxisTicks.map((tick) => (
+                                <span
+                                    style={`bottom: ${(tick / maxMonthCount) * 100}%`}
+                                >
+                                    {tick}
+                                </span>
+                            ))
+                        }
+                    </div>
+
+                    <div class="stats-chart-plot">
+                        <svg
+                            viewBox="0 0 100 100"
+                            preserveAspectRatio="none"
+                            aria-hidden="true"
+                        >
+                            <polyline
+                                points={chartPoints
+                                    .map((point) => `${point.x},${point.y}`)
+                                    .join(" ")}></polyline>
+                            {
+                                chartPoints.map((point) => (
+                                    <line
+                                        x1={point.x}
+                                        y1={point.y}
+                                        x2={point.x}
+                                        y2={point.y}
+                                    />
+                                ))
+                            }
+                        </svg>
+                        {
+                            chartPoints.map((point) => (
+                                <span
+                                    class="stats-chart-value"
+                                    style={`left: ${point.x}%; bottom: ${100 - point.y}%`}
+                                >
+                                    {point.count}
+                                </span>
+                            ))
+                        }
+                    </div>
+
+                    <ol
+                        class="stats-chart-x-ticks"
+                        style={`grid-template-columns: repeat(${incidentsPerMonth.length}, minmax(0, 1fr))`}
+                    >
+                        {
+                            incidentsPerMonth.map((entry) => (
+                                <li>
+                                    {new Date(entry.month).toLocaleDateString(
+                                        "en-GB",
+                                        {
+                                            month: "short",
+                                            year: "2-digit",
+                                            timeZone: "UTC",
+                                        },
+                                    )}
+                                </li>
+                            ))
+                        }
+                    </ol>
+
+                    <span class="stats-chart-x-title">Month</span>
+                </div>
             </section>
         </div>
     </div>
@@ -142,6 +231,89 @@ const commonCompanies = getMostCommonlyAffectedCompanies();
     .stats-company-list li span:last-child {
         color: var(--color-text-muted);
         white-space: nowrap;
+    }
+
+    .stats-card--wide {
+        grid-column: 1 / -1;
+    }
+
+    .stats-chart {
+        display: grid;
+        grid-template-columns: auto auto minmax(0, 1fr);
+        grid-template-rows: 12rem auto auto;
+        column-gap: 0.5rem;
+        margin-top: 2rem;
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        color: var(--color-text-muted);
+    }
+
+    .stats-chart-y-title {
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+        text-align: center;
+    }
+
+    .stats-chart-y-ticks {
+        position: relative;
+        min-width: 2ch;
+    }
+
+    .stats-chart-y-ticks span {
+        position: absolute;
+        right: 0;
+        transform: translateY(50%);
+    }
+
+    .stats-chart-plot {
+        position: relative;
+        border-left: 1px solid var(--color-border);
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .stats-chart-plot svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+    }
+
+    .stats-chart-plot polyline,
+    .stats-chart-plot line {
+        fill: none;
+        stroke: var(--color-accent);
+        stroke-linejoin: round;
+        stroke-linecap: round;
+        vector-effect: non-scaling-stroke;
+    }
+
+    .stats-chart-plot polyline {
+        stroke-width: 2;
+    }
+
+    .stats-chart-plot line {
+        stroke-width: 8;
+    }
+
+    .stats-chart-value {
+        position: absolute;
+        transform: translate(-50%, -0.5rem);
+        color: var(--color-text);
+    }
+
+    .stats-chart-x-ticks {
+        grid-column: 3;
+        display: grid;
+        list-style: none;
+        padding: 0;
+        margin: 0.5rem 0 0;
+        text-align: center;
+    }
+
+    .stats-chart-x-title {
+        grid-column: 3;
+        text-align: center;
+        margin-top: 0.25rem;
     }
 
     @media (max-width: 600px) {
