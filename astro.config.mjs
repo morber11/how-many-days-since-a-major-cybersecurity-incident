@@ -9,7 +9,7 @@ const debugMedia = mediaFlagIndex === -1 ? undefined : process.argv[mediaFlagInd
 
 export default defineConfig({
     output: "static",
-    site: "https://howmanydayswithoutamajorcybersecurityincident.com",
+    site: "https://howmanydayssinceamajorcybersecurityincident.morber11.workers.dev",
     adapter: cloudflare(),
     integrations: [svelte()],
     vite: {
