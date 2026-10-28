@@ -54,10 +54,26 @@ const isActive = (path: string) =>
 </html>
 
 <script>
-    import { getMediaItems, getOrPickMediaIndex } from "../lib/media";
+    import {
+        findMediaIndex,
+        getMediaItems,
+        getOrPickMediaIndex,
+    } from "../lib/media";
 
     const items = getMediaItems();
-    const index = getOrPickMediaIndex();
+    const debugMedia: string | undefined = import.meta.env.DEBUG_MEDIA;
+    
+    const index = debugMedia
+        ? findMediaIndex(debugMedia)
+        : getOrPickMediaIndex();
+
+    if (index === -1) {
+        const ids = items.map((item) => item.id).join(", ");
+        throw new Error(
+            `unknown media id "${debugMedia}", expected one of: ${ids}`,
+        );
+    }
+
     const currentItem = items[index];
 
     const img = document.querySelector<HTMLImageElement>(".corner-img");

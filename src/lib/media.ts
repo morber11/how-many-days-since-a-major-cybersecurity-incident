@@ -1,6 +1,7 @@
 import { fireflies } from "./effects";
 
 export interface MediaItem {
+    id: string;
     image: string;
     audio?: string;
     width?: number;
@@ -18,21 +19,25 @@ export interface MediaItem {
 // so adding it as a property means we can modify it in code
 // MediaItems are preparing - please wait warmly
 const items: MediaItem[] = [
-    { image: "/images/raymoo.png", audio: "/audio/eosd-titlescreen.mp3", width: 256, height: 256, volume: 0.5 },
-    { image: "/images/npm-left-pad-incident.png", audio: "/audio/pcb-titlescreen.mp3", width: 128, height: 256, volume: 0.4 },
-    { image: "/images/merchant.png", audio: "/audio/sa-titlescreen.mp3", width: 128, height: 256, volume: 0.4 },
-    { image: "/images/myon.png", audio: "/audio/in-titlescreen.mp3", width: 128, height: 256, volume: 0.4 },
-    { image: "/images/usc.png", audio: "/audio/pofv-titlescreen.mp3", width: 128, height: 256, volume: 0.5, optionalFunction: plsRemberClick },
-    { image: "/images/ayayayaayayayaayayaya.png", audio: "/audio/mof-titlescreen.mp3", width: 128, height: 256, volume: 0.4 },
-    { image: "/images/snae.png", audio: "/audio/ufo-titlescreen.mp3", width: 128, height: 256, volume: 0.5 },
-    { image: "/images/ohayou.png", audio: "/audio/td-titlescreen.mp3", width: 128, height: 256, volume: 0.5 },
-    { image: "/images/seija.png", audio: "/audio/ddc-titlescreen.mp3", width: 128, height: 256, volume: 0.5, optionalFunction: seijaClick },
-    { image: "/images/misty.png", audio: "/audio/song-of-the-night-sparrow.mp3", width: 128, height: 256, volume: 0.5 },
-    { image: "/images/wrigglin.png", audio: "/audio/illusionary-night-ghostly-eyes.mp3", width: 128, height: 256, volume: 0.5, optionalFunction: wrigglinClick },
+    { id: "reimu", image: "/images/raymoo.png", audio: "/audio/eosd-titlescreen.mp3", width: 256, height: 256, volume: 0.5 },
+    { id: "sakuya", image: "/images/npm-left-pad-incident.png", audio: "/audio/pcb-titlescreen.mp3", width: 128, height: 256, volume: 0.4 },
+    { id: "marissa", image: "/images/merchant.png", audio: "/audio/sa-titlescreen.mp3", width: 128, height: 256, volume: 0.4 },
+    { id: "youmu", image: "/images/myon.png", audio: "/audio/in-titlescreen.mp3", width: 128, height: 256, volume: 0.4 },
+    { id: "yuuka", image: "/images/usc.png", audio: "/audio/pofv-titlescreen.mp3", width: 128, height: 256, volume: 0.5, optionalFunction: plsRemberClick },
+    { id: "aya", image: "/images/ayayayaayayayaayayaya.png", audio: "/audio/mof-titlescreen.mp3", width: 128, height: 256, volume: 0.4 },
+    { id: "sanae", image: "/images/snae.png", audio: "/audio/ufo-titlescreen.mp3", width: 128, height: 256, volume: 0.5 },
+    { id: "kyouko", image: "/images/ohayou.png", audio: "/audio/td-titlescreen.mp3", width: 128, height: 256, volume: 0.5 },
+    { id: "seija", image: "/images/seija.png", audio: "/audio/ddc-titlescreen.mp3", width: 128, height: 256, volume: 0.5, optionalFunction: seijaClick },
+    { id: "mystia", image: "/images/misty.png", audio: "/audio/song-of-the-night-sparrow.mp3", width: 128, height: 256, volume: 0.5 },
+    { id: "wriggle", image: "/images/wrigglin.png", audio: "/audio/illusionary-night-ghostly-eyes.mp3", width: 128, height: 256, volume: 0.5, optionalFunction: wrigglinClick },
 ];
 
 export function getMediaItems(): MediaItem[] {
     return items;
+}
+
+export function findMediaIndex(id: string): number {
+    return items.findIndex((item) => item.id === id.toLowerCase());
 }
 
 export function selectMediaItem(index: number): MediaItem {

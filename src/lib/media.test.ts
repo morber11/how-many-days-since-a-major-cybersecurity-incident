@@ -3,6 +3,7 @@ import {
     getMediaItems,
     selectMediaItem,
     pickRandomMediaItem,
+    findMediaIndex,
     getOrPickMediaIndex
 } from './media';
 
@@ -32,8 +33,21 @@ describe('pickRandomMediaItem', () => {
     });
 });
 
+describe('findMediaIndex', () => {
+    it('matches ids regardless of case', () => {
+        const index = findMediaIndex('Seija');
+
+        expect(index).toBe(findMediaIndex('seija'));
+        expect(getMediaItems()[index].id).toBe('seija');
+    });
+
+    it('returns -1 for an unknown id', () => {
+        expect(findMediaIndex('nobody')).toBe(-1);
+    });
+});
+
 describe('Seija media', () => {
-    const seija = getMediaItems().find((item) => item.image === '/images/seija.png');
+    const seija = getMediaItems().find((item) => item.id === 'seija');
 
     afterEach(() => {
         vi.restoreAllMocks();
