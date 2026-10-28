@@ -1,3 +1,5 @@
+import { fireflies } from "./effects";
+
 export interface MediaItem {
     image: string;
     audio?: string;
@@ -26,7 +28,7 @@ const items: MediaItem[] = [
     { image: "/images/ohayou.png", audio: "/audio/td-titlescreen.mp3", width: 128, height: 256, volume: 0.5 },
     { image: "/images/seija.png", audio: "/audio/ddc-titlescreen.mp3", width: 128, height: 256, volume: 0.5, optionalFunction: seijaClick },
     { image: "/images/misty.png", audio: "/audio/song-of-the-night-sparrow.mp3", width: 128, height: 256, volume: 0.5 },
-    { image: "/images/wrigglin.png", audio: "/audio/illusionary-night-ghostly-eyes.mp3", width: 128, height: 256, volume: 0.5 },
+    { image: "/images/wrigglin.png", audio: "/audio/illusionary-night-ghostly-eyes.mp3", width: 128, height: 256, volume: 0.5, optionalFunction: wrigglinClick },
 ];
 
 export function getMediaItems(): MediaItem[] {
@@ -94,4 +96,8 @@ function seijaClick() {
     }
 
     return { audio: "/audio/ddc-titlescreen.mp3" };
+}
+
+function wrigglinClick() {
+    return { onPlay: fireflies };
 }

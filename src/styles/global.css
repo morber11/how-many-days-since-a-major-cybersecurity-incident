@@ -195,6 +195,41 @@ footer a:hover {
     height: auto;
 }
 
+.effect-overlay {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.effect-vignette {
+    background:
+        radial-gradient(circle at 0 0, rgba(0, 0, 0, 0.7), transparent 40%),
+        radial-gradient(circle at 100% 0, rgba(0, 0, 0, 0.7), transparent 40%),
+        radial-gradient(circle at 0 100%, rgba(0, 0, 0, 0.8), transparent 45%),
+        radial-gradient(circle at 100% 100%, rgba(0, 0, 0, 0.8), transparent 45%);
+}
+
+.firefly {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, #fbffd0, #c8ff5a 60%, transparent);
+    box-shadow: 0 0 8px 3px rgba(200, 255, 90, 0.6);
+    animation: firefly-flicker 3s ease-in-out infinite;
+}
+
+@keyframes firefly-flicker {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
+}
+
 @media (max-width: 600px) {
     nav {
         flex-direction: column;
