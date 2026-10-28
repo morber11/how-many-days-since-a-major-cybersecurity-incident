@@ -84,12 +84,19 @@ function seijaClick() {
             onPlay: (image: HTMLImageElement, page: HTMLElement, audio: HTMLAudioElement) => {
                 page.style.transition = "transform 1s ease-in-out";
 
+                const invertScroll = (event: WheelEvent) => {
+                    event.preventDefault();
+                    window.scrollBy(event.deltaX, -event.deltaY);
+                };
+
                 const flipTimer = window.setTimeout(() => {
                     page.style.transform = "rotateX(180deg)";
+                    window.addEventListener("wheel", invertScroll, { passive: false });
                 }, 2000 + Math.random() * 1000);
 
                 const reset = () => {
                     window.clearTimeout(flipTimer);
+                    window.removeEventListener("wheel", invertScroll);
                     image.style.transform = "";
                     page.style.transform = "";
                 };
