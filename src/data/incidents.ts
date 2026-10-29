@@ -49,6 +49,7 @@ export const COMPANY = {
     RUST: "Rust",
     SHIPMONK: "ShipMonk",
     SONICWALL: "Sonicwall",
+    SONY_NETWORK_COMMUNICATIONS: "Sony Network Communications",
     TEXAS_STATE_GOVERNMENT: "Texas State Government",
     THE_VATICAN: "The Vatican",
     TIMES_CAR: "Times Car",
@@ -80,6 +81,20 @@ export interface Incident {
 // is always treated as the most recent incident
 // run npm `run sort` to sort automatically
 export const incidents: Incident[] = [
+    {
+        date: "2026-10-28",
+        title: "Sony Network Communications data breach exposes 2.5 million records",
+        company: COMPANY.SONY_NETWORK_COMMUNICATIONS,
+        description: "An unauthorized party compromised internal systems at the internet service provider subsidiary, exposing personal information belonging to current and former subscribers",
+        sourceUrl: "https://archive.is/9XswA",
+    },
+    {
+        date: "2026-10-28",
+        title: "Data of more than 40,000 Homeland Security employees leaked online",
+        company: COMPANY.DHS,
+        description: "A hacker published records containing personally identifiable information belonging to department personnel. The compromised data includes sensitive records for staff from Customs and Border Protection and Immigration and Customs Enforcement",
+        sourceUrl: "https://archive.is/9jTmV",
+    },
     {
         date: "2026-10-27",
         title: "Energy giant ENGIE discloses data breach affecting customers",
