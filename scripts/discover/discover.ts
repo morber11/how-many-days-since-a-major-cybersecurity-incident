@@ -130,7 +130,14 @@ async function main(): Promise<void> {
     }
 
     console.log(`asking the LLM to pick incidents from ${articles.length} articles, this can take a few minutes`);
-    const candidates = await classify(options.provider, articles, incidentsInMonthBefore(options.from), COMPANY);
+    let candidates: Candidate[];
+
+    try {
+        candidates = await classify(options.provider, articles, incidentsInMonthBefore(options.from), COMPANY);
+    } catch (error) {
+        console.error(`could not get incidents from ${options.provider.model.modelId}: ${error}`);
+        process.exit(1);
+    }
 
     if (candidates.length === 0) {
         console.log("no new incidents found");
