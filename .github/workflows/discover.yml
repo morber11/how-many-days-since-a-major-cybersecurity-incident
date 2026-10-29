@@ -1,6 +1,6 @@
 name: discover incidents
 
-# only scheduled and manual runs, so pull requests (including from forks) can never reach the secret
+# run at an odd minute to avoid colliding with other scheduled jobs
 on:
   schedule:
     - cron: "17 6 * * *"
