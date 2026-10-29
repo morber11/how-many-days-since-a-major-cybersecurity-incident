@@ -30,6 +30,7 @@ export const COMPANY = {
     GITHUB: "Github (Microsoft)",
     GMO_INTERNET_GROUP: "GMO Internet Group",
     HUGGING_FACE: "Hugging Face",
+    IRHYTHM: "iRhythm",
     JETBRAINS: "JetBrains",
     JFROG_ARTIFACTORY: "JFrog Artifactory",
     MASTRA: "Mastra",
@@ -81,6 +82,13 @@ export interface Incident {
 // is always treated as the most recent incident
 // run npm `run sort` to sort automatically
 export const incidents: Incident[] = [
+    {
+        date: "2026-10-29",
+        title: "iRhythm data breach affects 8.2 million people",
+        company: COMPANY.IRHYTHM,
+        description: "Hackers stole personal information along with account and device data from third-party-hosted business applications used by the digital healthcare provider",
+        sourceUrl: "https://www.securityweek.com/hhs-filing-puts-irhythm-data-breach-toll-at-8-2-million/", // TODO: archive manually
+    },
     {
         date: "2026-10-28",
         title: "Sony Network Communications data breach exposes 2.5 million records",
