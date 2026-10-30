@@ -7,6 +7,7 @@ export const COMPANY = {
     APOLLO_GLOBAL_MANAGEMENT: "Apollo Global Management",
     AUSTRALIA_NATIONAL_HEALTHCARE_AGENCY: "Australia National Healthcare Agency",
     BAE_SYSTEMS: "BAE Systems",
+    BINANCE: "Binance",
     BOSTON_SCIENTIFIC: "Boston Scientific",
     BRAZILIAN_GOVERNMENT: "Brazilian Government",
     BURGER_KING_JAPAN: "Burger King Japan",
@@ -24,6 +25,7 @@ export const COMPANY = {
     EMUDHRA: "eMudhra",
     ENGIE: "ENGIE",
     FBI: "FBI",
+    FLORIDA_DEPARTMENT_OF_EDUCATION: "Florida Department of Education",
     FOSS: "FOSS",
     FOSS_JQWIK: "FOSS/jqwik",
     FRAMEWORK: "Framework",
@@ -88,6 +90,21 @@ export const incidents: Incident[] = [
         company: COMPANY.IRHYTHM,
         description: "Hackers stole personal information along with account and device data from third-party-hosted business applications used by the digital healthcare provider",
         sourceUrl: "https://www.securityweek.com/hhs-filing-puts-irhythm-data-breach-toll-at-8-2-million/", // TODO: archive manually
+    },
+    {
+        date: "2026-10-29",
+        title: "Binance hit by record $6.3 billion cryptocurrency theft",
+        company: COMPANY.BINANCE,
+        description: "The cryptocurrency exchange suffered a breach linked to a compromised DevOps engineer laptop that led to the theft of billions in digital assets. Blockchain investigators attributed the attack to North Korea, while stablecoin issuers and exchanges moved to freeze billions of dollars in stolen funds",
+        sourceUrl: "https://therecord.media/binance-hit-by-record-6-billion-crypto-hack", // TODO: archive manually
+        additionalNotes: "Largest cryptocurrency theft in history",
+    },
+    {
+        date: "2026-10-29",
+        title: "Florida Department of Education breach exposes data of 4.9 million people",
+        company: COMPANY.FLORIDA_DEPARTMENT_OF_EDUCATION,
+        description: "Unauthorized access to the Florida Student Financial Aid website compromised sensitive personal records. The exposed information included Social Security numbers belonging to approximately 4.9 million individuals",
+        sourceUrl: "https://databreaches.net/2026/10/29/florida-education-department-says-data-breach-may-affect-4-9-million-people/", // TODO: archive manually
     },
     {
         date: "2026-10-28",
