@@ -47,6 +47,7 @@ export const COMPANY = {
     NIKKEI: "Nikkei",
     ORIGIN_ENERGY: "Origin Energy",
     PHP: "PHP",
+    POLYMARKET: "Polymarket",
     QUEST_DIAGNOSTICS: "Quest Diagnostics",
     REVOLUT: "Revolut",
     RUST: "Rust",
@@ -105,6 +106,13 @@ export const incidents: Incident[] = [
         company: COMPANY.FLORIDA_DEPARTMENT_OF_EDUCATION,
         description: "Unauthorized access to the Florida Student Financial Aid website compromised sensitive personal records. The exposed information included Social Security numbers belonging to approximately 4.9 million individuals",
         sourceUrl: "https://databreaches.net/2026/10/29/florida-education-department-says-data-breach-may-affect-4-9-million-people/", // TODO: archive manually
+    },
+    {
+        date: "2026-10-29",
+        title: "Polymarket halts trading after supply chain attack drains $2.5 million",
+        company: COMPANY.POLYMARKET,
+        description: "The prediction market platform temporarily suspended trading after attackers compromised a third-party website monitoring service to inject cryptocurrency-draining JavaScript. The malicious script hijacked active user sessions and siphoned approximately $2.5 million in digital assets",
+        sourceUrl: "https://www.bleepingcomputer.com/news/security/polymarket-halts-trading-after-crypto-draining-script-breach-25m-traced/", // TODO: archive manually
     },
     {
         date: "2026-10-28",
