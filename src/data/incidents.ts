@@ -93,6 +93,28 @@ export const incidents: Incident[] = [
         sourceUrl: "https://archive.is/sHCjO",
     },
     {
+        date: "2026-10-29",
+        title: "Binance suffers record $6.3 billion cryptocurrency theft",
+        company: COMPANY.BINANCE,
+        description: "The exchange linked the intrusion to a compromised DevOps engineer laptop, allowing attackers suspected of working for North Korea to siphon digital assets before nearly $3 billion was frozen on-chain",
+        sourceUrl: "https://www.bleepingcomputer.com/news/security/binance-links-63-billion-crypto-theft-to-compromised-devops-laptop/", // TODO: archive manually
+        additionalNotes: "Largest cryptocurrency theft in history",
+    },
+    {
+        date: "2026-10-29",
+        title: "Florida Department of Education data breach exposes 4.9 million Social Security numbers",
+        company: COMPANY.FLORIDA_DEPARTMENT_OF_EDUCATION,
+        description: "Unauthorized access to the Florida Student Financial Aid website compromised personal information and Social Security numbers belonging to millions of applicants after attackers breached the system in mid-October",
+        sourceUrl: "https://therecord.media/florida-warns-5-million-affected-financial-aid-site-breach", // TODO: archive manually
+    },
+    {
+        date: "2026-10-29",
+        title: "Polymarket halts trading after supply chain attack drains $2.5 million",
+        company: COMPANY.POLYMARKET,
+        description: "Attackers compromised a third-party website monitoring service to inject malicious cryptocurrency-draining JavaScript that hijacked active user sessions",
+        sourceUrl: "https://www.bleepingcomputer.com/news/security/polymarket-halts-trading-after-crypto-draining-script-breach-25m-traced/", // TODO: archive manually
+    },
+    {
         date: "2026-10-28",
         title: "Sony Network Communications data breach exposes 2.5 million records",
         company: COMPANY.SONY_NETWORK_COMMUNICATIONS,
