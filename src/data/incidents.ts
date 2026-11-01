@@ -86,6 +86,13 @@ export interface Incident {
 // run npm `run sort` to sort automatically
 export const incidents: Incident[] = [
     {
+        date: "2026-10-30",
+        title: "Malicious Claude Code extension on Cursor marketplace plants SSH backdoors",
+        company: COMPANY.ANTHROPIC,
+        description: "The malicious update was distributed under the extension's legitimate publisher identity for approximately eleven hours, exposing up to 5,000 developers to malware designed to establish persistent remote access. Cursor temporarily shut down its extension marketplace while revoking the compromised release",
+        sourceUrl: "https://www.bleepingcomputer.com/news/security/malicious-claude-code-extension-on-cursor-planted-ssh-backdoors/", // TODO: archive manually
+    },
+    {
         date: "2026-10-29",
         title: "iRhythm data breach affects 8.2 million individuals",
         company: COMPANY.IRHYTHM_TECHNOLOGIES,
