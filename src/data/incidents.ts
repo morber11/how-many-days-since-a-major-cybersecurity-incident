@@ -90,7 +90,7 @@ export const incidents: Incident[] = [
         title: "Malicious Claude Code extension on Cursor marketplace plants SSH backdoors",
         company: COMPANY.ANTHROPIC,
         description: "The malicious update was distributed under the extension's legitimate publisher identity for approximately eleven hours, exposing up to 5,000 developers to malware designed to establish persistent remote access. Cursor temporarily shut down its extension marketplace while revoking the compromised release",
-        sourceUrl: "https://www.bleepingcomputer.com/news/security/malicious-claude-code-extension-on-cursor-planted-ssh-backdoors/", // TODO: archive manually
+        sourceUrl: "https://archive.is/6xZkc",
     },
     {
         date: "2026-10-29",
@@ -104,7 +104,7 @@ export const incidents: Incident[] = [
         title: "Binance suffers record $6.3 billion cryptocurrency theft",
         company: COMPANY.BINANCE,
         description: "The exchange linked the intrusion to a compromised DevOps engineer laptop, allowing attackers suspected of working for North Korea to siphon digital assets before nearly $3 billion was frozen on-chain",
-        sourceUrl: "https://www.bleepingcomputer.com/news/security/binance-links-63-billion-crypto-theft-to-compromised-devops-laptop/", // TODO: archive manually
+        sourceUrl: "https://archive.is/HXjVx",
         additionalNotes: "Largest cryptocurrency theft in history",
     },
     {
@@ -112,14 +112,14 @@ export const incidents: Incident[] = [
         title: "Florida Department of Education data breach exposes 4.9 million Social Security numbers",
         company: COMPANY.FLORIDA_DEPARTMENT_OF_EDUCATION,
         description: "Unauthorized access to the Florida Student Financial Aid website compromised personal information and Social Security numbers belonging to millions of applicants after attackers breached the system in mid-October",
-        sourceUrl: "https://therecord.media/florida-warns-5-million-affected-financial-aid-site-breach", // TODO: archive manually
+        sourceUrl: "https://archive.is/jmEwS",
     },
     {
         date: "2026-10-29",
         title: "Polymarket halts trading after supply chain attack drains $2.5 million",
         company: COMPANY.POLYMARKET,
         description: "Attackers compromised a third-party website monitoring service to inject malicious cryptocurrency-draining JavaScript that hijacked active user sessions",
-        sourceUrl: "https://www.bleepingcomputer.com/news/security/polymarket-halts-trading-after-crypto-draining-script-breach-25m-traced/", // TODO: archive manually
+        sourceUrl: "https://archive.is/9NWtf",
     },
     {
         date: "2026-10-28",
