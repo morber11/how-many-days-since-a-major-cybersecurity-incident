@@ -99,7 +99,7 @@ export const incidents: Incident[] = [
         title: "Videostrong TV boxes shipped with backdoor for 1.3 million-device botnet",
         company: COMPANY.VIDEOSTRONG,
         description: "Google said the manufacturer intentionally included malicious software and sold access to criminals, who used the devices for ad fraud and to proxy other people's internet traffic",
-        sourceUrl: "https://thehackernews.com/2026/11/google-disrupts-13-million-device.html", // TODO: archive manually
+        sourceUrl: "https://archive.is/I2dik",
     },
     {
         date: "2026-10-30",
