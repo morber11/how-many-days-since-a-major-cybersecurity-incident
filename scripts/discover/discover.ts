@@ -3,14 +3,15 @@ import { parseArgs } from "node:util";
 import { COMPANY, incidents, type Incident } from "../../src/data/incidents.ts";
 import { sortIncidentsFile } from "../sort/sort-incidents-file.ts";
 import { archive } from "../archive/archive-service.ts";
+import { withRotation } from "../rotation/rotation.ts";
 import { classify } from "./classify.ts";
 import { fetchArticles } from "./feeds.ts";
 import { insertIncidents } from "./incidents-file.ts";
-import { isProviderName, PROVIDERS, type Provider } from "./providers.ts";
+import { availableProviders, isProviderBusy, isProviderName, PROVIDERS, type Provider } from "./providers.ts";
 import type { Candidate, NewEntry } from "./types.ts";
 
 const PROVIDER_NAMES = Object.keys(PROVIDERS).join("|");
-const USAGE = `usage: npm run discover -- [--from YYYY-MM-DD] [--to YYYY-MM-DD] [--provider ${PROVIDER_NAMES}]`;
+const USAGE = `usage: npm run discover -- [--from YYYY-MM-DD] [--to YYYY-MM-DD] [--provider ${PROVIDER_NAMES}[,...]]`;
 const DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
 const INCIDENTS_FILE = "src/data/incidents.ts";
 const DEFAULT_LOOKBACK_DAYS = 7;
@@ -18,7 +19,7 @@ const DEFAULT_LOOKBACK_DAYS = 7;
 interface Options {
     from: string;
     to: string;
-    provider: Provider;
+    providers: Provider[];
 }
 
 function daysBefore(date: string, days: number): string {
@@ -40,26 +41,27 @@ function parseOptions(): Options {
     const today = new Date().toISOString().slice(0, 10);
     const from = values.from ?? daysBefore(today, DEFAULT_LOOKBACK_DAYS);
     const to = values.to ?? today;
-    const providerName = values.provider ?? process.env.DISCOVER_PROVIDER ?? "anthropic";
+    const providerList = values.provider ?? process.env.DISCOVER_PROVIDER;
+    const providerNames = providerList ? providerList.split(",").map((name) => name.trim()) : Object.keys(PROVIDERS);
 
-    if (!DATE_PATTERN.test(from) || !DATE_PATTERN.test(to) || from > to || !isProviderName(providerName)) {
+    if (!DATE_PATTERN.test(from) || !DATE_PATTERN.test(to) || from > to || !providerNames.every(isProviderName)) {
         console.error(USAGE);
         process.exit(1);
     }
 
-    const provider = PROVIDERS[providerName];
+    const providers = availableProviders(providerNames);
 
-    console.log(`using provider ${providerName}, model ${provider.model.modelId}`);
-
-    if (!process.env[provider.apiKeyVariable]) {
-        console.error(`${provider.apiKeyVariable} is not set, set it in .env`);
+    if (providers.length === 0) {
+        console.error("none of the chosen providers have an api key set, set one in .env");
         process.exit(1);
     }
+
+    console.log(`using providers ${providers.map((provider) => provider.model.modelId).join(", ")}`);
 
     return {
         from: from,
         to: to,
-        provider: provider,
+        providers: providers,
     };
 }
 
@@ -133,9 +135,16 @@ async function main(): Promise<void> {
     let candidates: Candidate[];
 
     try {
-        candidates = await classify(options.provider, articles, incidentsInMonthBefore(options.from), COMPANY);
+        candidates = await withRotation(options.providers, (provider) => {
+            console.log(`asking ${provider.model.modelId}`);
+
+            return classify(provider, articles, incidentsInMonthBefore(options.from), COMPANY);
+        }, {
+            shouldRotate: isProviderBusy,
+            onRotate: (provider, error) => console.warn(`${provider.model.modelId} is busy, trying the next provider: ${error}`),
+        });
     } catch (error) {
-        console.error(`could not get incidents from ${options.provider.model.modelId}: ${error}`);
+        console.error(`could not get incidents: ${error}`);
         process.exit(1);
     }
 

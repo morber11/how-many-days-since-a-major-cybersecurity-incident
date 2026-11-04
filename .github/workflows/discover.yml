@@ -16,7 +16,8 @@ jobs:
   discover:
     runs-on: ubuntu-latest
     timeout-minutes: 45
-    # store GEMINI_API_KEY in this environment and restrict it to master in the repo settings
+    # store the provider API keys in this environment and restrict it to master in the repo settings
+    # providers without a key are skipped, set the DISCOVER_PROVIDER variable (e.g. gemini,deepseek) to change the order
     environment: discover
     permissions:
       contents: write
@@ -35,8 +36,11 @@ jobs:
 
       - name: discover
         env:
+          DISCOVER_PROVIDER: ${{ vars.DISCOVER_PROVIDER }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: npm run discover -- --provider gemini --from "$(date -u -d '2 days ago' +%F)"
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: npm run discover -- --from "$(date -u -d '2 days ago' +%F)"
 
       - name: open pull request
         env:

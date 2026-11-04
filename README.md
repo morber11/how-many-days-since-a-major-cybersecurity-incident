@@ -38,13 +38,14 @@ npm run discover -- --from 2026-10-10 --to 2026-10-14
 ```
 
 - Both dates are optional. `--from` defaults to a week ago and `--to` defaults to today
-- Requires an API key for the chosen LLM provider in `.env`. The provider is `anthropic` unless `DISCOVER_PROVIDER` in `.env` or `--provider` says otherwise
+- Requires an API key in `.env` for at least one LLM provider. Providers are tried in order and the next one is used when one stays busy or rate limited after retries. Providers without an API key are skipped
+- By default every provider in `scripts/discover/providers.ts` is tried in the order listed there. `DISCOVER_PROVIDER` in `.env` or `--provider` take a comma separated list such as `gemini,deepseek` to pick the providers and their order
 
 ```bash
 ANTHROPIC_API_KEY=[YOUR API KEY]
 DEEPSEEK_API_KEY=[YOUR API KEY]
 GEMINI_API_KEY=[YOUR API KEY]
-DISCOVER_PROVIDER=deepseek
+DISCOVER_PROVIDER=gemini,deepseek
 ```
 
 - Entries whose `sourceUrl` is not an archive.is link (usually marked `// TODO: archive manually`) could not be archived automatically, likely due to timeout (archive can take a while if it's not already done) or captcha. Run `npm run archive` to retry them
