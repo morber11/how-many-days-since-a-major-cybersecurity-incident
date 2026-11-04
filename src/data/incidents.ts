@@ -29,6 +29,7 @@ export const COMPANY = {
     FOSS: "FOSS",
     FOSS_JQWIK: "FOSS/jqwik",
     FRAMEWORK: "Framework",
+    FRENCH_NATIONAL_BLOOD_SERVICE: "French national blood service",
     GITHUB: "Github (Microsoft)",
     GMO_INTERNET_GROUP: "GMO Internet Group",
     HUGGING_FACE: "Hugging Face",
@@ -64,6 +65,7 @@ export const COMPANY = {
     US_CYBERSECURITY_AND_INFRASTRUCTURE_SECURITY_AGENCY: "U.S. Cybersecurity and Infrastructure Security Agency (CISA)",
     VALVE: "Valve",
     VARIOUS: "Various",
+    VIDEOSTRONG: "Videostrong Technology",
     WIRELESS_TELEGRAPH_AND_SIGNAL_COMPANY: "The Wireless Telegraph & Signal Company",
     ZOOM: "Zoom",
 } as const;
@@ -85,6 +87,20 @@ export interface Incident {
 // is always treated as the most recent incident
 // run npm `run sort` to sort automatically
 export const incidents: Incident[] = [
+    {
+        date: "2026-11-04",
+        title: "French national blood service cold storage units targeted in cyberattack",
+        company: COMPANY.FRENCH_NATIONAL_BLOOD_SERVICE,
+        description: "Cold-storage facilities used by the service were reportedly manipulated overnight, with units containing blood samples set to reach 110 degrees Celsius",
+        sourceUrl: "https://databreaches.net/2026/11/03/french-blood-storage-units-targeted-in-cyberattack/", // TODO: archive manually
+    },
+    {
+        date: "2026-11-02",
+        title: "Videostrong TV boxes shipped with backdoor for 1.3 million-device botnet",
+        company: COMPANY.VIDEOSTRONG,
+        description: "Google said the manufacturer intentionally included malicious software and sold access to criminals, who used the devices for ad fraud and to proxy other people's internet traffic",
+        sourceUrl: "https://thehackernews.com/2026/11/google-disrupts-13-million-device.html", // TODO: archive manually
+    },
     {
         date: "2026-10-30",
         title: "Malicious Claude Code extension on Cursor marketplace plants SSH backdoors",
@@ -190,7 +206,7 @@ export const incidents: Incident[] = [
         title: "Critical security issue affecting PHP",
         company: COMPANY.PHP,
         description: "Organisations which rely on the PHP programming language are being told they should install a significant software update today - or consider taking their websites offline",
-        sourceUrl: "https://archive.is/mR3W1", 
+        sourceUrl: "https://archive.is/mR3W1",
         additionalNotes: ""
         // 2026-10-21 the day the internet burned down
     },
