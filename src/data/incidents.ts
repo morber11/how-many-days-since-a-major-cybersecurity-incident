@@ -2,6 +2,7 @@
 // run npm `run sort` to sort automatically
 export const COMPANY = {
     AHOLD_DELHAIZE: "Ahold Delhaize",
+    AMADEUS: "Amadeus",
     AMGEN: "Amgen",
     ANTHROPIC: "Anthropic",
     APOLLO_GLOBAL_MANAGEMENT: "Apollo Global Management",
@@ -15,9 +16,11 @@ export const COMPANY = {
     CENTERPOINT_ENERGY: "CenterPoint Energy",
     CERT_POLSKA: "CERT Polska",
     CEVA_LOGISTICS: "Ceva Logistics",
+    CHAINALYSIS: "Chainalysis",
     CHICK_FIL_A: "Chick-fil-A",
     COLDCARD: "Coldcard",
     CONNECTWISE: "ConnectWise",
+    CREDIT_MUTUEL_ARKEA: "Crédit Mutuel Arkéa",
     DAHUA: "Dahua",
     DEFENSE_MANPOWER_DATA_CENTER: "Defense Manpower Data Center",
     DHS: "DHS",
@@ -88,11 +91,32 @@ export interface Incident {
 // run npm `run sort` to sort automatically
 export const incidents: Incident[] = [
     {
+        date: "2026-11-05",
+        title: "Chainalysis confirms cyberattack exposing data of all users",
+        company: COMPANY.CHAINALYSIS,
+        description: "The blockchain analysis provider disclosed that account data belonging to all its clients, including law enforcement and national security organizations, was exposed during a cyberattack",
+        sourceUrl: "https://therecord.media/chainalysis-all-users-hit-by-agentic-cyberattack", // TODO: archive manually
+    },
+    {
         date: "2026-11-04",
         title: "French national blood service cold storage units targeted in cyberattack",
         company: COMPANY.FRENCH_NATIONAL_BLOOD_SERVICE,
         description: "Cold-storage facilities used by the service were reportedly manipulated overnight, with units containing blood samples set to reach 110 degrees Celsius",
         sourceUrl: "https://databreaches.net/2026/11/03/french-blood-storage-units-targeted-in-cyberattack/", // TODO: archive manually
+    },
+    {
+        date: "2026-11-04",
+        title: "Crédit Mutuel Arkéa loses $133 million in cyber heist",
+        company: COMPANY.CREDIT_MUTUEL_ARKEA,
+        description: "Attackers carried out unauthorized transfers from the French bank's own accounts after compromising an external supplier",
+        sourceUrl: "https://therecord.media/french-bank-confirms-cyber-heist", // TODO: archive manually
+    },
+    {
+        date: "2026-11-04",
+        title: "Amadeus breach compromises customer data across major Asian airlines",
+        company: COMPANY.AMADEUS,
+        description: "Carriers including Japan Airlines, Cathay Pacific, Singapore Airlines, and Korean Air disclosed data breaches stemming from a cyberattack against the global travel technology vendor",
+        sourceUrl: "https://therecord.media/asian-airlines-announce-data-breach-it-provider-incident", // TODO: archive manually
     },
     {
         date: "2026-11-02",
