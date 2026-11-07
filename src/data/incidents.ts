@@ -24,6 +24,7 @@ export const COMPANY = {
     DAHUA: "Dahua",
     DEFENSE_MANPOWER_DATA_CENTER: "Defense Manpower Data Center",
     DHS: "DHS",
+    DIGICERT: "DigiCert",
     EDUCATIONAL_TESTING_SERVICE: "Educational Testing Service",
     EMUDHRA: "eMudhra",
     ENGIE: "ENGIE",
@@ -90,6 +91,13 @@ export interface Incident {
 // is always treated as the most recent incident
 // run npm `run sort` to sort automatically
 export const incidents: Incident[] = [
+    {
+        date: "2026-11-06",
+        title: "DigiCert data breach exposes customer information and identity documents",
+        company: COMPANY.DIGICERT,
+        description: "The certificate authority disclosed that an internal business system was mistakenly exposed to the internet during a server migration, allowing unauthorized access. Compromised records include contact details and identity verification documents submitted by business customers",
+        sourceUrl: "https://databreaches.net/2026/11/06/digicert-data-breach-exposes-customer-information-identity-documents/", // TODO: archive manually
+    },
     {
         date: "2026-11-05",
         title: "Chainalysis confirms cyberattack exposing data of all users",
