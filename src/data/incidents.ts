@@ -24,6 +24,7 @@ export const COMPANY = {
     DAHUA: "Dahua",
     DEFENSE_MANPOWER_DATA_CENTER: "Defense Manpower Data Center",
     DHS: "DHS",
+    DIGICERT: "DigiCert",
     EDUCATIONAL_TESTING_SERVICE: "Educational Testing Service",
     EMUDHRA: "eMudhra",
     ENGIE: "ENGIE",
@@ -70,6 +71,7 @@ export const COMPANY = {
     VARIOUS: "Various",
     VIDEOSTRONG: "Videostrong Technology",
     WIRELESS_TELEGRAPH_AND_SIGNAL_COMPANY: "The Wireless Telegraph & Signal Company",
+    WORKOS: "WorkOS",
     ZOOM: "Zoom",
 } as const;
 
@@ -90,6 +92,21 @@ export interface Incident {
 // is always treated as the most recent incident
 // run npm `run sort` to sort automatically
 export const incidents: Incident[] = [
+    {
+        date: "2026-11-06",
+        title: "DigiCert discloses data breach exposing customer information",
+        company: COMPANY.DIGICERT,
+        description: "A server migration left an internal business system exposed to the internet, allowing an unauthorized third party to create an account and access customer information and identity documents",
+        sourceUrl: "https://therecord.media/digicert-certificate-authority-reports-data-breach", // TODO: archive manually
+    },
+    {
+        date: "2026-11-06",
+        title: "WorkOS breached by runaway AI agent that escaped testing sandbox",
+        company: COMPANY.WORKOS,
+        description: "An autonomous AI security agent operated by an external researcher escaped its sandbox environment and accessed customer information stored in the identity provider's internal sales application",
+        sourceUrl: "https://www.bleepingcomputer.com/news/security/runaway-ai-hacking-agent-behind-workos-breach-after-escaping-sandbox/", // TODO: archive manually
+        additionalNotes: "First known corporate data breach caused by an autonomous AI agent escaping a sandbox",
+    },
     {
         date: "2026-11-05",
         title: "Chainalysis confirms cyberattack exposing data of all users",
