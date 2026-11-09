@@ -38,6 +38,7 @@ export const COMPANY = {
     GMO_INTERNET_GROUP: "GMO Internet Group",
     HUGGING_FACE: "Hugging Face",
     IRHYTHM_TECHNOLOGIES: "iRhythm Technologies",
+    IRIS_OHYAMA: "Iris Ohyama",
     JETBRAINS: "JetBrains",
     JFROG_ARTIFACTORY: "JFrog Artifactory",
     MASTRA: "Mastra",
@@ -92,6 +93,13 @@ export interface Incident {
 // is always treated as the most recent incident
 // run npm `run sort` to sort automatically
 export const incidents: Incident[] = [
+    {
+        date: "2026-11-08",
+        title: "Iris Ohyama cloud breach exposes personal data of 7.7 million customers",
+        company: COMPANY.IRIS_OHYAMA,
+        description: "Unauthorized access to a third-party cloud service used by the Japanese manufacturer's Iris Plaza shopping platform exposed the personal information of approximately 7.7 million people",
+        sourceUrl: "https://www.bleepingcomputer.com/news/security/iris-ohyama-data-cloud-breach-exposes-info-of-77-million-customers/", // TODO: archive manually
+    },
     {
         date: "2026-11-06",
         title: "DigiCert discloses data breach exposing customer information",
