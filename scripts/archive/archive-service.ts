@@ -11,17 +11,9 @@ const WAYBACK_URL = "https://web.archive.org";
 
 type SnapshotLookup = { found: true; shortLink: string } | { found: false };
 
-async function request(url: string, redirect: "follow" | "manual" = "follow"): Promise<Response> {
-    try {
-        return await fetch(url, { redirect, headers: HEADERS });
-    } catch (error) {
-        throw new Error(`could not reach ${new URL(url).host}: ${(error as TypeError).cause}`, { cause: error });
-    }
-}
-
 async function fetchPage(url: string): Promise<string> {
     for (let attempt = 1; attempt <= CAPTCHA_MAX_ATTEMPTS; attempt++) {
-        const response = await request(url);
+        const response = await fetch(url, { headers: HEADERS });
         const page = await response.text();
 
         const gotCaptcha = response.status === 429 || /captcha/i.test(page);
@@ -50,7 +42,7 @@ async function getShortLink(snapshotUrl: string): Promise<string> {
 }
 
 async function findSnapshot(url: string): Promise<SnapshotLookup> {
-    const response = await request(`${ARCHIVE_URL}/timegate/${url}`, "manual");
+    const response = await fetch(`${ARCHIVE_URL}/timegate/${url}`, { redirect: "manual", headers: HEADERS });
 
     if (response.status === 404) {
         return { found: false };
@@ -89,7 +81,7 @@ async function archiveOnArchiveIs(url: string): Promise<string> {
 }
 
 async function archiveOnWayback(url: string): Promise<string> {
-    const response = await request(`${WAYBACK_URL}/save/${url}`, "manual");
+    const response = await fetch(`${WAYBACK_URL}/save/${url}`, { redirect: "manual", headers: HEADERS });
 
     const location = response.headers.get("location");
     if (response.status !== 302 || !location) {
