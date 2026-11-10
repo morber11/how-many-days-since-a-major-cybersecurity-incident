@@ -8,6 +8,7 @@ export const COMPANY = {
     APOLLO_GLOBAL_MANAGEMENT: "Apollo Global Management",
     AUSTRALIA_NATIONAL_HEALTHCARE_AGENCY: "Australia National Healthcare Agency",
     BAE_SYSTEMS: "BAE Systems",
+    BEGET: "Beget",
     BINANCE: "Binance",
     BOSTON_SCIENTIFIC: "Boston Scientific",
     BRAZILIAN_GOVERNMENT: "Brazilian Government",
@@ -54,6 +55,7 @@ export const COMPANY = {
     ORIGIN_ENERGY: "Origin Energy",
     PHP: "PHP",
     POLYMARKET: "Polymarket",
+    QUBOLE: "Qubole",
     QUEST_DIAGNOSTICS: "Quest Diagnostics",
     REVOLUT: "Revolut",
     RUST: "Rust",
@@ -69,6 +71,7 @@ export const COMPANY = {
     UNM_HEALTH: "UNM Health",
     US_CYBERSECURITY_AND_INFRASTRUCTURE_SECURITY_AGENCY: "U.S. Cybersecurity and Infrastructure Security Agency (CISA)",
     VALVE: "Valve",
+    VANDERBILT_UNIVERSITY: "Vanderbilt University",
     VARIOUS: "Various",
     VIDEOSTRONG: "Videostrong Technology",
     WIRELESS_TELEGRAPH_AND_SIGNAL_COMPANY: "The Wireless Telegraph & Signal Company",
@@ -93,6 +96,27 @@ export interface Incident {
 // is always treated as the most recent incident
 // run npm `run sort` to sort automatically
 export const incidents: Incident[] = [
+    {
+        date: "2026-11-09",
+        title: "Russian cloud provider Beget forced to rebuild infrastructure after wiper attack",
+        company: COMPANY.BEGET,
+        description: "Threat actors deployed data-wiping malware across the hosting provider's systems, destroying cloud infrastructure and forcing technical teams to reconstruct the environment from scratch",
+        sourceUrl: "https://web.archive.org/web/20261110150317/https://www.bleepingcomputer.com/news/security/russian-cloud-firm-beget-rebuilds-from-scratch-after-data-wiper-attack/",
+    },
+    {
+        date: "2026-11-09",
+        title: "Hackers breach customer cloud environments in Qubole supply chain attack",
+        company: COMPANY.QUBOLE,
+        description: "Attackers leveraged compromised credentials from the data lake platform's trusted AWS account to break into customer cloud environments between October 14 and October 26. Cloud security firm Wiz reported that intruders exfiltrated stored secrets, encryption keys, and sensitive data from over a dozen organizations",
+        sourceUrl: "https://thehackernews.com/2026/11/hackers-exploit-quboles-trusted-aws.html", // TODO: archive manually
+    },
+    {
+        date: "2026-11-09",
+        title: "Vanderbilt University shuts down campus systems amid BYOD ransomware attack",
+        company: COMPANY.VANDERBILT_UNIVERSITY,
+        description: "The university urged students and employees to turn off computers and disconnect from campus Wi-Fi as malicious software spread through internal networks. The BYOD ransomware operation claimed responsibility, stating it encrypted databases and stole student, employee, and research files",
+        sourceUrl: "https://web.archive.org/web/20261110150314/https://www.bleepingcomputer.com/news/security/vanderbilt-university-hit-in-byod-ransomware-attack-data-theft-claimed/",
+    },
     {
         date: "2026-11-08",
         title: "Iris Ohyama cloud breach exposes personal data of 7.7 million customers",
