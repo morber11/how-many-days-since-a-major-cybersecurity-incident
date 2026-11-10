@@ -98,21 +98,21 @@ export const incidents: Incident[] = [
         title: "Iris Ohyama cloud breach exposes personal data of 7.7 million customers",
         company: COMPANY.IRIS_OHYAMA,
         description: "Unauthorized access to a third-party cloud service used by the Japanese manufacturer's Iris Plaza shopping platform exposed the personal information of approximately 7.7 million people",
-        sourceUrl: "https://www.bleepingcomputer.com/news/security/iris-ohyama-data-cloud-breach-exposes-info-of-77-million-customers/", // TODO: archive manually
+        sourceUrl: "https://web.archive.org/web/20261110135536/https://www.bleepingcomputer.com/news/security/iris-ohyama-data-cloud-breach-exposes-info-of-77-million-customers/",
     },
     {
         date: "2026-11-06",
         title: "DigiCert discloses data breach exposing customer information",
         company: COMPANY.DIGICERT,
         description: "A server migration left an internal business system exposed to the internet, allowing an unauthorized third party to create an account and access customer information and identity documents",
-        sourceUrl: "https://therecord.media/digicert-certificate-authority-reports-data-breach", // TODO: archive manually
+        sourceUrl: "https://web.archive.org/web/20261110135535/https://therecord.media/digicert-certificate-authority-reports-data-breach",
     },
     {
         date: "2026-11-06",
         title: "WorkOS breached by runaway AI agent that escaped testing sandbox",
         company: COMPANY.WORKOS,
         description: "An autonomous AI security agent operated by an external researcher escaped its sandbox environment and accessed customer information stored in the identity provider's internal sales application",
-        sourceUrl: "https://www.bleepingcomputer.com/news/security/runaway-ai-hacking-agent-behind-workos-breach-after-escaping-sandbox/", // TODO: archive manually
+        sourceUrl: "https://web.archive.org/web/20261110135536/https://www.bleepingcomputer.com/news/security/runaway-ai-hacking-agent-behind-workos-breach-after-escaping-sandbox/",
         additionalNotes: "First known corporate data breach caused by an autonomous AI agent escaping a sandbox",
     },
     {
@@ -120,7 +120,7 @@ export const incidents: Incident[] = [
         title: "Chainalysis confirms cyberattack exposing data of all users",
         company: COMPANY.CHAINALYSIS,
         description: "The blockchain analysis provider disclosed that account data belonging to all its clients, including law enforcement and national security organizations, was exposed during a cyberattack",
-        sourceUrl: "https://therecord.media/chainalysis-all-users-hit-by-agentic-cyberattack", // TODO: archive manually
+        sourceUrl: "https://web.archive.org/web/20261110135610/https://therecord.media/chainalysis-all-users-hit-by-agentic-cyberattack",
     },
     {
         date: "2026-11-04",
@@ -134,14 +134,14 @@ export const incidents: Incident[] = [
         title: "Crédit Mutuel Arkéa loses $133 million in cyber heist",
         company: COMPANY.CREDIT_MUTUEL_ARKEA,
         description: "Attackers carried out unauthorized transfers from the French bank's own accounts after compromising an external supplier",
-        sourceUrl: "https://therecord.media/french-bank-confirms-cyber-heist", // TODO: archive manually
+        sourceUrl: "https://web.archive.org/web/20261110133819/https://therecord.media/french-bank-confirms-cyber-heist",
     },
     {
         date: "2026-11-04",
         title: "Amadeus breach compromises customer data across major Asian airlines",
         company: COMPANY.AMADEUS,
         description: "Carriers including Japan Airlines, Cathay Pacific, Singapore Airlines, and Korean Air disclosed data breaches stemming from a cyberattack against the global travel technology vendor",
-        sourceUrl: "https://therecord.media/asian-airlines-announce-data-breach-it-provider-incident", // TODO: archive manually
+        sourceUrl: "https://web.archive.org/web/20261110135646/https://therecord.media/asian-airlines-announce-data-breach-it-provider-incident",
     },
     {
         date: "2026-11-02",
