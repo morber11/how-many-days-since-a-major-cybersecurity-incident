@@ -10,9 +10,17 @@ const SHORT_LINK_PATTERN = /id="SHARE_SHORTLINK"[^>]*value="https?:\/\/archive\.
 
 type SnapshotLookup = { found: true; shortLink: string } | { found: false };
 
+async function request(url: string, init: { redirect?: "manual" } = {}): Promise<Response> {
+    try {
+        return await fetch(url, Object.assign({}, init, { headers: HEADERS }));
+    } catch (error) {
+        throw new Error(`could not reach archive.is: ${(error as TypeError).cause}`, { cause: error });
+    }
+}
+
 async function fetchPage(url: string): Promise<string> {
     for (let attempt = 1; attempt <= CAPTCHA_MAX_ATTEMPTS; attempt++) {
-        const response = await fetch(url, { headers: HEADERS });
+        const response = await request(url);
         const page = await response.text();
 
         const gotCaptcha = response.status === 429 || /captcha/i.test(page);
@@ -41,7 +49,7 @@ async function getShortLink(snapshotUrl: string): Promise<string> {
 }
 
 async function findSnapshot(url: string): Promise<SnapshotLookup> {
-    const response = await fetch(`${ARCHIVE_URL}/timegate/${url}`, { redirect: "manual", headers: HEADERS });
+    const response = await request(`${ARCHIVE_URL}/timegate/${url}`, { redirect: "manual" });
 
     if (response.status === 404) {
         return { found: false };
