@@ -1,4 +1,4 @@
-const UNARCHIVED_SOURCE_URL_PATTERN = /sourceUrl: "(?!https:\/\/archive\.is\/)([^"]+)"(,?)(?: \/\/.*)?/g;
+const UNARCHIVED_SOURCE_URL_PATTERN = /sourceUrl: "(?!https:\/\/(?:archive\.is|web\.archive\.org)\/)([^"]+)"(,?)(?: \/\/.*)?/g;
 
 export function findUnarchivedUrls(source: string): string[] {
     return Array.from(source.matchAll(UNARCHIVED_SOURCE_URL_PATTERN), (match) => match[1]);

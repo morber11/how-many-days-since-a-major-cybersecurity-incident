@@ -21,4 +21,20 @@ describe("archive", () => {
 
         expect(await archive("https://example.com/a")).toBe("https://archive.is/CHewb");
     });
+
+    it("saves the page on the wayback machine when archive.is cannot be reached", async () => {
+        const fetchMock = vi.fn(async (input: string) => {
+            if (input.startsWith("https://archive.is/")) {
+                throw new TypeError("fetch failed", { cause: new Error("connect timeout") });
+            }
+
+            return new Response(null, {
+                status: 302,
+                headers: { location: "https://web.archive.org/web/20261110133819/https://example.com/a" },
+            });
+        });
+        vi.stubGlobal("fetch", fetchMock);
+
+        expect(await archive("https://example.com/a")).toBe("https://web.archive.org/web/20261110133819/https://example.com/a");
+    });
 });

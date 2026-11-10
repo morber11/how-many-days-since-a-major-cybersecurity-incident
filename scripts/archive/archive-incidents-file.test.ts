@@ -15,11 +15,14 @@ const SOURCE = [
     "    {",
     '        sourceUrl: "https://example.com/d"',
     "    },",
+    "    {",
+    '        sourceUrl: "https://web.archive.org/web/20261110133819/https://example.com/e",',
+    "    },",
     "];",
 ].join("\r\n");
 
 describe("findUnarchivedUrls", () => {
-    it("finds every source url that is not an archive.is link, whatever the comment", () => {
+    it("finds every source url that is not an archive.is or wayback machine link, whatever the comment", () => {
         expect(findUnarchivedUrls(SOURCE)).toEqual([
             "https://example.com/a",
             "https://example.com/c",
