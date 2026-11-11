@@ -52,8 +52,10 @@ export const COMPANY = {
     NETSCALAR: "NetScalar",
     NIHON_KOTSU: "Nihon Kotsu",
     NIKKEI: "Nikkei",
+    NITORI: "Nitori",
     ORIGIN_ENERGY: "Origin Energy",
     PHP: "PHP",
+    POLISH_GOVERNMENT: "Polish Government",
     POLYMARKET: "Polymarket",
     QUBOLE: "Qubole",
     QUEST_DIAGNOSTICS: "Quest Diagnostics",
@@ -96,6 +98,20 @@ export interface Incident {
 // is always treated as the most recent incident
 // run npm `run sort` to sort automatically
 export const incidents: Incident[] = [
+    {
+        date: "2026-11-11",
+        title: "Poland shuts down nationwide ePUAP platform following cyberattack",
+        company: COMPANY.POLISH_GOVERNMENT,
+        description: "The intrusion targeted the core system used by citizens and businesses to communicate with public agencies and complete official administrative tasks online. Authorities took the nationwide service offline to contain the incident and investigate the disruption",
+        sourceUrl: "https://web.archive.org/web/20261111132439/https://therecord.media/poland-shuts-down-government-services-platform-cyberattack",
+    },
+    {
+        date: "2026-11-10",
+        title: "Nitori confirms data breach exposing 37.6 million customer records",
+        company: COMPANY.NITORI,
+        description: "An attacker gained unauthorized access to internal network systems belonging to the Japanese home furnishings retailer. The compromised data includes names, addresses, telephone numbers, and email addresses of customers",
+        sourceUrl: "https://web.archive.org/web/20261111140132/https://www.bleepingcomputer.com/news/security/japanese-furniture-giant-nitori-says-hackers-stole-376m-customer-records/",
+    },
     {
         date: "2026-11-09",
         title: "Russian cloud provider Beget forced to rebuild infrastructure after wiper attack",
