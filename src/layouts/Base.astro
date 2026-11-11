@@ -62,9 +62,11 @@ const isActive = (path: string) =>
 
 <script>
     import {
+        createAltClickRoll,
         findMediaIndex,
         getMediaItems,
         getOrPickMediaIndex,
+        type MediaItem,
     } from "../lib/media";
 
     const items = getMediaItems();
@@ -94,13 +96,23 @@ const isActive = (path: string) =>
     if (currentItem.width) img.width = currentItem.width;
     if (currentItem.height) img.height = currentItem.height;
 
+    const altClick = currentItem.altClick;
+    const rollAltClick = createAltClickRoll();
+
     let audio: HTMLAudioElement | undefined;
     img.addEventListener("click", () => {
         if (audio && !audio.paused) {
             audio.pause();
             audio.currentTime = 0;
         } else if (currentItem.audio) {
-            const overrides = currentItem.optionalFunction?.();
+            let overrides: Partial<MediaItem> | undefined;
+
+            if (altClick && rollAltClick(altClick)) {
+                overrides = altClick.media;
+            } else {
+                overrides = currentItem.optionalFunction?.();
+            }
+
             const effective = { ...currentItem, ...overrides };
 
             img.src = effective.image;

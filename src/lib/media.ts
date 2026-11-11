@@ -1,5 +1,11 @@
 import { fireflies, pageFlip } from "./effects";
 
+export interface AltClick {
+    chance: number;
+    chanceIncreasePerClick?: number;
+    media: Partial<MediaItem>;
+}
+
 export interface MediaItem {
     id: string;
     image: string;
@@ -10,6 +16,7 @@ export interface MediaItem {
     transform?: string;
     transition?: string;
     onPlay?: (image: HTMLImageElement, page: HTMLElement, audio: HTMLAudioElement) => void;
+    altClick?: AltClick;
     optionalFunction?: () => Partial<MediaItem> | undefined;
 }
 
@@ -23,11 +30,32 @@ const items: MediaItem[] = [
     { id: "sakuya", image: "/images/npm-left-pad-incident.png", audio: "/audio/pcb-titlescreen.mp3", width: 128, height: 256, volume: 0.4 },
     { id: "marissa", image: "/images/merchant.png", audio: "/audio/sa-titlescreen.mp3", width: 128, height: 256, volume: 0.4 },
     { id: "youmu", image: "/images/myon.png", audio: "/audio/in-titlescreen.mp3", width: 128, height: 256, volume: 0.4 },
-    { id: "yuuka", image: "/images/usc.png", audio: "/audio/pofv-titlescreen.mp3", width: 128, height: 256, volume: 0.5, optionalFunction: plsRemberClick },
+    {
+        id: "yuuka", image: "/images/usc.png", audio: "/audio/pofv-titlescreen.mp3", width: 128, height: 256, volume: 0.5,
+        altClick: {
+            chance: 0.1,
+            media: {
+                audio: "/audio/pls-rember.mp3",
+                image: "/images/pls-rember.png",
+            },
+            chanceIncreasePerClick: 0.20,
+        },
+    },
     { id: "aya", image: "/images/ayayayaayayayaayayaya.png", audio: "/audio/mof-titlescreen.mp3", width: 128, height: 256, volume: 0.4 },
     { id: "sanae", image: "/images/snae.png", audio: "/audio/ufo-titlescreen.mp3", width: 128, height: 256, volume: 0.5 },
     { id: "kyouko", image: "/images/ohayou.png", audio: "/audio/td-titlescreen.mp3", width: 128, height: 256, volume: 0.5 },
-    { id: "seija", image: "/images/seija.png", audio: "/audio/ddc-titlescreen.mp3", width: 128, height: 256, volume: 0.5, optionalFunction: seijaClick },
+    {
+        id: "seija", image: "/images/seija.png", audio: "/audio/ddc-titlescreen.mp3", width: 128, height: 256, volume: 0.5,
+        altClick: {
+            chance: 0.1,
+            media: {
+                audio: "/audio/reverse-ideology.mp3",
+                transition: "transform 0.5s ease-in-out",
+                onPlay: pageFlip,
+            },
+            chanceIncreasePerClick: 0.20,
+        },
+    },
     { id: "mystia", image: "/images/misty.png", audio: "/audio/song-of-the-night-sparrow.mp3", width: 128, height: 256, volume: 0.5 },
     { id: "wriggle", image: "/images/wrigglin.png", audio: "/audio/illusionary-night-ghostly-eyes.mp3", width: 128, height: 256, volume: 0.5, optionalFunction: wrigglinClick },
 ];
@@ -70,23 +98,29 @@ export function getOrPickMediaIndex(): number {
     return Number(storedIndex);
 }
 
+const DEFAULT_CHANCE_INCREASE_PER_CLICK = 0.05;
+
+export function createAltClickRoll() {
+    let misses = 0;
+
+    // either escalate the chance per alt click so
+    // you don't have to click a million times
+    // or just use Math.random()
+    return (altClick: AltClick): boolean => {
+        const increasePerClick = altClick.chanceIncreasePerClick ?? DEFAULT_CHANCE_INCREASE_PER_CLICK;
+        const chance = altClick.chance + misses * increasePerClick;
+
+        if (Math.random() < chance) {
+            misses = 0;
+            return true;
+        }
+
+        misses++;
+        return false;
+    };
+}
+
 /* put custom functions for the optionalFunction param down here */
-function plsRemberClick() {
-    return Math.random() < 0.1 ? { audio: "/audio/pls-rember.mp3", image: "/images/pls-rember.png" } : { audio: "/audio/pofv-titlescreen.mp3" };
-}
-
-function seijaClick() {
-    if (Math.random() < 0.1) {
-        return {
-            audio: "/audio/reverse-ideology.mp3",
-            transition: "transform 0.5s ease-in-out",
-            onPlay: pageFlip,
-        };
-    }
-
-    return { audio: "/audio/ddc-titlescreen.mp3" };
-}
-
 function wrigglinClick() {
     return { onPlay: fireflies };
 }

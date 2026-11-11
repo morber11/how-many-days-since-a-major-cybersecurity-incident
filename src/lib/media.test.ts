@@ -4,7 +4,8 @@ import {
     selectMediaItem,
     pickRandomMediaItem,
     findMediaIndex,
-    getOrPickMediaIndex
+    getOrPickMediaIndex,
+    createAltClickRoll
 } from './media';
 
 describe('getMediaItems', () => {
@@ -46,29 +47,63 @@ describe('findMediaIndex', () => {
     });
 });
 
-describe('Seija media', () => {
-    const seija = getMediaItems().find((item) => item.id === 'seija');
+describe('createAltClickRoll', () => {
+    const seijaAltClick = getMediaItems().find((item) => item.id === 'seija')?.altClick;
+    if (!seijaAltClick) throw new Error('seija has no alt click');
 
     afterEach(() => {
         vi.restoreAllMocks();
     });
 
-    it('uses the flipped reverse track for a random value below 0.1', () => {
+    it('fires for a random value below the chance', () => {
         vi.spyOn(Math, 'random').mockReturnValue(0.09);
+        const roll = createAltClickRoll();
 
-        const result = seija?.optionalFunction?.();
-
-        expect(result).toMatchObject({
-            audio: '/audio/reverse-ideology.mp3',
-        });
+        expect(roll(seijaAltClick)).toBe(true);
     });
 
-    it('uses the normal track for a random value at or above 0.1', () => {
+    it('does not fire for a random value at the chance', () => {
         vi.spyOn(Math, 'random').mockReturnValue(0.1);
+        const roll = createAltClickRoll();
 
-        const result = seija?.optionalFunction?.();
+        expect(roll(seijaAltClick)).toBe(false);
+    });
 
-        expect(result).toEqual({ audio: '/audio/ddc-titlescreen.mp3' });
+    it('rises after a miss', () => {
+        vi.spyOn(Math, 'random').mockReturnValue(0.12);
+        const roll = createAltClickRoll();
+
+        expect(roll(seijaAltClick)).toBe(false);
+        expect(roll(seijaAltClick)).toBe(true);
+    });
+
+    it('resets after a hit', () => {
+        vi.spyOn(Math, 'random').mockReturnValue(0.12);
+        const roll = createAltClickRoll();
+
+        roll(seijaAltClick);
+        roll(seijaAltClick);
+
+        expect(roll(seijaAltClick)).toBe(false);
+    });
+
+    it('does not rise when the per-click increase is 0', () => {
+        vi.spyOn(Math, 'random').mockReturnValue(0.12);
+        const roll = createAltClickRoll();
+        const altClick = { ...seijaAltClick, chanceIncreasePerClick: 0 };
+
+        expect(roll(altClick)).toBe(false);
+        expect(roll(altClick)).toBe(false);
+    });
+
+    it('rises by the per-click increase set on the alt click', () => {
+        vi.spyOn(Math, 'random').mockReturnValue(0.115);
+        const roll = createAltClickRoll();
+        const altClick = { ...seijaAltClick, chanceIncreasePerClick: 0.01 };
+
+        expect(roll(altClick)).toBe(false);
+        expect(roll(altClick)).toBe(false);
+        expect(roll(altClick)).toBe(true);
     });
 });
 
