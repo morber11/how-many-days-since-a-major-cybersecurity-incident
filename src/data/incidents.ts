@@ -42,6 +42,7 @@ export const COMPANY = {
     IRIS_OHYAMA: "Iris Ohyama",
     JETBRAINS: "JetBrains",
     JFROG_ARTIFACTORY: "JFrog Artifactory",
+    MAERSK: "Maersk",
     MASTRA: "Mastra",
     MCKESSON: "McKesson",
     META: "Meta (Facebook)",
@@ -61,6 +62,7 @@ export const COMPANY = {
     QUEST_DIAGNOSTICS: "Quest Diagnostics",
     REVOLUT: "Revolut",
     RUST: "Rust",
+    RYOHIN_KEIKAKU: "Ryohin Keikaku",
     SHIPMONK: "ShipMonk",
     SONICWALL: "Sonicwall",
     SONY_NETWORK_COMMUNICATIONS: "Sony Network Communications",
@@ -68,6 +70,7 @@ export const COMPANY = {
     THE_VATICAN: "The Vatican",
     TIMES_CAR: "Times Car",
     TREZOR: "Trezor",
+    TSMC: "TSMC",
     UK_GOVERNMENT: "UK Government",
     UNIVERSITY_OF_COPENHAGEN: "University of Copenhagen",
     UNM_HEALTH: "UNM Health",
@@ -99,11 +102,32 @@ export interface Incident {
 // run npm `run sort` to sort automatically
 export const incidents: Incident[] = [
     {
+        date: "2026-11-12",
+        title: "TSMC confirms employee data breach tied to cloud service provider",
+        company: COMPANY.TSMC,
+        description: "The world's leading semiconductor foundry said the leaked information matched data stored in a cloud service provider's systems and was unrelated to its operations or customer data. Hackers claimed to possess 46,000 employee records totaling 6.9GB",
+        sourceUrl: "https://web.archive.org/web/20261113152446/https://therecord.media/tsmc-confirms-employee-data-breach-cloud-provider",
+    },
+    {
+        date: "2026-11-12",
+        title: "Muji operator confirms data breach affecting over a million credit card numbers",
+        company: COMPANY.RYOHIN_KEIKAKU,
+        description: "Ryohin Keikaku President Shimizu Satoshi apologized for the breach, which exposed customer data including more than a million credit card numbers, some belonging to former members",
+        sourceUrl: "https://databreaches.net/2026/11/12/jpn-muji-operator-apologizes-for-data-breach/", // TODO: archive manually
+    },
+    {
         date: "2026-11-11",
         title: "Poland shuts down nationwide ePUAP platform following cyberattack",
         company: COMPANY.POLISH_GOVERNMENT,
         description: "The intrusion targeted the core system used by citizens and businesses to communicate with public agencies and complete official administrative tasks online. Authorities took the nationwide service offline to contain the incident and investigate the disruption",
         sourceUrl: "https://web.archive.org/web/20261111132439/https://therecord.media/poland-shuts-down-government-services-platform-cyberattack",
+    },
+    {
+        date: "2026-11-11",
+        title: "Maersk confirms data theft amid $5 million extortion attempt",
+        company: COMPANY.MAERSK,
+        description: "The shipping giant said unauthorized access and data extraction occurred on a local legacy system inherited from a previous acquisition. The WhiteArmor ransomware group claimed it stole 100GB of data and demanded $5 million",
+        sourceUrl: "https://web.archive.org/web/20261113163336/https://www.securityweek.com/maersk-confirms-data-theft-amid-5-million-extortion-attempt/",
     },
     {
         date: "2026-11-10",
