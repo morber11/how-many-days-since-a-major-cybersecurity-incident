@@ -19,6 +19,7 @@ export const COMPANY = {
     CEVA_LOGISTICS: "Ceva Logistics",
     CHAINALYSIS: "Chainalysis",
     CHICK_FIL_A: "Chick-fil-A",
+    CITY_OF_OSAKA: "City of Osaka",
     COLDCARD: "Coldcard",
     CONNECTWISE: "ConnectWise",
     CREDIT_MUTUEL_ARKEA: "Crédit Mutuel Arkéa",
@@ -101,6 +102,20 @@ export interface Incident {
 // is always treated as the most recent incident
 // run npm `run sort` to sort automatically
 export const incidents: Incident[] = [
+    {
+        date: "2026-11-13",
+        title: "City of Osaka discloses data breach affecting 1 million residents",
+        company: COMPANY.CITY_OF_OSAKA,
+        description: "The municipal government warned citizens to be on alert for suspicious emails claiming to come from official sources following the intrusion. The incident occurred amid a broader wave of cyberattacks affecting Japanese public and private sector infrastructure",
+        sourceUrl: "https://web.archive.org/web/20261115140714/https://therecord.media/city-of-osaka-japan-email-data-breach",
+    },
+    {
+        date: "2026-11-13",
+        title: "Trezor confirms hardware implants found in Safe 5 cryptocurrency wallets",
+        company: COMPANY.TREZOR,
+        description: "An investigation confirmed that devices sold by a Southeast Asian reseller contained rogue circuit boards that copy recovery seed phrases from the screen and transmit them to remote attackers over cellular networks",
+        sourceUrl: "https://web.archive.org/web/20261115051558/https://www.bleepingcomputer.com/news/cryptocurrency/trezor-confirms-crypto-stealing-implants-in-three-wallets-releases-fix/",
+    },
     {
         date: "2026-11-12",
         title: "TSMC confirms employee data breach tied to cloud service provider",
