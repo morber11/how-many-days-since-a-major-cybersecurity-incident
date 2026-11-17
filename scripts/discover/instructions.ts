@@ -33,6 +33,7 @@ Fields:
 - description: 1 to 3 factual sentences that add detail the title does not give, such as what data or systems were affected, how it happened, who is responsible, or how many people were affected. Never restate the title. Full stops between sentences are fine, but the description must not end with a full stop.
 - additionalNotes: only when there is genuinely notable context, for example "First known ...". Otherwise leave it out.
 - Do not use em dashes or en dashes.
+- Use words from the article itself in the title, description, and additionalNotes. This is required to avoid potential misinformation and to maintain accuracy
 
 Style examples from the existing data:
 {
