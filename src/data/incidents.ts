@@ -42,6 +42,7 @@ export const COMPANY = {
     IRIS_OHYAMA: "Iris Ohyama",
     JETBRAINS: "JetBrains",
     JFROG_ARTIFACTORY: "JFrog Artifactory",
+    LA_POSTE: "La Poste Group",
     MAERSK: "Maersk",
     MASTRA: "Mastra",
     MCKESSON: "McKesson",
@@ -54,6 +55,7 @@ export const COMPANY = {
     NIHON_KOTSU: "Nihon Kotsu",
     NIKKEI: "Nikkei",
     NITORI: "Nitori",
+    OPTIMIZELY: "Optimizely",
     ORIGIN_ENERGY: "Origin Energy",
     PHP: "PHP",
     POLISH_GOVERNMENT: "Polish Government",
@@ -71,6 +73,7 @@ export const COMPANY = {
     TIMES_CAR: "Times Car",
     TREZOR: "Trezor",
     TSMC: "TSMC",
+    UBER: "Uber",
     UK_GOVERNMENT: "UK Government",
     UNIVERSITY_OF_COPENHAGEN: "University of Copenhagen",
     UNM_HEALTH: "UNM Health",
@@ -101,6 +104,27 @@ export interface Incident {
 // is always treated as the most recent incident
 // run npm `run sort` to sort automatically
 export const incidents: Incident[] = [
+    {
+        date: "2026-11-17",
+        title: "Optimizely supply chain attack served malware on CNN, BBC and Zoom websites",
+        company: COMPANY.OPTIMIZELY,
+        description: "An attacker exploited a flaw in Optimizely Web Experimentation to plant malicious code in scripts that customer sites load from the service, exposing visitors at at least 178 organisations to card skimmers and iOS exploit kits",
+        sourceUrl: "https://web.archive.org/web/20261117041603/https://www.bleepingcomputer.com/news/security/optimizely-supply-chain-attack-delivers-malware-to-cnn-fox-news-bbc-salesforce-sites/",
+    },
+    {
+        date: "2026-11-17",
+        title: "Uber notifies nearly 150,000 drivers of data breach via Fireworks AI",
+        company: COMPANY.UBER,
+        description: "Names, addresses and driver's license numbers were stolen after attackers breached AI infrastructure provider Fireworks in early October",
+        sourceUrl: "https://web.archive.org/web/20261117084406/https://www.bleepingcomputer.com/news/security/uber-notifies-drivers-of-data-breach-affecting-nearly-150-000-people/",
+    },
+    {
+        date: "2026-11-15",
+        title: "Maileva hack exposes personal data of 22 million people",
+        company: COMPANY.LA_POSTE,
+        description: "The cyberattack on Maileva, the digital mail subsidiary of France's national postal operator, exposed the first names, last names and postal addresses of about 22 million people. The intrusion took place in mid-September",
+        sourceUrl: "https://databreaches.net/2026/11/15/hack-at-french-postal-unit-exposes-22-million-peoples-data/", // TODO: archive manually
+    },
     {
         date: "2026-11-12",
         title: "TSMC confirms employee data breach tied to cloud service provider",
