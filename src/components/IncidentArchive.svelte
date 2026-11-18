@@ -110,13 +110,12 @@
             <tr>
                 <td>{formatDate(inc.date)}</td>
                 <td>
-                    <span class="incident-title">{inc.title}</span>
-                    {#if inc.additionalNotes}
-                        <span class="incident-notes">{inc.additionalNotes}</span
-                        >
-                    {/if}
+                    <span class="incident-title" title={inc.title}>{inc.title}</span>
+                    <span class="incident-notes" title={inc.additionalNotes}>{inc.additionalNotes}</span>
                 </td>
-                <td class="incident-company-cell">{inc.company ?? "N/A"}</td>
+                <td class="incident-company-cell">
+                    <span class="incident-company" title={inc.company}>{inc.company ?? "N/A"}</span>
+                </td>
                 <td>
                     <a
                         href={inc.sourceUrl}
@@ -126,20 +125,28 @@
                 </td>
             </tr>
         {/each}
+
+        {#each { length: pageSize - pageIncidents.length }}
+            <tr class="filler-row" aria-hidden="true">
+                <td></td>
+                <td>
+                    <span class="incident-title"></span>
+                    <span class="incident-notes"></span>
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+        {/each}
     </tbody>
 </table>
 
 {#if totalPages > 1}
     <div class="pagination">
-        {#if currentPage > 1}
-            <button onclick={() => currentPage--}>&larr; Previous</button>
-        {/if}
+        <button disabled={currentPage === 1} onclick={() => currentPage--}>Previous</button>
 
         <span class="pagination-info">Page {currentPage} of {totalPages}</span>
 
-        {#if currentPage < totalPages}
-            <button onclick={() => currentPage++}>Next</button>
-        {/if}
+        <button disabled={currentPage === totalPages} onclick={() => currentPage++}>Next</button>
     </div>
 {/if}
 
@@ -193,8 +200,21 @@
 
     .archive-table {
         width: 100%;
+        table-layout: fixed;
         border-collapse: collapse;
         font-size: 0.9rem;
+    }
+
+    .archive-table th:nth-child(1) {
+        width: 8.5rem;
+    }
+
+    .archive-table th:nth-child(3) {
+        width: 10rem;
+    }
+
+    .archive-table th:nth-child(4) {
+        width: 4.5rem;
     }
 
     .archive-table th {
@@ -218,6 +238,10 @@
         background: #161616;
     }
 
+    .archive-table .filler-row {
+        visibility: hidden;
+    }
+
     .archive-table td:first-child {
         font-family: var(--font-mono);
         white-space: nowrap;
@@ -225,7 +249,17 @@
         font-size: 0.85rem;
     }
 
+    .archive-table .incident-title,
+    .archive-table .incident-company {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        overflow: hidden;
+    }
+
     .archive-table .incident-title {
+        height: 2lh;
         font-weight: 600;
     }
 
@@ -236,6 +270,10 @@
 
     .archive-table .incident-notes {
         display: block;
+        height: 1lh;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
         font-size: 0.8rem;
         font-style: italic;
         color: var(--color-text-muted);
@@ -243,8 +281,8 @@
     }
 
     .pagination {
-        display: flex;
-        justify-content: center;
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
         align-items: center;
         gap: 1.5rem;
         margin-top: 2rem;
@@ -261,8 +299,20 @@
         cursor: pointer;
     }
 
+    .pagination button:first-child {
+        justify-self: end;
+    }
+
+    .pagination button:last-child {
+        justify-self: start;
+    }
+
     .pagination button:hover {
         text-decoration: underline;
+    }
+
+    .pagination button:disabled {
+        visibility: hidden;
     }
 
     .pagination-info {
