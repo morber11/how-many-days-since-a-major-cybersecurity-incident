@@ -8,6 +8,7 @@ export interface Provider {
     model: Exclude<LanguageModel, string>;
     apiKeyVariable: string;
     providerOptions?: Record<string, Record<string, string | boolean>>;
+    batchLimit?: number;
 }
 
 const google = createGoogleGenerativeAI({ apiKey: process.env.GEMINI_API_KEY });
@@ -22,6 +23,8 @@ export const PROVIDERS = {
         model: groq("openai/gpt-oss-120b"),
         apiKeyVariable: "GROQ_API_KEY",
         providerOptions: { groq: { strictJsonSchema: false } },
+        // the free tier allows 8000 tokens per minute, and groq counts a few thousand of those for the response
+        batchLimit: 4500,
     },
     deepseek: {
         model: deepSeek("deepseek-flash"),

@@ -4,7 +4,7 @@ import { COMPANY, incidents, type Incident } from "../../src/data/incidents.ts";
 import { sortIncidentsFile } from "../sort/sort-incidents-file.ts";
 import { archive } from "../archive/archive-service.ts";
 import { withRotation } from "../rotation/rotation.ts";
-import { classify } from "./classify.ts";
+import { classify, classifyInBatches } from "./classify.ts";
 import { fetchArticles } from "./feeds.ts";
 import { insertIncidents } from "./incidents-file.ts";
 import { availableProviders, isProviderName, PROVIDERS, shouldTryNextProvider, type Provider } from "./providers.ts";
@@ -137,8 +137,13 @@ async function main(): Promise<void> {
     try {
         candidates = await withRotation(options.providers, (provider) => {
             console.log(`asking ${provider.model.modelId}`);
+            const recent = incidentsInMonthBefore(options.from);
 
-            return classify(provider, articles, incidentsInMonthBefore(options.from), COMPANY);
+            if (provider.batchLimit) {
+                return classifyInBatches(provider, articles, recent, COMPANY, provider.batchLimit);
+            }
+
+            return classify(provider, articles, recent, COMPANY);
         }, {
             shouldRotate: shouldTryNextProvider,
             onRotate: (provider, error) => console.warn(`${provider.model.modelId} failed, trying the next provider: ${error}`),
