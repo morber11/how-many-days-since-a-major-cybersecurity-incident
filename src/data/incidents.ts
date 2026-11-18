@@ -142,7 +142,7 @@ export const incidents: Incident[] = [
         date: "2026-11-18",
         title: "British hackers sentenced for GTA 6 data breach and crypto thefts",
         company: COMPANY.ROCKSTAR_GAMES,
-        description: "Two British hackers were sentenced after breaking into Rockstar Games’ servers to steal data from the Grand Theft Auto VI development environment and to steal millions of dollars in cryptocurrency",
+        description: "Two British hackers were sentenced after breaking into Rockstar Games' servers to steal data from the Grand Theft Auto VI development environment and to steal millions of dollars in cryptocurrency",
         sourceUrl: "https://techcrunch.com/2026/11/18/british-hackers-face-prison-for-gta-6-data-breach-and-crypto-thefts/", // TODO: archive manually
         additionalNotes: "First known conviction related to a video game data breach",
     },
@@ -178,14 +178,14 @@ export const incidents: Incident[] = [
         date: "2026-11-17",
         title: "Fandango warns of payment card data exposure",
         company: COMPANY.FANDANGO,
-        description: "Card numbers, CVVs, expiration dates and email addresses entered at Fandango’s ticketing checkout over four days in October may have been exposed",
+        description: "Card numbers, CVVs, expiration dates and email addresses entered at Fandango's ticketing checkout over four days in October may have been exposed",
         sourceUrl: "https://www.securityweek.com/fandango-warns-ticket-buyers-of-payment-card-data-exposure/", // TODO: archive manually
     },
     {
         date: "2026-11-17",
         title: "Access Dental Management Data Breach Impacts Over 340,000",
         company: COMPANY.ACCESS_DENTAL,
-        description: "The attackers compromised Access Dental’s network, exfiltrating personal, health and insurance data of more than 340,000 individuals",
+        description: "The attackers compromised Access Dental's network, exfiltrating personal, health and insurance data of more than 340,000 individuals",
         sourceUrl: "https://www.securityweek.com/access-dental-management-data-breach-impacts-over-340000/", // TODO: archive manually
     },
     {
@@ -206,7 +206,7 @@ export const incidents: Incident[] = [
         date: "2026-11-17",
         title: "Greiz-Ronneburg district hospital hit by ransomware attack",
         company: COMPANY.GREIZ_HOSPITAL,
-        description: "The hospital’s systems were crippled by an extortion‑focused ransomware attack that forced the emergency room to close and required a gradual restoration of services over several days",
+        description: "The hospital's systems were crippled by an extortion‑focused ransomware attack that forced the emergency room to close and required a gradual restoration of services over several days",
         sourceUrl: "https://databreaches.net/2026/11/17/germany-greiz-hospital-reopens-emergency-room-after-ransom-attack/", // TODO: archive manually
     },
     {
@@ -227,7 +227,7 @@ export const incidents: Incident[] = [
         date: "2026-11-16",
         title: "Barracuda Hacked Amid Surge in Artex-Powered Cyberattacks",
         company: COMPANY.BARRACUDA,
-        description: "Barracuda’s systems were breached by Chinese threat actors leveraging the Artex AI penetration testing framework",
+        description: "Barracuda's systems were breached by Chinese threat actors leveraging the Artex AI penetration testing framework",
         sourceUrl: "https://www.securityweek.com/barracuda-hacked-amid-surge-in-artex-powered-cyberattacks/", // TODO: archive manually
     },
     {
@@ -275,9 +275,9 @@ export const incidents: Incident[] = [
     },
     {
         date: "2026-11-13",
-        title: "Microsoft’s latest email outage turned into a full-blown global cloud crisis",
+        title: "Microsoft's latest email outage turned into a full-blown global cloud crisis",
         company: COMPANY.MICROSOFT,
-        description: "The daylong outage began with Outlook and Teams and expanded to take many of Microsoft’s cloud services offline, and the company says it is gradually restoring service",
+        description: "The daylong outage began with Outlook and Teams and expanded to take many of Microsoft's cloud services offline, and the company says it is gradually restoring service",
         sourceUrl: "https://techcrunch.com/2026/11/13/microsoft-latest-email-outage-turned-into-a-full-blown-global-cloud-crisis/", // TODO: archive manually
     },
     {
@@ -317,7 +317,7 @@ export const incidents: Incident[] = [
     },
     {
         date: "2026-11-12",
-        title: "Cyberattack on Fireworks AI allowed hackers to access Notion customers’ chat transcripts",
+        title: "Cyberattack on Fireworks AI allowed hackers to access Notion customers' chat transcripts",
         company: COMPANY.NOTION,
         description: "The breach exposed chat transcripts of Notion customers after Fireworks AI was compromised, marking the second data breach for Fireworks AI within months",
         sourceUrl: "https://web.archive.org/web/20261118160637/https://techcrunch.com/2026/11/16/jordan-belforts-new-ai-voice-startup-tone-wants-to-sell-like-the-wolf-of-wall-street/?sidebar=b",
@@ -360,7 +360,7 @@ export const incidents: Incident[] = [
     },
     {
         date: "2026-11-11",
-        title: "Fullerton Health server hit by cyberattack affecting migrant workers’ data",
+        title: "Fullerton Health server hit by cyberattack affecting migrant workers' data",
         company: COMPANY.FULLERTON_HEALTH,
         description: "Fullerton Health said a cyberattack compromised the server hosting its Migrant Worker Primary Care Plan, resulting in unauthorized access to personal data of migrant workers",
         sourceUrl: "https://databreaches.net/2026/11/11/sg-fullerton-health-server-hit-by-cyberattack-personal-data-of-migrant-workers-affected/", // TODO: archive manually
@@ -369,7 +369,7 @@ export const incidents: Incident[] = [
         date: "2026-11-11",
         title: "Cyberattack on AllUnited exposes personal data of members of over 350 Dutch sports clubs",
         company: COMPANY.MULTIPLE,
-        description: "A cyberattack on the AllUnited membership administration system forced more than 350 Dutch sports clubs to report a breach that exposed members’ personal information",
+        description: "A cyberattack on the AllUnited membership administration system forced more than 350 Dutch sports clubs to report a breach that exposed members' personal information",
         sourceUrl: "https://databreaches.net/2026/11/11/hundreds-of-dutch-sports-clubs-report-cyberattack-exposing-members-personal-data/", // TODO: archive manually
     },
     {
