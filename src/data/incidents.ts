@@ -1,6 +1,7 @@
 // for well known companies we want to have a consistent name across incidents
 // run npm `run sort` to sort automatically
 export const COMPANY = {
+    ACCESS_DENTAL: "Access Dental",
     AHOLD_DELHAIZE: "Ahold Delhaize",
     AMADEUS: "Amadeus",
     AMGEN: "Amgen",
@@ -8,6 +9,8 @@ export const COMPANY = {
     APOLLO_GLOBAL_MANAGEMENT: "Apollo Global Management",
     AUSTRALIA_NATIONAL_HEALTHCARE_AGENCY: "Australia National Healthcare Agency",
     BAE_SYSTEMS: "BAE Systems",
+    BAKER_TILLY: "Baker Tilly",
+    BARRACUDA: "Barracuda",
     BEGET: "Beget",
     BINANCE: "Binance",
     BOSTON_SCIENTIFIC: "Boston Scientific",
@@ -30,20 +33,27 @@ export const COMPANY = {
     EDUCATIONAL_TESTING_SERVICE: "Educational Testing Service",
     EMUDHRA: "eMudhra",
     ENGIE: "ENGIE",
+    EQUINOR: "Equinor",
+    FANDANGO: "Fandango",
     FBI: "FBI",
+    FIREWORKS_AI: "Fireworks AI",
     FLORIDA_DEPARTMENT_OF_EDUCATION: "Florida Department of Education",
     FOSS: "FOSS",
     FOSS_JQWIK: "FOSS/jqwik",
     FRAMEWORK: "Framework",
     FRENCH_NATIONAL_BLOOD_SERVICE: "French national blood service",
+    FUGAKU: "Fugaku supercomputer (RIKEN)",
+    FULLERTON_HEALTH: "Fullerton Health",
     GITHUB: "Github (Microsoft)",
     GMO_INTERNET_GROUP: "GMO Internet Group",
+    GREIZ_HOSPITAL: "Greiz-Ronneburg District Hospital",
     HUGGING_FACE: "Hugging Face",
     IRHYTHM_TECHNOLOGIES: "iRhythm Technologies",
     IRIS_OHYAMA: "Iris Ohyama",
     JETBRAINS: "JetBrains",
     JFROG_ARTIFACTORY: "JFrog Artifactory",
     LA_POSTE: "La Poste Group",
+    LEGOLAND: "Legoland",
     MAERSK: "Maersk",
     MASTRA: "Mastra",
     MCKESSON: "McKesson",
@@ -56,6 +66,8 @@ export const COMPANY = {
     NIHON_KOTSU: "Nihon Kotsu",
     NIKKEI: "Nikkei",
     NITORI: "Nitori",
+    NORTH_KOREA_HACKERS: "North Korean hackers",
+    NOTION: "Notion",
     OPTIMIZELY: "Optimizely",
     ORIGIN_ENERGY: "Origin Energy",
     PHP: "PHP",
@@ -64,14 +76,18 @@ export const COMPANY = {
     QUBOLE: "Qubole",
     QUEST_DIAGNOSTICS: "Quest Diagnostics",
     REVOLUT: "Revolut",
+    ROCKSTAR_GAMES: "Rockstar Games",
     RUST: "Rust",
     RYOHIN_KEIKAKU: "Ryohin Keikaku",
     SHIPMONK: "ShipMonk",
+    SILENTAIR: "SilentAir",
+    SOGO_HK: "Sogo",
     SONICWALL: "Sonicwall",
     SONY_NETWORK_COMMUNICATIONS: "Sony Network Communications",
     TEXAS_STATE_GOVERNMENT: "Texas State Government",
     THE_VATICAN: "The Vatican",
     TIMES_CAR: "Times Car",
+    TOR: "Tor Project",
     TREZOR: "Trezor",
     TSMC: "TSMC",
     UBER: "Uber",
@@ -85,6 +101,8 @@ export const COMPANY = {
     VIDEOSTRONG: "Videostrong Technology",
     WIRELESS_TELEGRAPH_AND_SIGNAL_COMPANY: "The Wireless Telegraph & Signal Company",
     WORKOS: "WorkOS",
+    WYNDHAM: "Wyndham",
+    YORK_UNIVERSITY: "York University",
     ZOOM: "Zoom",
 } as const;
 
@@ -106,6 +124,29 @@ export interface Incident {
 // run npm `run sort` to sort automatically
 export const incidents: Incident[] = [
     {
+        date: "2026-11-18",
+        title: "Equinor cyberattack disrupts internal services",
+        company: COMPANY.EQUINOR,
+        description: "The Norwegian energy giant reported a cyberattack on its IT systems that disrupted internal services. Equinor said the incident has not impacted oil and gas production",
+        sourceUrl: "https://web.archive.org/web/20261118133616/https://therecord.media/norway-equinor-cyberattack-energy",
+    },
+    {
+        date: "2026-11-18",
+        title: "Attackers Compromise Microsoft's Agent Framework PyPI Package to Steal Cloud Credentials",
+        company: COMPANY.MICROSOFT,
+        description: "The malicious versions 1.26.1 and 1.26.2 of the agent‑framework package were published on November 17, 2026 and are designed to execute a credential‑stealing payload each time Python starts, harvesting cloud service credentials from infected environments. The compromise was reported by multiple security firms including Aikido, Chainguard, Endor Labs and Google‑owned Wiz",
+        sourceUrl: "https://web.archive.org/web/20261118072022/https://thehackernews.com/2026/11/attackers-compromise-microsofts-agent.html",
+        additionalNotes: "First known supply‑chain attack on a PyPI package affecting cloud credentials",
+    },
+    {
+        date: "2026-11-18",
+        title: "British hackers sentenced for GTA 6 data breach and crypto thefts",
+        company: COMPANY.ROCKSTAR_GAMES,
+        description: "Two British hackers were sentenced after breaking into Rockstar Games’ servers to steal data from the Grand Theft Auto VI development environment and to steal millions of dollars in cryptocurrency",
+        sourceUrl: "https://techcrunch.com/2026/11/18/british-hackers-face-prison-for-gta-6-data-breach-and-crypto-thefts/", // TODO: archive manually
+        additionalNotes: "First known conviction related to a video game data breach",
+    },
+    {
         date: "2026-11-17",
         title: "Optimizely supply chain attack served malware on CNN, BBC and Zoom websites",
         company: COMPANY.OPTIMIZELY,
@@ -118,6 +159,76 @@ export const incidents: Incident[] = [
         company: COMPANY.UBER,
         description: "Names, addresses and driver's license numbers were stolen after attackers breached AI infrastructure provider Fireworks in early October",
         sourceUrl: "https://web.archive.org/web/20261117084406/https://www.bleepingcomputer.com/news/security/uber-notifies-drivers-of-data-breach-affecting-nearly-150-000-people/",
+    },
+    {
+        date: "2026-11-17",
+        title: "Japan takes Fugaku supercomputer offline after cyberattack",
+        company: COMPANY.FUGAKU,
+        description: "The Fugaku supercomputer operated by Japan's RIKEN Center for Computational Science was taken offline after a security breach, halting computational tasks for scientific research",
+        sourceUrl: "https://www.bleepingcomputer.com/news/security/japan-takes-fugaku-supercomputer-offlline-after-cyberattack/", // TODO: archive manually
+    },
+    {
+        date: "2026-11-17",
+        title: "Tor releases emergency update amid ongoing DDoS attack",
+        company: COMPANY.TOR,
+        description: "The Tor Project released a security update for its network relay software to strengthen defenses against an ongoing distributed denial‑service attack that overwhelmed relays and affected most operators, disrupting anonymous internet traffic for users worldwide",
+        sourceUrl: "https://www.bleepingcomputer.com/news/security/tor-releases-emergency-update-amid-ongoing-ddos-attack/", // TODO: archive manually
+    },
+    {
+        date: "2026-11-17",
+        title: "Fandango warns of payment card data exposure",
+        company: COMPANY.FANDANGO,
+        description: "Card numbers, CVVs, expiration dates and email addresses entered at Fandango’s ticketing checkout over four days in October may have been exposed",
+        sourceUrl: "https://www.securityweek.com/fandango-warns-ticket-buyers-of-payment-card-data-exposure/", // TODO: archive manually
+    },
+    {
+        date: "2026-11-17",
+        title: "Access Dental Management Data Breach Impacts Over 340,000",
+        company: COMPANY.ACCESS_DENTAL,
+        description: "The attackers compromised Access Dental’s network, exfiltrating personal, health and insurance data of more than 340,000 individuals",
+        sourceUrl: "https://www.securityweek.com/access-dental-management-data-breach-impacts-over-340000/", // TODO: archive manually
+    },
+    {
+        date: "2026-11-17",
+        title: "New GitDoor and GraphDoor Backdoors Turn GitHub and SharePoint Into Covert C2 Channels",
+        company: COMPANY.MULTIPLE,
+        description: "The campaign, dubbed Operation ShadowCloud by Kaspersky, delivered backdoors that leverage Microsoft SharePoint and GitHub to establish covert command‑and‑control channels. It has targeted government sectors in Asia and Africa, allowing attackers to maintain persistent access to compromised networks",
+        sourceUrl: "https://thehackernews.com/2026/11/new-gitdoor-and-graphdoor-backdoors.html", // TODO: archive manually
+    },
+    {
+        date: "2026-11-17",
+        title: "iPhone users targeted in major website security breach",
+        company: COMPANY.MULTIPLE,
+        description: "Hackers leveraged 178 popular websites to distribute malware that steals cryptocurrency and exploits vulnerabilities in iPhones and iPads, affecting users worldwide according to a Reuters investigation",
+        sourceUrl: "https://databreaches.net/2026/11/17/iphone-users-targeted-in-major-website-security-breach/", // TODO: archive manually
+    },
+    {
+        date: "2026-11-17",
+        title: "Greiz-Ronneburg district hospital hit by ransomware attack",
+        company: COMPANY.GREIZ_HOSPITAL,
+        description: "The hospital’s systems were crippled by an extortion‑focused ransomware attack that forced the emergency room to close and required a gradual restoration of services over several days",
+        sourceUrl: "https://databreaches.net/2026/11/17/germany-greiz-hospital-reopens-emergency-room-after-ransom-attack/", // TODO: archive manually
+    },
+    {
+        date: "2026-11-17",
+        title: "Legoland data leak exposes personal information and barcodes",
+        company: COMPANY.LEGOLAND,
+        description: "The breach leaked customer names, home addresses, phone numbers, and the barcode numbers used for annual passes. Legoland announced the leak on 14 November after discovering the unauthorized access",
+        sourceUrl: "https://databreaches.net/2026/11/16/customer-personal-information-leak-at-legoland-even-annual-pass-barcodes-stolen/", // TODO: archive manually
+    },
+    {
+        date: "2026-11-16",
+        title: "Cursor Supply Chain Attack Started at Fireworks AI",
+        company: COMPANY.FIREWORKS_AI,
+        description: "Threat actors stole an access key from Fireworks AI and used the credentials to publish malicious Claude Code extensions on the Cursor marketplace",
+        sourceUrl: "https://www.securityweek.com/cursor-supply-chain-attack-started-at-fireworks/", // TODO: archive manually
+    },
+    {
+        date: "2026-11-16",
+        title: "Barracuda Hacked Amid Surge in Artex-Powered Cyberattacks",
+        company: COMPANY.BARRACUDA,
+        description: "Barracuda’s systems were breached by Chinese threat actors leveraging the Artex AI penetration testing framework",
+        sourceUrl: "https://www.securityweek.com/barracuda-hacked-amid-surge-in-artex-powered-cyberattacks/", // TODO: archive manually
     },
     {
         date: "2026-11-15",
@@ -141,6 +252,35 @@ export const incidents: Incident[] = [
         sourceUrl: "https://web.archive.org/web/20261115051558/https://www.bleepingcomputer.com/news/cryptocurrency/trezor-confirms-crypto-stealing-implants-in-three-wallets-releases-fix/",
     },
     {
+        date: "2026-11-13",
+        title: "Baker Tilly Data Breach",
+        company: COMPANY.BAKER_TILLY,
+        description: "Baker Tilly was cited in a roundup of security news as having suffered a data breach",
+        sourceUrl: "https://www.securityweek.com/in-other-news-new-cisa-director-nominee-connected-car-hacking-baker-tilly-data-breach/", // TODO: archive manually
+    },
+    {
+        date: "2026-11-13",
+        title: "SilentAir Hackers Intercept Calls, SMS From Inside Mobile Networks",
+        company: COMPANY.SILENTAIR,
+        description: "The attackers compromised mobile network infrastructure to intercept voice calls and SMS messages, primarily targeting Taiwanese subscribers",
+        sourceUrl: "https://www.securityweek.com/silentair-hackers-intercept-calls-sms-from-inside-mobile-networks/", // TODO: archive manually
+    },
+    {
+        date: "2026-11-13",
+        title: "FBI Says North Korean Hackers Stole Over $400 Million in Crypto Using Deepfake Video Calls",
+        company: COMPANY.NORTH_KOREA_HACKERS,
+        description: "The U.S. Federal Bureau of Investigation confirmed that actors linked to North Korea stole more than $400 million in cryptocurrency through a social‑engineering scheme called FaceStealer that used deepfake video calls over the past 18 months",
+        sourceUrl: "https://web.archive.org/web/20261118064248/https://thehackernews.com/2026/11/fbi-says-north-korean-hackers-stole.html",
+        additionalNotes: "First known large‑scale crypto theft using deepfake calls",
+    },
+    {
+        date: "2026-11-13",
+        title: "Microsoft’s latest email outage turned into a full-blown global cloud crisis",
+        company: COMPANY.MICROSOFT,
+        description: "The daylong outage began with Outlook and Teams and expanded to take many of Microsoft’s cloud services offline, and the company says it is gradually restoring service",
+        sourceUrl: "https://techcrunch.com/2026/11/13/microsoft-latest-email-outage-turned-into-a-full-blown-global-cloud-crisis/", // TODO: archive manually
+    },
+    {
         date: "2026-11-12",
         title: "TSMC confirms employee data breach tied to cloud service provider",
         company: COMPANY.TSMC,
@@ -155,6 +295,34 @@ export const incidents: Incident[] = [
         sourceUrl: "https://databreaches.net/2026/11/12/jpn-muji-operator-apologizes-for-data-breach/", // TODO: archive manually
     },
     {
+        date: "2026-11-12",
+        title: "Attacker targets 60,000 GitHub repositories in credential theft campaign",
+        company: COMPANY.GITHUB,
+        description: "Using thousands of hijacked accounts, the wfx-loot campaign planted a CI secret stealer that ran in over 1,800 GitHub repositories",
+        sourceUrl: "https://www.securityweek.com/attacker-targets-60000-github-repositories-in-credential-theft-campaign/", // TODO: archive manually
+    },
+    {
+        date: "2026-11-12",
+        title: "Notion customer data compromised in Fireworks AI hack",
+        company: COMPANY.NOTION,
+        description: "The attackers accessed chat transcripts for fewer than 1% of Notion workspaces. Most transcripts were unattributable",
+        sourceUrl: "https://www.securityweek.com/notion-customer-data-compromised-in-fireworks-ai-hack/", // TODO: archive manually
+    },
+    {
+        date: "2026-11-12",
+        title: "Hong Kong Sogo data breach exposes personal information of up to 820,000 members",
+        company: COMPANY.SOGO_HK,
+        description: "The breach was disclosed by Sogo after unauthorised access to its systems, potentially exposing names, contact details and loyalty data of up to 820,000 members",
+        sourceUrl: "https://databreaches.net/2026/11/12/hong-kong-sogo-data-breach-puts-personal-information-of-820000-members-at-risk/", // TODO: archive manually
+    },
+    {
+        date: "2026-11-12",
+        title: "Cyberattack on Fireworks AI allowed hackers to access Notion customers’ chat transcripts",
+        company: COMPANY.NOTION,
+        description: "The breach exposed chat transcripts of Notion customers after Fireworks AI was compromised, marking the second data breach for Fireworks AI within months",
+        sourceUrl: "https://web.archive.org/web/20261118160637/https://techcrunch.com/2026/11/16/jordan-belforts-new-ai-voice-startup-tone-wants-to-sell-like-the-wolf-of-wall-street/?sidebar=b",
+    },
+    {
         date: "2026-11-11",
         title: "Poland shuts down nationwide ePUAP platform following cyberattack",
         company: COMPANY.POLISH_GOVERNMENT,
@@ -167,6 +335,42 @@ export const incidents: Incident[] = [
         company: COMPANY.MAERSK,
         description: "The shipping giant said unauthorized access and data extraction occurred on a local legacy system inherited from a previous acquisition. The WhiteArmor ransomware group claimed it stole 100GB of data and demanded $5 million",
         sourceUrl: "https://web.archive.org/web/20261113163336/https://www.securityweek.com/maersk-confirms-data-theft-amid-5-million-extortion-attempt/",
+    },
+    {
+        date: "2026-11-11",
+        title: "The $26 Million Cyber Heist Rocking a Small New Jersey Town",
+        company: COMPANY.VARIOUS,
+        description: "The incident involved a cybercriminal group stealing $26 million from the town of Cranbury, New Jersey, through a ransomware extortion scheme. Authorities say the attackers accessed municipal systems and demanded payment, resulting in the largest theft reported for a U.S. town",
+        sourceUrl: "https://databreaches.net/2026/11/11/the-26-million-cyber-heist-rocking-a-small-new-jersey-town/", // TODO: archive manually
+        additionalNotes: "First known $26 million cyber heist targeting a U.S. municipality",
+    },
+    {
+        date: "2026-11-11",
+        title: "York University breach exposes 19 years of student health and financial data",
+        company: COMPANY.YORK_UNIVERSITY,
+        description: "York University confirmed that an unauthorized actor exfiltrated archived form submissions containing personal, medical and financial information submitted by students between 2007 and 2026",
+        sourceUrl: "https://databreaches.net/2026/11/11/ca-york-university-breach-exposes-19-years-of-student-health-and-financial-data/", // TODO: archive manually
+    },
+    {
+        date: "2026-11-11",
+        title: "Wyndham exposed customer data after app security lapse",
+        company: COMPANY.WYNDHAM,
+        description: "Wyndham disclosed that a security flaw in its mobile app allowed a researcher to access customer data, potentially exposing personal information of its guests",
+        sourceUrl: "https://databreaches.net/2026/11/11/hotel-giant-wyndham-exposed-customer-data-after-app-security-lapse/", // TODO: archive manually
+    },
+    {
+        date: "2026-11-11",
+        title: "Fullerton Health server hit by cyberattack affecting migrant workers’ data",
+        company: COMPANY.FULLERTON_HEALTH,
+        description: "Fullerton Health said a cyberattack compromised the server hosting its Migrant Worker Primary Care Plan, resulting in unauthorized access to personal data of migrant workers",
+        sourceUrl: "https://databreaches.net/2026/11/11/sg-fullerton-health-server-hit-by-cyberattack-personal-data-of-migrant-workers-affected/", // TODO: archive manually
+    },
+    {
+        date: "2026-11-11",
+        title: "Cyberattack on AllUnited exposes personal data of members of over 350 Dutch sports clubs",
+        company: COMPANY.MULTIPLE,
+        description: "A cyberattack on the AllUnited membership administration system forced more than 350 Dutch sports clubs to report a breach that exposed members’ personal information",
+        sourceUrl: "https://databreaches.net/2026/11/11/hundreds-of-dutch-sports-clubs-report-cyberattack-exposing-members-personal-data/", // TODO: archive manually
     },
     {
         date: "2026-11-10",
