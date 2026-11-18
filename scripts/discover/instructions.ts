@@ -35,6 +35,9 @@ Fields:
 - Do not use em dashes or en dashes.
 - Use words from the article itself in the title, description, and additionalNotes. This is required to avoid potential misinformation and to maintain accuracy
 - Do not use the ’ character - use the normal quote - '
+- Do not use the unicode character ‑ , use - instead
+- Do not use invisible characters such as " "
+
 
 Style examples from the existing data:
 {
