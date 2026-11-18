@@ -76,7 +76,6 @@ export const COMPANY = {
     QUBOLE: "Qubole",
     QUEST_DIAGNOSTICS: "Quest Diagnostics",
     REVOLUT: "Revolut",
-    ROCKSTAR_GAMES: "Rockstar Games",
     RUST: "Rust",
     RYOHIN_KEIKAKU: "Ryohin Keikaku",
     SHIPMONK: "ShipMonk",
@@ -134,17 +133,9 @@ export const incidents: Incident[] = [
         date: "2026-11-18",
         title: "Attackers Compromise Microsoft's Agent Framework PyPI Package to Steal Cloud Credentials",
         company: COMPANY.MICROSOFT,
-        description: "The malicious versions 1.26.1 and 1.26.2 of the agent‑framework package were published on November 17, 2026 and are designed to execute a credential‑stealing payload each time Python starts, harvesting cloud service credentials from infected environments. The compromise was reported by multiple security firms including Aikido, Chainguard, Endor Labs and Google‑owned Wiz",
+        description: "The malicious versions 1.26.1 and 1.26.2 of the agent-framework package were published on November 17, 2026 and are designed to execute a credential-stealing payload each time Python starts, harvesting cloud service credentials from infected environments. The compromise was reported by multiple security firms including Aikido, Chainguard, Endor Labs and Google-owned Wiz",
         sourceUrl: "https://web.archive.org/web/20261118072022/https://thehackernews.com/2026/11/attackers-compromise-microsofts-agent.html",
-        additionalNotes: "First known supply‑chain attack on a PyPI package affecting cloud credentials",
-    },
-    {
-        date: "2026-11-18",
-        title: "British hackers sentenced for GTA 6 data breach and crypto thefts",
-        company: COMPANY.ROCKSTAR_GAMES,
-        description: "Two British hackers were sentenced after breaking into Rockstar Games' servers to steal data from the Grand Theft Auto VI development environment and to steal millions of dollars in cryptocurrency",
-        sourceUrl: "https://techcrunch.com/2026/11/18/british-hackers-face-prison-for-gta-6-data-breach-and-crypto-thefts/", // TODO: archive manually
-        additionalNotes: "First known conviction related to a video game data breach",
+        additionalNotes: "First known supply-chain attack on a PyPI package affecting cloud credentials",
     },
     {
         date: "2026-11-17",
@@ -171,7 +162,7 @@ export const incidents: Incident[] = [
         date: "2026-11-17",
         title: "Tor releases emergency update amid ongoing DDoS attack",
         company: COMPANY.TOR,
-        description: "The Tor Project released a security update for its network relay software to strengthen defenses against an ongoing distributed denial‑service attack that overwhelmed relays and affected most operators, disrupting anonymous internet traffic for users worldwide",
+        description: "The Tor Project released a security update for its network relay software to strengthen defenses against an ongoing distributed denial-service attack that overwhelmed relays and affected most operators, disrupting anonymous internet traffic for users worldwide",
         sourceUrl: "https://www.bleepingcomputer.com/news/security/tor-releases-emergency-update-amid-ongoing-ddos-attack/", // TODO: archive manually
     },
     {
@@ -192,7 +183,7 @@ export const incidents: Incident[] = [
         date: "2026-11-17",
         title: "New GitDoor and GraphDoor Backdoors Turn GitHub and SharePoint Into Covert C2 Channels",
         company: COMPANY.MULTIPLE,
-        description: "The campaign, dubbed Operation ShadowCloud by Kaspersky, delivered backdoors that leverage Microsoft SharePoint and GitHub to establish covert command‑and‑control channels. It has targeted government sectors in Asia and Africa, allowing attackers to maintain persistent access to compromised networks",
+        description: "The campaign, dubbed Operation ShadowCloud by Kaspersky, delivered backdoors that leverage Microsoft SharePoint and GitHub to establish covert command-and-control channels. It has targeted government sectors in Asia and Africa, allowing attackers to maintain persistent access to compromised networks",
         sourceUrl: "https://thehackernews.com/2026/11/new-gitdoor-and-graphdoor-backdoors.html", // TODO: archive manually
     },
     {
@@ -206,7 +197,7 @@ export const incidents: Incident[] = [
         date: "2026-11-17",
         title: "Greiz-Ronneburg district hospital hit by ransomware attack",
         company: COMPANY.GREIZ_HOSPITAL,
-        description: "The hospital's systems were crippled by an extortion‑focused ransomware attack that forced the emergency room to close and required a gradual restoration of services over several days",
+        description: "The hospital's systems were crippled by an extortion-focused ransomware attack that forced the emergency room to close and required a gradual restoration of services over several days",
         sourceUrl: "https://databreaches.net/2026/11/17/germany-greiz-hospital-reopens-emergency-room-after-ransom-attack/", // TODO: archive manually
     },
     {
@@ -269,9 +260,9 @@ export const incidents: Incident[] = [
         date: "2026-11-13",
         title: "FBI Says North Korean Hackers Stole Over $400 Million in Crypto Using Deepfake Video Calls",
         company: COMPANY.NORTH_KOREA_HACKERS,
-        description: "The U.S. Federal Bureau of Investigation confirmed that actors linked to North Korea stole more than $400 million in cryptocurrency through a social‑engineering scheme called FaceStealer that used deepfake video calls over the past 18 months",
+        description: "The U.S. Federal Bureau of Investigation confirmed that actors linked to North Korea stole more than $400 million in cryptocurrency through a social-engineering scheme called FaceStealer that used deepfake video calls over the past 18 months",
         sourceUrl: "https://web.archive.org/web/20261118064248/https://thehackernews.com/2026/11/fbi-says-north-korean-hackers-stole.html",
-        additionalNotes: "First known large‑scale crypto theft using deepfake calls",
+        additionalNotes: "First known large-scale crypto theft using deepfake calls",
     },
     {
         date: "2026-11-13",
@@ -340,9 +331,9 @@ export const incidents: Incident[] = [
         date: "2026-11-11",
         title: "The $26 Million Cyber Heist Rocking a Small New Jersey Town",
         company: COMPANY.VARIOUS,
-        description: "The incident involved a cybercriminal group stealing $26 million from the town of Cranbury, New Jersey, through a ransomware extortion scheme. Authorities say the attackers accessed municipal systems and demanded payment, resulting in the largest theft reported for a U.S. town",
+        description: "The incident involved a cybercriminal group stealing $26 million from the town of Cranbury, New Jersey, through a ransomware extortion scheme. Authorities say the attackers accessed municipal systems and demanded payment, resulting in the largest theft reported for a U.S. town",
         sourceUrl: "https://databreaches.net/2026/11/11/the-26-million-cyber-heist-rocking-a-small-new-jersey-town/", // TODO: archive manually
-        additionalNotes: "First known $26 million cyber heist targeting a U.S. municipality",
+        additionalNotes: "First known $26 million cyber heist targeting a U.S. municipality",
     },
     {
         date: "2026-11-11",
