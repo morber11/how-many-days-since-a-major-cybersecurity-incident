@@ -34,6 +34,7 @@ Fields:
 - additionalNotes: only when there is genuinely notable context, for example "First known ...". Otherwise leave it out.
 - Do not use em dashes or en dashes.
 - Use words from the article itself in the title, description, and additionalNotes. This is required to avoid potential misinformation and to maintain accuracy
+- Do not use the ’ character - use the normal quote - '
 
 Style examples from the existing data:
 {
