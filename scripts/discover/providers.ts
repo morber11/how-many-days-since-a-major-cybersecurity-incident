@@ -2,6 +2,7 @@ import { anthropic } from "@ai-sdk/anthropic";
 import { deepSeek } from "@ai-sdk/deepseek";
 import { createGoogleGenerativeAI } from "@ai-sdk/google";
 import { groq } from "@ai-sdk/groq";
+import { openrouter } from "@openrouter/ai-sdk-provider";
 import { APICallError, RetryError, type LanguageModel } from "ai";
 
 export interface Provider {
@@ -18,6 +19,10 @@ export const PROVIDERS = {
     gemini: {
         model: google("gemini-3.8-flash"),
         apiKeyVariable: "GEMINI_API_KEY",
+    },
+    openrouter: {
+        model: openrouter("nvidia/nemotron-3.5-super-vl:free", { structuredOutputs: { strict: false } }),
+        apiKeyVariable: "OPENROUTER_API_KEY",
     },
     groq: {
         model: groq("openai/gpt-oss-120b"),
