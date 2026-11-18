@@ -7,7 +7,7 @@ import { withRotation } from "../rotation/rotation.ts";
 import { classify } from "./classify.ts";
 import { fetchArticles } from "./feeds.ts";
 import { insertIncidents } from "./incidents-file.ts";
-import { availableProviders, isProviderBusy, isProviderName, PROVIDERS, type Provider } from "./providers.ts";
+import { availableProviders, isProviderName, PROVIDERS, shouldTryNextProvider, type Provider } from "./providers.ts";
 import type { Candidate, NewEntry } from "./types.ts";
 
 const PROVIDER_NAMES = Object.keys(PROVIDERS).join("|");
@@ -140,8 +140,8 @@ async function main(): Promise<void> {
 
             return classify(provider, articles, incidentsInMonthBefore(options.from), COMPANY);
         }, {
-            shouldRotate: isProviderBusy,
-            onRotate: (provider, error) => console.warn(`${provider.model.modelId} is busy, trying the next provider: ${error}`),
+            shouldRotate: shouldTryNextProvider,
+            onRotate: (provider, error) => console.warn(`${provider.model.modelId} failed, trying the next provider: ${error}`),
         });
     } catch (error) {
         console.error(`could not get incidents: ${error}`);

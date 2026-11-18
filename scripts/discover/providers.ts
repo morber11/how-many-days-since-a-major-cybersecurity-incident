@@ -1,21 +1,27 @@
 import { anthropic } from "@ai-sdk/anthropic";
 import { deepSeek } from "@ai-sdk/deepseek";
 import { createGoogleGenerativeAI } from "@ai-sdk/google";
-import { RetryError, type LanguageModel } from "ai";
+import { groq } from "@ai-sdk/groq";
+import { APICallError, RetryError, type LanguageModel } from "ai";
 
 export interface Provider {
     model: Exclude<LanguageModel, string>;
     apiKeyVariable: string;
-    providerOptions?: Record<string, Record<string, string>>;
+    providerOptions?: Record<string, Record<string, string | boolean>>;
 }
 
 const google = createGoogleGenerativeAI({ apiKey: process.env.GEMINI_API_KEY });
 
-// declaration order is the default rotation order, so keep the cheapest providers first
+// declaration order is the default rotation order, so keep free providers first, then the cheapest
 export const PROVIDERS = {
     gemini: {
         model: google("gemini-3.8-flash"),
         apiKeyVariable: "GEMINI_API_KEY",
+    },
+    groq: {
+        model: groq("openai/gpt-oss-120b"),
+        apiKeyVariable: "GROQ_API_KEY",
+        providerOptions: { groq: { strictJsonSchema: false } },
     },
     deepseek: {
         model: deepSeek("deepseek-flash"),
@@ -51,6 +57,9 @@ export function availableProviders(names: ProviderName[]): Provider[] {
     return providers;
 }
 
-export function isProviderBusy(error: unknown): boolean {
-    return RetryError.isInstance(error) && error.reason === "maxRetriesExceeded";
+export function shouldTryNextProvider(error: unknown): boolean {
+    const isBusy = RetryError.isInstance(error) && error.reason === "maxRetriesExceeded";
+    const isTooLarge = APICallError.isInstance(error) && error.statusCode === 413;
+
+    return isBusy || isTooLarge;
 }
