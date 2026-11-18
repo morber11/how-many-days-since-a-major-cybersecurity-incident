@@ -48,6 +48,8 @@ GEMINI_API_KEY=[YOUR API KEY]
 DISCOVER_PROVIDER=gemini,deepseek
 ```
 
+Use `.env.example` as a concrete list of providers
+
 - Entries whose `sourceUrl` is not an archive.is link (usually marked `// TODO: archive manually`) could not be archived automatically, likely due to timeout (archive can take a while if it's not already done) or captcha. Run `npm run archive` to retry them
 
 For every 10th incident tracked, I will consider adding another 2hu character to the site. Most sprites are taken from [Spriters Resource](https://www.spriters-resource.com/)
