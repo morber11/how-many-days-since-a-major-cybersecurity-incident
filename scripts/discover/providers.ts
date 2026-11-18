@@ -58,8 +58,5 @@ export function availableProviders(names: ProviderName[]): Provider[] {
 }
 
 export function shouldTryNextProvider(error: unknown): boolean {
-    const isBusy = RetryError.isInstance(error) && error.reason === "maxRetriesExceeded";
-    const isTooLarge = APICallError.isInstance(error) && error.statusCode === 413;
-
-    return isBusy || isTooLarge;
+    return RetryError.isInstance(error) || APICallError.isInstance(error);
 }

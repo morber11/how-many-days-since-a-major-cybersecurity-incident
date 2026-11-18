@@ -22,11 +22,17 @@ describe("shouldTryNextProvider", () => {
         await expect(generateText({ model: failingModel(503), prompt: "hello" })).rejects.toSatisfy(shouldTryNextProvider);
     });
 
-    it("is true when the request is over the provider's size limit, such as a free tier token cap", async () => {
-        await expect(generateText({ model: failingModel(413), prompt: "hello" })).rejects.toSatisfy(shouldTryNextProvider);
+    it("is true when the provider rejects the request, such as an invalid api key", async () => {
+        await expect(generateText({ model: failingModel(400), prompt: "hello" })).rejects.toSatisfy(shouldTryNextProvider);
     });
 
-    it("is false for errors that retrying cannot fix, such as a bad api key", async () => {
-        await expect(generateText({ model: failingModel(401), prompt: "hello" })).rejects.not.toSatisfy(shouldTryNextProvider);
+    it("is false for errors that are not from the provider api", async () => {
+        const model = new MockLanguageModelV4({
+            doGenerate: async () => {
+                throw new TypeError("bug in our code");
+            },
+        });
+
+        await expect(generateText({ model: model, prompt: "hello" })).rejects.not.toSatisfy(shouldTryNextProvider);
     });
 });
