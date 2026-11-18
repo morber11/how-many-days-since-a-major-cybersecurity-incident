@@ -1,6 +1,6 @@
 import { MockLanguageModelV4 } from "ai/test";
 import { describe, expect, it } from "vitest";
-import { classifyInBatches } from "./classify.ts";
+import { classify, classifyInBatches } from "./classify.ts";
 import { INSTRUCTIONS } from "./instructions.ts";
 import type { Article, Candidate } from "./types.ts";
 
@@ -19,6 +19,34 @@ function response(incidents: Candidate[]): Awaited<ReturnType<MockLanguageModelV
         warnings: [],
     };
 }
+
+describe("classify", () => {
+    it("replaces typographic quotes, non-breaking hyphens and invisible spaces in the text fields", async () => {
+        const articles = [article("https://example.com/a", "2026-11-16")];
+        const found: Candidate = {
+            date: "2026-11-16",
+            title: "Example Corp\u2019s data\u2011broker breach",
+            companyKey: "EXAMPLE",
+            companyName: "Example\u202FCorp",
+            description: "Attackers\u200B stole\u00A0records",
+            additionalNotes: "First\u2019s",
+            sourceUrl: "https://example.com/a",
+        };
+        const model = new MockLanguageModelV4({ doGenerate: [response([found])] });
+
+        const candidates = await classify({ model: model, apiKeyVariable: "TEST_API_KEY" }, articles, [], {});
+
+        expect(candidates).toEqual([{
+            date: "2026-11-16",
+            title: "Example Corp's data-broker breach",
+            companyKey: "EXAMPLE",
+            companyName: "Example Corp",
+            description: "Attackers stole records",
+            additionalNotes: "First's",
+            sourceUrl: "https://example.com/a",
+        }]);
+    });
+});
 
 describe("classifyInBatches", () => {
     it("splits articles into batches and tells later batches what was already found", async () => {

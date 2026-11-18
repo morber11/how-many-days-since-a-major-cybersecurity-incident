@@ -51,6 +51,26 @@ function keepValidCandidates(candidates: Candidate[], articles: Article[]): Cand
     });
 }
 
+function cleanText(text: string): string {
+    return text
+        .replaceAll("\u2019", "'") // right single quote
+        .replaceAll("\u2011", "-") // non-breaking hyphen
+        .replace(/[\u00A0\u2007\u2009\u202F]/g, " ") // no-break and thin spaces
+        .replace(/[\u200B-\u200D\u2060\uFEFF]/g, ""); // zero width characters
+}
+
+function cleanCandidate(candidate: Candidate): Candidate {
+    return {
+        date: candidate.date,
+        title: cleanText(candidate.title),
+        companyKey: candidate.companyKey,
+        companyName: cleanText(candidate.companyName),
+        description: cleanText(candidate.description),
+        additionalNotes: candidate.additionalNotes && cleanText(candidate.additionalNotes),
+        sourceUrl: candidate.sourceUrl,
+    };
+}
+
 function buildPrompt(articles: Article[], recent: KnownIncident[], companies: Record<string, string>): string {
     const existingIncidents = recent.map(({ date, title, company }) => ({ date, title, company }));
 
@@ -71,7 +91,7 @@ export async function classify(provider: Provider, articles: Article[], recent: 
         maxRetries: MAX_RETRIES,
     });
 
-    return keepValidCandidates(output.incidents, articles);
+    return keepValidCandidates(output.incidents.map(cleanCandidate), articles);
 }
 
 export async function classifyInBatches(provider: Provider, articles: Article[], recent: KnownIncident[], companies: Record<string, string>, batchLimit: number): Promise<Candidate[]> {
