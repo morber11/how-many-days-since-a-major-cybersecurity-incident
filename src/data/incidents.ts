@@ -34,6 +34,7 @@ export const COMPANY = {
     EMUDHRA: "eMudhra",
     ENGIE: "ENGIE",
     EQUINOR: "Equinor",
+    EUROPEAN_COMMISSION: "European Commission",
     FANDANGO: "Fandango",
     FBI: "FBI",
     FIREWORKS_AI: "Fireworks AI",
@@ -87,6 +88,7 @@ export const COMPANY = {
     THE_VATICAN: "The Vatican",
     TIMES_CAR: "Times Car",
     TOR: "Tor Project",
+    TRANSPORT_FOR_LONDON: "Transport for London",
     TREZOR: "Trezor",
     TSMC: "TSMC",
     UBER: "Uber",
@@ -123,6 +125,13 @@ export interface Incident {
 // run npm `run sort` to sort automatically
 export const incidents: Incident[] = [
     {
+        date: "2026-11-19",
+        title: "European Commission confirms cyberattack using AI tool",
+        company: COMPANY.EUROPEAN_COMMISSION,
+        description: "The European Commission confirmed it was hit by a cyberattack where CERT-EU identified the attackers' use of ARTEX. The FBI previously warned that the open-source AI hacking platform was being used by both criminals and state-sponsored groups",
+        sourceUrl: "https://web.archive.org/web/20261119153708/https://therecord.media/european-commission-confirms-cyberattack-using-ai",
+    },
+    {
         date: "2026-11-18",
         title: "Equinor cyberattack disrupts internal services",
         company: COMPANY.EQUINOR,
@@ -136,6 +145,13 @@ export const incidents: Incident[] = [
         description: "The malicious versions 1.26.1 and 1.26.2 of the agent-framework package were published on November 17, 2026 and are designed to execute a credential-stealing payload each time Python starts, harvesting cloud service credentials from infected environments. The compromise was reported by multiple security firms including Aikido, Chainguard, Endor Labs and Google-owned Wiz",
         sourceUrl: "https://web.archive.org/web/20261118072022/https://thehackernews.com/2026/11/attackers-compromise-microsofts-agent.html",
         additionalNotes: "First known supply-chain attack on a PyPI package affecting cloud credentials",
+    },
+    {
+        date: "2026-11-18",
+        title: "Transport for London photocard breach exposes data of 265,000 customers",
+        company: COMPANY.TRANSPORT_FOR_LONDON,
+        description: "Suspicious activity detected on the photocard website led to unauthorized access to personal details belonging to about 265,000 Oyster photocard customers. Compromised data includes names, email and home addresses, phone numbers, dates of birth, and security questions and answers",
+        sourceUrl: "https://databreaches.net/2026/11/18/uk-transport-for-london-photocard-breach-exposes-265000-customers/", // TODO: archive manually
     },
     {
         date: "2026-11-17",
