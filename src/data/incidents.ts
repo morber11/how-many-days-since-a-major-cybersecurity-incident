@@ -63,6 +63,7 @@ export const COMPANY = {
     MINNESOTA_WATER_SYSTEMS: "Minnesota Water Systems",
     MULTIPLE: "Multiple",
     MYDR: "MyDr",
+    N_ABLE: "N-able",
     NETSCALAR: "NetScalar",
     NIHON_KOTSU: "Nihon Kotsu",
     NIKKEI: "Nikkei",
@@ -79,6 +80,7 @@ export const COMPANY = {
     REVOLUT: "Revolut",
     RUST: "Rust",
     RYOHIN_KEIKAKU: "Ryohin Keikaku",
+    SBC_MEDICAL_GROUP: "SBC Medical Group",
     SHIPMONK: "ShipMonk",
     SILENTAIR: "SilentAir",
     SOGO_HK: "Sogo",
@@ -125,11 +127,25 @@ export interface Incident {
 // run npm `run sort` to sort automatically
 export const incidents: Incident[] = [
     {
+        date: "2026-11-20",
+        title: "N-able says recent security breach led to major service outage",
+        company: COMPANY.N_ABLE,
+        description: "Attackers breached one of N-able's servers and caused a major outage affecting Mail Assure and SpamExperts Hosted Cloud services worldwide. The disruption disabled management interfaces and APIs for email security management across multiple regions",
+        sourceUrl: "https://web.archive.org/web/20261120133633/https://www.bleepingcomputer.com/news/microsoft/n-able-says-recent-security-breach-led-to-major-service-outage/",
+    },
+    {
         date: "2026-11-19",
         title: "European Commission confirms cyberattack using AI tool",
         company: COMPANY.EUROPEAN_COMMISSION,
         description: "The European Commission confirmed it was hit by a cyberattack where CERT-EU identified the attackers' use of ARTEX. The FBI previously warned that the open-source AI hacking platform was being used by both criminals and state-sponsored groups",
         sourceUrl: "https://web.archive.org/web/20261119153708/https://therecord.media/european-commission-confirms-cyberattack-using-ai",
+    },
+    {
+        date: "2026-11-19",
+        title: "Hackers steal data of 1.6 million SBC Medical Group customers",
+        company: COMPANY.SBC_MEDICAL_GROUP,
+        description: "SBC Medical Group disclosed two cybersecurity incidents that exposed sensitive customer and employee information, including personal data belonging to 1.6 million people. The breach was revealed in a filing with the U.S. Securities and Exchange Commission",
+        sourceUrl: "https://web.archive.org/web/20261120115058/https://www.bleepingcomputer.com/news/security/hackers-steal-data-of-16-million-sbc-medical-group-customers/",
     },
     {
         date: "2026-11-18",
