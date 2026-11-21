@@ -12,6 +12,7 @@ export const COMPANY = {
     BAKER_TILLY: "Baker Tilly",
     BARRACUDA: "Barracuda",
     BEGET: "Beget",
+    BELL_CANADA: "Bell Canada",
     BINANCE: "Binance",
     BOSTON_SCIENTIFIC: "Boston Scientific",
     BRAZILIAN_GOVERNMENT: "Brazilian Government",
@@ -127,11 +128,25 @@ export interface Incident {
 // run npm `run sort` to sort automatically
 export const incidents: Incident[] = [
     {
+        date: "2026-11-21",
+        title: "FBI reportedly hacked again, this time targeting nationwide police database",
+        company: COMPANY.FBI,
+        description: "The breach reportedly targeted the agency's National Crime Information Center, which is used to share information between local, state, and federal law enforcement agencies",
+        sourceUrl: "https://web.archive.org/web/20261121144629/https://www.bleepingcomputer.com/news/security/fbi-reportedly-hacked-again-this-time-targeting-nationwide-police-database/",
+    },
+    {
         date: "2026-11-20",
         title: "N-able says recent security breach led to major service outage",
         company: COMPANY.N_ABLE,
         description: "Attackers breached one of N-able's servers and caused a major outage affecting Mail Assure and SpamExperts Hosted Cloud services worldwide. The disruption disabled management interfaces and APIs for email security management across multiple regions",
         sourceUrl: "https://web.archive.org/web/20261120133633/https://www.bleepingcomputer.com/news/microsoft/n-able-says-recent-security-breach-led-to-major-service-outage/",
+    },
+    {
+        date: "2026-11-20",
+        title: "Bell Canada says 'agentic' hacker stole enterprise customer data",
+        company: COMPANY.BELL_CANADA,
+        description: "The company confirmed that an unauthorized actor breached its systems on November 17, 2026. Stolen records included information from a system used to order and provision telecommunications circuits",
+        sourceUrl: "https://web.archive.org/web/20261121122458/https://www.bleepingcomputer.com/news/security/bell-canada-says-agentic-hacker-stole-enterprise-customer-data/",
     },
     {
         date: "2026-11-19",
