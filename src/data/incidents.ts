@@ -27,6 +27,7 @@ export const COMPANY = {
     COLDCARD: "Coldcard",
     CONNECTWISE: "ConnectWise",
     CREDIT_MUTUEL_ARKEA: "Crédit Mutuel Arkéa",
+    CSC_TELECOM: "CSC Telecom",
     DAHUA: "Dahua",
     DEFENSE_MANPOWER_DATA_CENTER: "Defense Manpower Data Center",
     DHS: "DHS",
@@ -78,6 +79,7 @@ export const COMPANY = {
     POLYMARKET: "Polymarket",
     QUBOLE: "Qubole",
     QUEST_DIAGNOSTICS: "Quest Diagnostics",
+    RACKSPACE: "Rackspace",
     REVOLUT: "Revolut",
     RUST: "Rust",
     RYOHIN_KEIKAKU: "Ryohin Keikaku",
@@ -99,6 +101,7 @@ export const COMPANY = {
     UNIVERSITY_OF_COPENHAGEN: "University of Copenhagen",
     UNM_HEALTH: "UNM Health",
     US_CYBERSECURITY_AND_INFRASTRUCTURE_SECURITY_AGENCY: "U.S. Cybersecurity and Infrastructure Security Agency (CISA)",
+    US_DEPARTMENT_OF_AGRICULTURE: "U.S. Department of Agriculture",
     VALVE: "Valve",
     VANDERBILT_UNIVERSITY: "Vanderbilt University",
     VARIOUS: "Various",
@@ -128,11 +131,32 @@ export interface Incident {
 // run npm `run sort` to sort automatically
 export const incidents: Incident[] = [
     {
+        date: "2026-11-22",
+        title: "CSC Telecom leak exposes 125 million SMS messages",
+        company: COMPANY.CSC_TELECOM,
+        description: "The Latvian branch of CSC Telecom left a database containing over 125 million SMS messages exposed. The leaked records span from October 2022 to September 2026 and include messages affecting clients of Swedbank, SEB, airBaltic and dozens of other companies",
+        sourceUrl: "https://databreaches.net/2026/11/22/huge-european-telecom-leak-exposes-swedbank-seb-airbaltic-and-dozens-of-other-companies-clients/", // TODO: archive manually
+    },
+    {
         date: "2026-11-21",
         title: "FBI reportedly hacked again, this time targeting nationwide police database",
         company: COMPANY.FBI,
         description: "The breach reportedly targeted the agency's National Crime Information Center, which is used to share information between local, state, and federal law enforcement agencies",
         sourceUrl: "https://web.archive.org/web/20261121144629/https://www.bleepingcomputer.com/news/security/fbi-reportedly-hacked-again-this-time-targeting-nationwide-police-database/",
+    },
+    {
+        date: "2026-11-21",
+        title: "Rackspace Spot breach exposes customer Kubernetes secrets",
+        company: COMPANY.RACKSPACE,
+        description: "Hackers breached Rackspace Spot using compromised credentials and accessed Kubernetes secrets in customer clusters. The attackers also deployed unauthorized workloads in the cloud platform",
+        sourceUrl: "https://web.archive.org/web/20261122145042/https://www.bleepingcomputer.com/news/security/rackspace-spot-breach-let-hackers-access-customer-kubernetes-secrets/",
+    },
+    {
+        date: "2026-11-21",
+        title: "Microsoft Entra Connect Health breach exposes tenant data",
+        company: COMPANY.MICROSOFT,
+        description: "Attackers exploited a vulnerability in Microsoft's Entra Connect Health service to access administrator email addresses and tenant configuration information. Microsoft confirmed it suffered a data breach affecting organizations",
+        sourceUrl: "https://web.archive.org/web/20261122111035/https://www.bleepingcomputer.com/news/security/microsoft-entra-connect-health-flaw-exploited-to-steal-tenant-data/",
     },
     {
         date: "2026-11-20",
@@ -147,6 +171,13 @@ export const incidents: Incident[] = [
         company: COMPANY.BELL_CANADA,
         description: "The company confirmed that an unauthorized actor breached its systems on November 17, 2026. Stolen records included information from a system used to order and provision telecommunications circuits",
         sourceUrl: "https://web.archive.org/web/20261121122458/https://www.bleepingcomputer.com/news/security/bell-canada-says-agentic-hacker-stole-enterprise-customer-data/",
+    },
+    {
+        date: "2026-11-20",
+        title: "U.S. Department of Agriculture suffers security breach",
+        company: COMPANY.US_DEPARTMENT_OF_AGRICULTURE,
+        description: "A cybersecurity incident forced the U.S. Department of Agriculture to take numerous applications offline over several days. The outages impacted many financial tools used by the department",
+        sourceUrl: "https://databreaches.net/2026/11/20/u-s-department-of-agriculture-grapples-with-security-breach-as-it-staff-take-multiple-systems-offline/", // TODO: archive manually
     },
     {
         date: "2026-11-19",
