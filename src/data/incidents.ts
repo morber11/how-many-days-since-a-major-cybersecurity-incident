@@ -93,6 +93,7 @@ export const COMPANY = {
     THE_VATICAN: "The Vatican",
     TIMES_CAR: "Times Car",
     TOR: "Tor Project",
+    TOWER_RECORDS_ONLINE: "Tower Records Online",
     TRANSPORT_FOR_LONDON: "Transport for London",
     TREZOR: "Trezor",
     TSMC: "TSMC",
@@ -130,6 +131,13 @@ export interface Incident {
 // is always treated as the most recent incident
 // run npm `run sort` to sort automatically
 export const incidents: Incident[] = [
+    {
+        date: "2026-11-23",
+        title: "Tower Records Online cyberattack potentially exposes 11 million customer records",
+        company: COMPANY.TOWER_RECORDS_ONLINE,
+        description: "Tower Records announced that approximately 11 million customer records may have been compromised in a cyberattack on November 19th, 2026, with records containing names, dates of birth and delivery addresses and no credit card information leaked",
+        sourceUrl: "https://databreaches.net/2026/11/23/jpn-tower-records-online-hit-by-cyberattack-11-million-customer-records-potentially-leaked/", // TODO: archive manually
+    },
     {
         date: "2026-11-22",
         title: "CSC Telecom leak exposes 125 million SMS messages",
