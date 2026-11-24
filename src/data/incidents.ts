@@ -22,6 +22,7 @@ export const COMPANY = {
     CERT_POLSKA: "CERT Polska",
     CEVA_LOGISTICS: "Ceva Logistics",
     CHAINALYSIS: "Chainalysis",
+    CHECK_POINT: "Check Point",
     CHICK_FIL_A: "Chick-fil-A",
     CITY_OF_OSAKA: "City of Osaka",
     COLDCARD: "Coldcard",
@@ -55,6 +56,7 @@ export const COMPANY = {
     IRIS_OHYAMA: "Iris Ohyama",
     JETBRAINS: "JetBrains",
     JFROG_ARTIFACTORY: "JFrog Artifactory",
+    KEPCO: "Korea Electric Power Corporation",
     LA_POSTE: "La Poste Group",
     LEGOLAND: "Legoland",
     MAERSK: "Maersk",
@@ -80,6 +82,7 @@ export const COMPANY = {
     QUBOLE: "Qubole",
     QUEST_DIAGNOSTICS: "Quest Diagnostics",
     RACKSPACE: "Rackspace",
+    RADWARE: "Radware",
     REVOLUT: "Revolut",
     RUST: "Rust",
     RYOHIN_KEIKAKU: "Ryohin Keikaku",
@@ -131,6 +134,27 @@ export interface Incident {
 // is always treated as the most recent incident
 // run npm `run sort` to sort automatically
 export const incidents: Incident[] = [
+    {
+        date: "2026-11-24",
+        title: "Radware discloses breach exposing customer cloud access keys",
+        company: COMPANY.RADWARE,
+        description: "Radware says attackers gained access to some of its customers' account details and cloud access keys through an unsecured internal Cloud WAF management API that was left exposed online",
+        sourceUrl: "https://web.archive.org/web/20261124175816/https://www.bleepingcomputer.com/news/security/radware-discloses-breach-exposing-customer-cloud-access-keys/",
+    },
+    {
+        date: "2026-11-24",
+        title: "Hackers compromise Check Point Servers in 22 organizations",
+        company: COMPANY.CHECK_POINT,
+        description: "Threat actors exploited multiple vulnerabilities to compromise two dozen Check Point Security management servers in an ongoing campaign targeting 22 organizations",
+        sourceUrl: "https://web.archive.org/web/20261124162525/https://www.bleepingcomputer.com/news/security/hackers-compromise-check-point-servers-in-22-organizations/",
+    },
+    {
+        date: "2026-11-24",
+        title: "1.5 Million Impacted by Data Breach at South Korean Electric Company KEPCO",
+        company: COMPANY.KEPCO,
+        description: "Hackers stole personal information from the company's customer portal and supplier relationship management platform, affecting customer, employee, and contractor data for 1.5 million people",
+        sourceUrl: "https://web.archive.org/web/20261124115800/https://www.securityweek.com/1-5-million-impacted-by-data-breach-at-south-korean-electric-company-kepco/",
+    },
     {
         date: "2026-11-23",
         title: "Tower Records Online cyberattack potentially exposes 11 million customer records",
