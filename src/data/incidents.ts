@@ -26,6 +26,7 @@ export const COMPANY = {
     CHICK_FIL_A: "Chick-fil-A",
     CITY_OF_OSAKA: "City of Osaka",
     COLDCARD: "Coldcard",
+    COLORADO_STATE_GOVERNMENT: "Colorado state government",
     CONNECTWISE: "ConnectWise",
     CREDIT_MUTUEL_ARKEA: "Crédit Mutuel Arkéa",
     CSC_TELECOM: "CSC Telecom",
@@ -154,6 +155,13 @@ export const incidents: Incident[] = [
         company: COMPANY.KEPCO,
         description: "Hackers stole personal information from the company's customer portal and supplier relationship management platform, affecting customer, employee, and contractor data for 1.5 million people",
         sourceUrl: "https://web.archive.org/web/20261124115800/https://www.securityweek.com/1-5-million-impacted-by-data-breach-at-south-korean-electric-company-kepco/",
+    },
+    {
+        date: "2026-11-24",
+        title: "Colorado says cyberattack took down myColorado app, warns 150,000 had data stolen",
+        company: COMPANY.COLORADO_STATE_GOVERNMENT,
+        description: "Cybercriminals likely stole data from 150,000 users of myColorado, which residents typically use for digital identification, document storage and accessing state government services. The state took the app offline while investigating",
+        sourceUrl: "https://web.archive.org/web/20261125172457/https://therecord.media/mycolorado-app-down-data-breach",
     },
     {
         date: "2026-11-23",
