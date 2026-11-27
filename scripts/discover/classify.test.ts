@@ -1,6 +1,7 @@
+import { APICallError } from "ai";
 import { MockLanguageModelV4 } from "ai/test";
 import { describe, expect, it } from "vitest";
-import { classify, classifyInBatches } from "./classify.ts";
+import { classify, classifyWithRotation } from "./classify.ts";
 import { INSTRUCTIONS } from "./instructions.ts";
 import type { Article, Candidate } from "./types.ts";
 
@@ -48,9 +49,13 @@ describe("classify", () => {
     });
 });
 
-describe("classifyInBatches", () => {
-    it("splits articles into batches and tells later batches what was already found", async () => {
-        const articles = [article("https://example.com/a", "2026-11-16"), article("https://example.com/b", "2026-11-17")];
+describe("classifyWithRotation", () => {
+    it("gives the next provider only the articles left and what was already found", async () => {
+        const articles = [
+            article("https://example.com/a", "2026-11-16"),
+            article("https://example.com/b", "2026-11-17"),
+            article("https://example.com/c", "2026-11-18"),
+        ];
         const found: Candidate = {
             date: "2026-11-16",
             title: "Example Corp breach",
@@ -59,15 +64,31 @@ describe("classifyInBatches", () => {
             description: "Example Corp was breached.",
             sourceUrl: "https://example.com/a",
         };
-        const model = new MockLanguageModelV4({ doGenerate: [response([found]), response([])] });
+        const responses = [response([found])];
+        const failsOnSecondBatch = new MockLanguageModelV4({
+            doGenerate: async () => {
+                const next = responses.shift();
 
-        const provider = { model: model, apiKeyVariable: "TEST_API_KEY" };
-        const batchLimit = Math.ceil(INSTRUCTIONS.length / 4) + 600;
+                if (!next) {
+                    throw new APICallError({ message: "too large", url: "https://example.com", requestBodyValues: {}, statusCode: 413, isRetryable: false });
+                }
 
-        const candidates = await classifyInBatches(provider, articles, [], {}, batchLimit);
+                return next;
+            },
+        });
+        const fallback = new MockLanguageModelV4({ doGenerate: [response([])] });
+        const providers = [
+            { model: failsOnSecondBatch, apiKeyVariable: "TEST_API_KEY", batchLimit: Math.ceil(INSTRUCTIONS.length / 4) + 600 },
+            { model: fallback, apiKeyVariable: "TEST_API_KEY" },
+        ];
 
+        const candidates = await classifyWithRotation(providers, articles, [], {});
+
+        const fallbackPrompt = JSON.stringify(fallback.doGenerateCalls[0].prompt);
         expect(candidates).toEqual([found]);
-        expect(model.doGenerateCalls).toHaveLength(2);
-        expect(JSON.stringify(model.doGenerateCalls[1].prompt)).toContain("Example Corp breach");
+        expect(fallbackPrompt).toContain("Example Corp breach");
+        expect(fallbackPrompt).not.toContain("https://example.com/a");
+        expect(fallbackPrompt).toContain("https://example.com/b");
+        expect(fallbackPrompt).toContain("https://example.com/c");
     });
 });

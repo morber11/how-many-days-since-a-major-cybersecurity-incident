@@ -1,8 +1,9 @@
 import { generateText, Output } from "ai";
 import { z } from "zod";
 import { splitIntoBatches } from "../batching/batching.ts";
+import { withRotation } from "../rotation/rotation.ts";
 import { INSTRUCTIONS } from "./instructions.ts";
-import type { Provider } from "./providers.ts";
+import { shouldTryNextProvider, type Provider } from "./providers.ts";
 import type { Article, Candidate } from "./types.ts";
 
 const DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
@@ -94,23 +95,39 @@ export async function classify(provider: Provider, articles: Article[], recent: 
     return keepValidCandidates(output.incidents.map(cleanCandidate), articles);
 }
 
-export async function classifyInBatches(provider: Provider, articles: Article[], recent: KnownIncident[], companies: Record<string, string>, batchLimit: number): Promise<Candidate[]> {
-    const sharedTokens = estimateTokens(INSTRUCTIONS + buildPrompt([], recent, companies));
-    const batches = splitIntoBatches(articles, batchLimit - sharedTokens, (article) => estimateTokens(JSON.stringify(article)));
-
-    const known: KnownIncident[] = Array.from(recent);
-    const candidates: Candidate[] = [];
-
-    for (const [index, batch] of batches.entries()) {
-        console.log(`asking ${provider.model.modelId} about batch ${index + 1}/${batches.length}`);
-        const found = await classify(provider, batch, known, companies);
-
-        // later batches see what earlier ones found, so the same incident from another source is not added twice
-        for (const candidate of found) {
-            candidates.push(candidate);
-            known.push({ date: candidate.date, title: candidate.title, company: candidate.companyKey });
-        }
+function splitForProvider(provider: Provider, articles: Article[], recent: KnownIncident[], companies: Record<string, string>): Article[][] {
+    if (!provider.batchLimit) {
+        return [articles];
     }
+
+    const sharedTokens = estimateTokens(INSTRUCTIONS + buildPrompt([], recent, companies));
+
+    return splitIntoBatches(articles, provider.batchLimit - sharedTokens, (article) => estimateTokens(JSON.stringify(article)));
+}
+
+export async function classifyWithRotation(providers: Provider[], articles: Article[], recent: KnownIncident[], companies: Record<string, string>): Promise<Candidate[]> {
+    const candidates: Candidate[] = [];
+    let remaining = articles;
+
+    await withRotation(providers, async (provider) => {
+        const batches = splitForProvider(provider, remaining, recent, companies);
+
+        for (const [index, batch] of batches.entries()) {
+            console.log(`asking ${provider.model.modelId} about batch ${index + 1}/${batches.length}`);
+
+            const found = recent.concat(candidates.map((candidate) => ({ date: candidate.date, title: candidate.title, company: candidate.companyKey })));
+            const newCandidates = await classify(provider, batch, found, companies);
+
+            for (const candidate of newCandidates) {
+                candidates.push(candidate);
+            }
+
+            remaining = remaining.filter((article) => !batch.includes(article));
+        }
+    }, {
+        shouldRotate: shouldTryNextProvider,
+        onRotate: (provider, error) => console.warn(`${provider.model.modelId} failed, trying the next provider: ${error}`),
+    });
 
     return candidates;
 }
