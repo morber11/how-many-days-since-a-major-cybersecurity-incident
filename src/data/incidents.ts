@@ -2,6 +2,7 @@
 // run npm `run sort` to sort automatically
 export const COMPANY = {
     ACCESS_DENTAL: "Access Dental",
+    AGENCE_FRANCE_PRESSE: "Agence France-Presse",
     AHOLD_DELHAIZE: "Ahold Delhaize",
     AMADEUS: "Amadeus",
     AMGEN: "Amgen",
@@ -10,6 +11,7 @@ export const COMPANY = {
     AUSTRALIA_NATIONAL_HEALTHCARE_AGENCY: "Australia National Healthcare Agency",
     BAE_SYSTEMS: "BAE Systems",
     BAKER_TILLY: "Baker Tilly",
+    BARCLAYS: "Barclays",
     BARRACUDA: "Barracuda",
     BEGET: "Beget",
     BELL_CANADA: "Bell Canada",
@@ -77,6 +79,7 @@ export const COMPANY = {
     NITORI: "Nitori",
     NORTH_KOREA_HACKERS: "North Korean hackers",
     NOTION: "Notion",
+    ONEPASSWORD: "1Password",
     OPTIMIZELY: "Optimizely",
     ORIGIN_ENERGY: "Origin Energy",
     PHP: "PHP",
@@ -108,6 +111,7 @@ export const COMPANY = {
     UK_GOVERNMENT: "UK Government",
     UNIVERSITY_OF_COPENHAGEN: "University of Copenhagen",
     UNM_HEALTH: "UNM Health",
+    US_AIR_FORCE: "US Air Force",
     US_CYBERSECURITY_AND_INFRASTRUCTURE_SECURITY_AGENCY: "U.S. Cybersecurity and Infrastructure Security Agency (CISA)",
     US_DEPARTMENT_OF_AGRICULTURE: "U.S. Department of Agriculture",
     VALVE: "Valve",
@@ -146,11 +150,39 @@ export const incidents: Incident[] = [
         sourceUrl: "https://web.archive.org/web/20261127101701/https://www.bleepingcomputer.com/news/security/sap-confirms-security-incident-after-suspicious-github-activity/",
     },
     {
+        date: "2026-11-27",
+        title: "Hackers breach US Air Force Cloud One platform",
+        company: COMPANY.US_AIR_FORCE,
+        description: "Reuters reports that hackers breached the US Air Force's flagship cloud computing platform, potentially jeopardizing sensitive tactical, personnel and logistics data. The intrusion was discovered during work to upgrade the system",
+        sourceUrl: "https://databreaches.net/2026/11/27/hackers-breach-us-air-force-cloud-one-platform-putting-military-data-at-risk/", // TODO: archive manually
+    },
+    {
+        date: "2026-11-27",
+        title: "Barclays US banking arm confirms data breach",
+        company: COMPANY.BARCLAYS,
+        description: "Barclays Bank Delaware has confirmed a data breach exposing credit card application data and has started informing affected customers. The breach notice was shared with authorities",
+        sourceUrl: "https://databreaches.net/2026/11/27/barclays-us-banking-arm-confirms-data-breach/", // TODO: archive manually
+    },
+    {
+        date: "2026-11-27",
+        title: "AFP reports cyberattack, shuts down content platform",
+        company: COMPANY.AGENCE_FRANCE_PRESSE,
+        description: "French international news agency Agence France-Presse was hit by a cyberattack, forcing it to take offline its main platform for distributing news content to media organizations worldwide. Management said it is investigating the circumstances of the cyberattack",
+        sourceUrl: "https://therecord.media/france-afp-hit-by-cyberattack", // TODO: archive manually
+    },
+    {
         date: "2026-11-25",
         title: "FIFA says hackers accessed personal and business information",
         company: COMPANY.FIFA,
         description: "FIFA confirmed it was the victim of a cyberattack that gave hackers access to a limited set of personal and business information. The organization said it is working with relevant authorities and law enforcement to investigate the breach",
         sourceUrl: "https://web.archive.org/web/20261127115933/https://therecord.media/fifa-data-breach-limited",
+    },
+    {
+        date: "2026-11-25",
+        title: "1Password says hacker used employee GitHub account to take customer data",
+        company: COMPANY.ONEPASSWORD,
+        description: "1Password disclosed that malicious code sent through an employee's corporate GitHub account made backend systems download customer records. The intruder also copied source code from private repositories and accessed the CI/CD system, though customer password vaults were not accessed",
+        sourceUrl: "https://web.archive.org/web/20261127165221/https://www.bleepingcomputer.com/news/security/1password-customer-data-stolen-after-employee-github-account-breach/",
     },
     {
         date: "2026-11-24",
