@@ -24,6 +24,7 @@ export const COMPANY = {
     CHAINALYSIS: "Chainalysis",
     CHECK_POINT: "Check Point",
     CHICK_FIL_A: "Chick-fil-A",
+    CIA: "CIA",
     CITY_OF_OSAKA: "City of Osaka",
     COLDCARD: "Coldcard",
     COLORADO_STATE_GOVERNMENT: "Colorado state government",
@@ -41,6 +42,7 @@ export const COMPANY = {
     EUROPEAN_COMMISSION: "European Commission",
     FANDANGO: "Fandango",
     FBI: "FBI",
+    FIFA: "FIFA",
     FIREWORKS_AI: "Fireworks AI",
     FLORIDA_DEPARTMENT_OF_EDUCATION: "Florida Department of Education",
     FOSS: "FOSS",
@@ -87,6 +89,7 @@ export const COMPANY = {
     REVOLUT: "Revolut",
     RUST: "Rust",
     RYOHIN_KEIKAKU: "Ryohin Keikaku",
+    SAP: "SAP",
     SBC_MEDICAL_GROUP: "SBC Medical Group",
     SHIPMONK: "ShipMonk",
     SILENTAIR: "SilentAir",
@@ -136,6 +139,20 @@ export interface Incident {
 // run npm `run sort` to sort automatically
 export const incidents: Incident[] = [
     {
+        date: "2026-11-27",
+        title: "SAP confirms security incident after suspicious GitHub activity",
+        company: COMPANY.SAP,
+        description: "SAP detected suspicious activity on GitHub where hackers reportedly used stolen employee tokens to copy and alter source code. The company took urgent action to protect customers after detecting the activity in its IT environment",
+        sourceUrl: "https://web.archive.org/web/20261127101701/https://www.bleepingcomputer.com/news/security/sap-confirms-security-incident-after-suspicious-github-activity/",
+    },
+    {
+        date: "2026-11-25",
+        title: "FIFA says hackers accessed personal and business information",
+        company: COMPANY.FIFA,
+        description: "FIFA confirmed it was the victim of a cyberattack that gave hackers access to a limited set of personal and business information. The organization said it is working with relevant authorities and law enforcement to investigate the breach",
+        sourceUrl: "https://web.archive.org/web/20261127115933/https://therecord.media/fifa-data-breach-limited",
+    },
+    {
         date: "2026-11-24",
         title: "Radware discloses breach exposing customer cloud access keys",
         company: COMPANY.RADWARE,
@@ -162,6 +179,13 @@ export const incidents: Incident[] = [
         company: COMPANY.COLORADO_STATE_GOVERNMENT,
         description: "Cybercriminals likely stole data from 150,000 users of myColorado, which residents typically use for digital identification, document storage and accessing state government services. The state took the app offline while investigating",
         sourceUrl: "https://web.archive.org/web/20261125172457/https://therecord.media/mycolorado-app-down-data-breach",
+    },
+    {
+        date: "2026-11-24",
+        title: "Unclassified CIA system breached in cyberattack",
+        company: COMPANY.CIA,
+        description: "An unclassified CIA system was breached in a cyberattack targeting US intelligence agencies, according to an Associated Press source. The attack did not involve highly sensitive information and has since been resolved",
+        sourceUrl: "https://web.archive.org/web/20261127115930/https://www.securityweek.com/an-unclassified-cia-system-was-breached-in-a-cyberattack-ap-source-says/",
     },
     {
         date: "2026-11-23",
