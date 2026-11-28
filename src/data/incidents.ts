@@ -2,6 +2,7 @@
 // run npm `run sort` to sort automatically
 export const COMPANY = {
     ACCESS_DENTAL: "Access Dental",
+    AGENCE_FRANCE_PRESSE: "Agence France-Presse",
     AHOLD_DELHAIZE: "Ahold Delhaize",
     AMADEUS: "Amadeus",
     AMGEN: "Amgen",
@@ -29,6 +30,7 @@ export const COMPANY = {
     COLDCARD: "Coldcard",
     COLORADO_STATE_GOVERNMENT: "Colorado state government",
     CONNECTWISE: "ConnectWise",
+    CONSTRUCTION_INDUSTRY_COUNCIL: "Construction Industry Council",
     CREDIT_MUTUEL_ARKEA: "Crédit Mutuel Arkéa",
     CSC_TELECOM: "CSC Telecom",
     DAHUA: "Dahua",
@@ -60,6 +62,7 @@ export const COMPANY = {
     JETBRAINS: "JetBrains",
     JFROG_ARTIFACTORY: "JFrog Artifactory",
     KEPCO: "Korea Electric Power Corporation",
+    KOREA_POST: "Korea Post",
     LA_POSTE: "La Poste Group",
     LEGOLAND: "Legoland",
     MAERSK: "Maersk",
@@ -79,6 +82,7 @@ export const COMPANY = {
     NOTION: "Notion",
     OPTIMIZELY: "Optimizely",
     ORIGIN_ENERGY: "Origin Energy",
+    PACIFIC_BLUE_CROSS: "Pacific Blue Cross",
     PHP: "PHP",
     POLISH_GOVERNMENT: "Polish Government",
     POLYMARKET: "Polymarket",
@@ -139,11 +143,39 @@ export interface Incident {
 // run npm `run sort` to sort automatically
 export const incidents: Incident[] = [
     {
+        date: "2026-11-28",
+        title: "Cyber incident disrupts services for Pacific Blue Cross members",
+        company: COMPANY.PACIFIC_BLUE_CROSS,
+        description: "Pacific Blue Cross says it is dealing with a cyber incident that has disrupted some of its systems, leaving members unable to access certain services including its website and contact centre. The provider serves approximately 1.7 million British Columbians",
+        sourceUrl: "https://databreaches.net/2026/11/27/cyber-incident-disrupting-services-for-pacific-blue-cross-members/", // TODO: archive manually
+    },
+    {
+        date: "2026-11-28",
+        title: "Korea Post mobile service hack exposes personal data of over 113,000 customers",
+        company: COMPANY.KOREA_POST,
+        description: "A hacking attack on the internet post office has exposed the personal information of at least 113,855 customers, with the full scope of the breach still under investigation. The postal service confirmed that hackers had gained access to its systems",
+        sourceUrl: "https://databreaches.net/2026/11/28/korea-posts-mobile-service-hacked-with-personal-data-of-at-least-113000-customers-leaked/", // TODO: archive manually
+    },
+    {
+        date: "2026-11-28",
+        title: "Unauthorized access on CIC app potentially exposes data of 500,000 construction workers",
+        company: COMPANY.CONSTRUCTION_INDUSTRY_COUNCIL,
+        description: "The personal data of some 500,000 registered construction workers was potentially exposed after unauthorized access was discovered on the Construction Industry Council app server. The information that may have been accessed includes names, dates of birth and ID numbers",
+        sourceUrl: "https://databreaches.net/2026/11/28/hk-app-breach-may-expose-500000-construction-workers/", // TODO: archive manually
+    },
+    {
         date: "2026-11-27",
         title: "SAP confirms security incident after suspicious GitHub activity",
         company: COMPANY.SAP,
         description: "SAP detected suspicious activity on GitHub where hackers reportedly used stolen employee tokens to copy and alter source code. The company took urgent action to protect customers after detecting the activity in its IT environment",
         sourceUrl: "https://web.archive.org/web/20261127101701/https://www.bleepingcomputer.com/news/security/sap-confirms-security-incident-after-suspicious-github-activity/",
+    },
+    {
+        date: "2026-11-27",
+        title: "Cyberattack forces Agence France-Presse to take content platform offline",
+        company: COMPANY.AGENCE_FRANCE_PRESSE,
+        description: "French international news agency Agence France-Presse was hit by a cyberattack, forcing it to take offline one of its main platforms for distributing news content to media organizations worldwide. The agency said it was investigating the circumstances of the cyberattack",
+        sourceUrl: "https://web.archive.org/web/20261128154352/https://therecord.media/france-afp-hit-by-cyberattack",
     },
     {
         date: "2026-11-25",
